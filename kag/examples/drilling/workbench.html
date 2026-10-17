@@ -222,7 +222,8 @@
         renderReferences(result.references, result.used_citations);
         $('answer-meta').textContent = `${modeName(result.mode)} · ${result.duration_seconds} 秒 · 召回 ${result.references.length} 个片段`;
         const stages = result.performance?.stages_seconds || {};
-        $('performance').textContent = `准备 ${stages.initialization ?? '—'}s · 规划 ${stages.planning ?? '—'}s · 检索 ${stages.retrieval ?? '—'}s · 生成 ${stages.generation ?? '—'}s · 模型调用 ${result.performance?.model_calls ?? '—'} 次${result.runtime_reused ? ' · 已复用运行实例' : ''}`;
+        const preparation = ((stages.initialization || 0) + (stages.pipeline_init || 0)).toFixed(3);
+        $('performance').textContent = `准备 ${preparation}s · 规划 ${stages.planning ?? '—'}s · 检索 ${stages.retrieval ?? '—'}s · 生成 ${stages.generation ?? '—'}s · 模型调用 ${result.performance?.model_calls ?? '—'} 次${result.runtime_reused ? ' · 已复用运行实例' : ''}`;
         if (result.invalid_citations.length) { $('answer-warning').hidden = false; $('answer-warning').textContent = '回答中存在无法对应原文的引用编号，请核查。'; }
         $('trace-panel').hidden = false;
         $('trace').textContent = (result.trace.decompose || []).map((step, i) => `${i+1}. ${step.retriever_method || step.retrieved_task || '检索'} · ${(step.chunks || step.chunk_datas || []).length} 个文本片段 · ${(step.graphs || step.graph_data || []).length} 项图谱结果`).join('\n') || '本次未记录检索步骤。';

@@ -12,11 +12,22 @@ from unittest.mock import AsyncMock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import service
+from benchmark_latency import summarize
 from kag.examples.drilling.query_pipeline import can_generate_directly
 from kag.examples.drilling.telemetry import CURRENT, QueryMetrics, stage
 
 
 class PerformanceTests(unittest.TestCase):
+    def test_latency_report_does_not_exclude_errors_from_quality_rates(self):
+        report = summarize([
+            {"strategy": "baseline", "duration_seconds": 5, "performance": {"model_calls": 4}, "rule_pass": True},
+            {"strategy": "baseline", "error": "TimeoutError"},
+            {"strategy": "optimized", "error": "TimeoutError"}])
+        self.assertEqual(report["baseline"]["rule_pass_rate"], .5)
+        self.assertEqual(report["baseline"]["mean_model_calls"], 4)
+        self.assertEqual(report["optimized"]["errors"], 1)
+        self.assertIsNone(report["optimized"]["mean_seconds"])
+
     def test_complex_dependencies_keep_intermediate_summary(self):
         leaf = SimpleNamespace(executor="Output", children=[])
         self.assertTrue(can_generate_directly(SimpleNamespace(children=[leaf])))

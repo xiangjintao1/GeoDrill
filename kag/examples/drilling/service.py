@@ -85,13 +85,11 @@ async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG, strategy="
         config["kag_solver_pipeline"]["planner"]["plan_prompt"]["type"] = "drilling_fast_planning"
     token = CURRENT.set(metrics)
     try:
-        from kag.examples.drilling.telemetry import stage
-        with stage("pipeline_init"):
-            pipeline = None
-            if strategy == "optimized":
-                if mode not in _pipelines:
-                    _pipelines[mode] = cli.create_pipeline(config)
-                pipeline = _pipelines[mode]
+        pipeline = None
+        if strategy == "optimized":
+            if mode not in _pipelines:
+                _pipelines[mode] = cli.create_pipeline(config)
+            pipeline = _pipelines[mode]
         result = await cli.ask(config, question, emit=False, pipeline=pipeline)
     finally:
         CURRENT.reset(token)

@@ -129,8 +129,10 @@ async def build(config, files):
 
 def create_pipeline(config):
     from kag.interface import SolverPipelineABC
+    from kag.examples.drilling.telemetry import stage
 
-    return SolverPipelineABC.from_config(config["kag_solver_pipeline"])
+    with stage("pipeline_init"):
+        return SolverPipelineABC.from_config(config["kag_solver_pipeline"])
 
 
 async def ask(config, question, output=None, emit=True, pipeline=None):

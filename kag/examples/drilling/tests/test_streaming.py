@@ -66,3 +66,30 @@ class StreamingTests(unittest.TestCase):
                 self.assertEqual(pending.result(timeout=5).status_code, 200)
             self.assertEqual(client.post("/api/ask", json={"question": "钻头"}).status_code, 200)
             self.assertIs(loops[0], loops[1])
+
+    def test_cancelled_request_keeps_worker_busy_until_completion(self):
+        started, release = Event(), Event()
+        async def answer(question, mode, **kwargs):
+            started.set()
+            await asyncio.to_thread(release.wait)
+            return {"answer": "完成"}
+        async def work():
+            worker = web.QueryWorker()
+            lock = asyncio.Lock()
+            with patch.object(web.app.state, "worker", worker, create=True), \
+                 patch.object(web.app.state, "lock", lock, create=True), patch.object(web, "answer", new=answer):
+                request = asyncio.create_task(web.ask(web.Question(question="取心")))
+                try:
+                    self.assertTrue(await asyncio.to_thread(started.wait, 5))
+                    request.cancel()
+                    with self.assertRaises(asyncio.CancelledError):
+                        await request
+                    self.assertTrue(lock.locked())
+                    with self.assertRaises(web.HTTPException) as caught:
+                        await web.submit(web.Question(question="钻头"))
+                    self.assertEqual(caught.exception.status_code, 409)
+                finally:
+                    release.set()
+                    await asyncio.to_thread(worker.close)
+                self.assertFalse(lock.locked())
+        asyncio.run(work())
