@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">GeoDrill</title>
+  <desc id="desc">Evidence-based question answering for drilling engineering</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081b33"/>
+      <stop offset="0.55" stop-color="#103f57"/>
+      <stop offset="1" stop-color="#0b6b65"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="320" rx="28" fill="url(#background)"/>
+  <circle cx="1050" cy="40" r="180" fill="#38bdf8" opacity="0.08"/>
+  <circle cx="1120" cy="285" r="145" fill="#2dd4bf" opacity="0.09"/>
+  <path d="M0 270 C210 215 330 330 550 270 S900 205 1200 265 V320 H0Z" fill="#ffffff" opacity="0.035"/>
+
+  <g stroke="#8be8dc" stroke-width="2" opacity="0.5">
+    <path d="M830 74 L930 46 L1010 112 L1112 76"/>
+    <path d="M830 74 L876 164 L1010 112 L1052 222 L1150 174"/>
+    <path d="M876 164 L792 232 L930 270 L1052 222"/>
+    <path d="M930 46 L876 164 L930 270"/>
+    <path d="M1010 112 L1150 174 L1112 76"/>
+  </g>
+  <g fill="#d7fffa" filter="url(#glow)">
+    <circle cx="830" cy="74" r="7"/><circle cx="930" cy="46" r="6"/>
+    <circle cx="1010" cy="112" r="9"/><circle cx="1112" cy="76" r="6"/>
+    <circle cx="876" cy="164" r="9"/><circle cx="1052" cy="222" r="8"/>
+    <circle cx="1150" cy="174" r="6"/><circle cx="792" cy="232" r="6"/>
+    <circle cx="930" cy="270" r="7"/>
+  </g>
+
+  <g transform="translate(94 61)">
+    <rect width="112" height="34" rx="17" fill="#d7fffa" opacity="0.12"/>
+    <text x="56" y="23" text-anchor="middle" fill="#a7f3d0" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">AI FOR SCIENCE</text>
+    <text x="0" y="112" fill="#ffffff" font-family="Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="4">GeoDrill</text>
+    <rect x="2" y="130" width="520" height="5" rx="2.5" fill="url(#accent)"/>
+    <text x="2" y="179" fill="#d9f4f2" font-family="Arial, sans-serif" font-size="25" font-weight="500">Drilling Knowledge Workbench</text>
+    <text x="2" y="216" fill="#9cc8ce" font-family="Arial, sans-serif" font-size="19">Drilling methods, coring, drill bits and tools</text>
+  </g>
+</svg>
