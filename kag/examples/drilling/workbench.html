@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GeoDrill · 钻探知识工作台</title>
+  <style>
+    :root { color-scheme:light; --ink:#19332e; --muted:#677c73; --green:#19745c; --line:#dce5df; --paper:#f4f7f2; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.65 "Segoe UI","Microsoft YaHei",sans-serif; }
+    button,input,textarea,select { font:inherit; }
+    button,a,summary { -webkit-tap-highlight-color:transparent; }
+    button { cursor:pointer; }
+    button:disabled { cursor:wait; opacity:.55; }
+    button:focus-visible,a:focus-visible,summary:focus-visible { outline:3px solid #83bba8; outline-offset:3px; }
+    aside { width:222px; position:fixed; inset:0 auto 0 0; background:#18382f; color:#edf4ed; padding:34px 24px; display:flex; flex-direction:column; }
+    .brand { font-size:25px; letter-spacing:-1px; font-weight:700; }
+    .brand span { color:#a1d5b1; }
+    .tagline { font-size:12px; color:#aec6b8; margin:5px 0 42px; letter-spacing:2px; }
+    nav { display:grid; gap:9px; }
+    nav button { text-align:left; color:#c4d6cb; background:none; border:0; border-radius:9px; padding:13px 16px; }
+    nav button.active { color:white; background:#315549; }
+    .side-note { margin-top:auto; color:#a7bfb0; font-size:12px; }
+    main { margin-left:222px; padding:35px 42px 70px; max-width:1530px; }
+    header { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:22px; margin-bottom:32px; }
+    .eyebrow { color:var(--muted); font-size:12px; letter-spacing:1.5px; }
+    .status { font-size:12px; color:var(--green); background:#e4efe5; border-radius:20px; padding:6px 12px; }
+    h1 { font-size:32px; line-height:1.35; letter-spacing:-1px; margin:12px 0; }
+    h2 { font-size:18px; margin:0; }
+    p { margin:8px 0; }
+    .muted { color:var(--muted); }
+    .hero { margin-bottom:25px; }
+    .grid { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr); gap:22px; align-items:start; }
+    .panel { background:#fff; border:1px solid var(--line); border-radius:15px; padding:25px; }
+    .panel + .panel { margin-top:20px; }
+    label { display:block; font-weight:600; margin-bottom:10px; }
+    textarea { width:100%; resize:vertical; min-height:122px; border:1px solid var(--line); border-radius:10px; padding:14px; color:var(--ink); background:#fcfdfb; }
+    textarea:focus,input:focus { outline:2px solid #b3d4bf; border-color:var(--green); }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:15px; margin-top:15px; }
+    select { border:1px solid var(--line); border-radius:8px; background:white; padding:9px 12px; color:var(--ink); }
+    .primary { background:var(--green); color:white; border:0; border-radius:8px; padding:11px 23px; font-weight:600; }
+    .chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    .chip { border:1px solid var(--line); background:white; color:var(--muted); border-radius:20px; padding:5px 11px; font-size:12px; }
+    .answer { white-space:pre-wrap; overflow-wrap:anywhere; margin-top:20px; line-height:1.95; }
+    .answer blockquote { color:var(--muted); }
+    .meta { display:flex; gap:12px; color:var(--muted); font-size:12px; margin-top:12px; flex-wrap:wrap; }
+    .ref { border:0; background:#e5f0e7; color:var(--green); border-radius:4px; padding:0 5px; font-size:12px; margin:0 2px; }
+    .warning { color:#a35222; background:#fff4e8; border-radius:7px; padding:9px 12px; font-size:13px; margin-top:12px; }
+    .empty { color:var(--muted); font-size:14px; padding:22px 0; }
+    details { border-bottom:1px solid var(--line); padding:13px 0; }
+    details:last-child { border:0; }
+    summary { cursor:pointer; font-size:14px; font-weight:600; }
+    .source-text { white-space:pre-wrap; font-size:13px; color:var(--muted); overflow-wrap:anywhere; max-height:330px; overflow:auto; margin-top:12px; }
+    a { color:var(--green); text-underline-offset:3px; }
+    .steps { font-size:13px; white-space:pre-wrap; color:var(--muted); }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:24px 0; }
+    .stat { padding:20px; background:white; border:1px solid var(--line); border-radius:12px; }
+    .stat b { display:block; font-size:28px; }
+    .stat span { font-size:12px; color:var(--muted); }
+    input[type=search] { width:100%; border:1px solid var(--line); border-radius:9px; padding:12px 14px; margin-bottom:15px; }
+    .material { display:flex; gap:20px; justify-content:space-between; padding:17px 0; border-bottom:1px solid var(--line); }
+    .material p { margin:0; }
+    .material .kind { font-size:12px; color:var(--muted); }
+    .material summary { max-width:750px; }
+    .material details { border:0; padding:0; flex:1; }
+    .material a { white-space:nowrap; font-size:13px; }
+    table { border-collapse:collapse; width:100%; font-size:14px; margin-top:20px; }
+    th,td { text-align:left; border-bottom:1px solid var(--line); padding:13px 10px; }
+    th { color:var(--muted); font-weight:500; }
+    .table-wrap { overflow:auto; }
+    .hidden,[hidden] { display:none !important; }
+    @media(max-width:1050px) { main { padding:25px; } .grid { grid-template-columns:1fr; } }
+    @media(max-width:700px) { aside { position:static; width:100%; padding:20px; } .tagline,.side-note { display:none; } nav { display:flex; margin-top:14px; } nav button { padding:8px 12px; } main { margin:0; padding:20px; } h1 { font-size:26px; } .stats { grid-template-columns:repeat(2,1fr); } .toolbar { flex-wrap:wrap; } }
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="brand">Geo<span>Drill</span></div>
+    <div class="tagline">钻探知识工作台</div>
+    <nav aria-label="主导航">
+      <button class="active" data-tab="qa">01　知识问答</button>
+      <button data-tab="sources">02　资料目录</button>
+      <button data-tab="evaluation">03　质量评测</button>
+    </nav>
+    <div class="side-note">钻进工艺与取心<br>钻头与钻具<br><br>本地知识 · 有据可查</div>
+  </aside>
+  <main>
+    <header><div class="eyebrow">GEOSCIENCE / DRILLING KNOWLEDGE</div><span class="status" id="status">正在连接工作台</span></header>
+    <section id="qa" class="tab">
+      <div class="hero"><div class="eyebrow">KNOWLEDGE WORKSPACE</div><h1>让钻探知识，有据可查。</h1><p class="muted">围绕钻进工艺、岩心与钻具提问，查看回答所依据的资料与适用条件。</p></div>
+      <div class="grid">
+        <div>
+          <form class="panel" id="question-form">
+            <label for="question">你想了解什么？</label>
+            <textarea id="question" maxlength="800" required placeholder="例如：绳索取心为什么不必每回次起出全部钻杆？"></textarea>
+            <div class="toolbar"><select id="mode" aria-label="检索方式"><option value="hybrid">混合检索</option><option value="vector">仅向量检索</option></select><button class="primary" id="submit">检索并回答 ↗</button></div>
+            <div class="chips"><button type="button" class="chip" data-question="绳索取心为什么不必每回次起出全部钻杆？">绳索取心原理</button><button type="button" class="chip" data-question="泥浆黏度越高，密度就一定越大吗？">黏度与密度</button><button type="button" class="chip" data-question="吉木萨尔案例的耐冲击复合片取心钻头是什么型号？">钻头型号</button></div>
+          </form>
+          <div class="panel" id="result-panel" aria-live="polite"><h2 id="answer-heading">回答</h2><div class="empty" id="empty-answer">输入一个问题，开始查阅知识库。</div><div id="answer-meta" class="meta"></div><div id="answer" class="answer"></div><div id="answer-warning" class="warning" hidden></div></div>
+          <details class="panel" id="trace-panel" hidden><summary>查看检索过程</summary><div id="trace" class="steps"></div></details>
+        </div>
+        <div class="panel"><h2>证据原文</h2><p class="muted" style="font-size:12px">点击回答中的引用编号，定位对应片段。</p><div id="references" class="empty">检索完成后，这里会显示召回资料及来源链接。</div></div>
+      </div>
+    </section>
+    <section id="sources" class="tab" hidden>
+      <div class="eyebrow">SOURCE LIBRARY</div><h1>从来源开始理解知识。</h1><p class="muted">区分工程案例、历史手册、中文知识条目和标准目录信息。</p>
+      <div class="stats" id="source-stats"></div>
+      <div class="panel"><label for="source-query">查找资料</label><input id="source-query" type="search" placeholder="搜索名称、型号或正文关键词"><div class="meta" id="source-count"></div><div id="source-list"></div><button class="chip" id="more-sources" hidden>显示更多</button></div>
+    </section>
+    <section id="evaluation" class="tab" hidden>
+      <div class="eyebrow">QUALITY & EVALUATION</div><h1>用相同的问题，比较检索效果。</h1><p class="muted">对照混合检索与向量检索，检查预期来源、关键事实、引用编号与耗时。</p>
+      <div class="panel" id="report"><div class="empty">正在读取最近一次评测。</div></div>
+    </section>
+  </main>
+  <script>
+    const $ = id => document.getElementById(id);
+    let materials = [], materialLimit = 40;
+    const modeName = mode => mode === 'hybrid' ? '混合检索' : '仅向量检索';
+    function node(tag, text, className) {
+      const el = document.createElement(tag);
+      if (text !== undefined) el.textContent = text;
+      if (className) el.className = className;
+      return el;
+    }
+    async function api(path, options) {
+      const response = await fetch(path, options);
+      const body = await response.json();
+      if (!response.ok) throw new Error(typeof body.detail === 'string' ? body.detail : '请求未完成，请稍后重试');
+      return body;
+    }
+    function sourceLink(url) {
+      const anchor = node('a', '打开原始来源 ↗');
+      try {
+        const parsed = new URL(url);
+        if (!['http:', 'https:'].includes(parsed.protocol)) return node('span', '来源地址无效');
+        anchor.href = parsed.href;
+      } catch { return node('span', '暂无来源链接'); }
+      anchor.target = '_blank'; anchor.rel = 'noopener noreferrer';
+      return anchor;
+    }
+    function renderAnswer(text, references) {
+      $('answer').replaceChildren();
+      const parts = text.split(/(<reference\s+id=["'][^"']+["']\s*>\s*<\/reference>|\*\*[^*]+\*\*)/g);
+      for (const part of parts) {
+        const citation = part.match(/^<reference\s+id=["']([^"']+)["']/);
+        if (citation) {
+          const index = references.findIndex(ref => ref.id === citation[1]);
+          const button = node('button', index < 0 ? '[未匹配]' : `[${index + 1}]`, 'ref');
+          button.type = 'button';
+          button.onclick = () => {
+            const detail = $('ref-' + index);
+            if (detail) { detail.open = true; detail.scrollIntoView({behavior:'smooth', block:'center'}); }
+          };
+          $('answer').append(button);
+        } else if (part.startsWith('**') && part.endsWith('**')) $('answer').append(node('strong', part.slice(2, -2)));
+        else $('answer').append(document.createTextNode(part));
+      }
+    }
+    function renderReferences(items, used) {
+      $('references').className = '';
+      $('references').replaceChildren();
+      if (!items.length) { $('references').append(node('p', '未召回可引用资料。', 'empty')); return; }
+      items.forEach((ref, index) => {
+        const detail = node('details'); detail.id = 'ref-' + index;
+        detail.append(node('summary', `[${index + 1}] ${ref.title}${used.includes(ref.id) ? ' · 已引用' : ''}`));
+        detail.append(node('div', ref.content, 'source-text'));
+        for (const url of ref.urls) detail.append(sourceLink(url), node('br'));
+        $('references').append(detail);
+      });
+    }
+    $('question-form').onsubmit = async event => {
+      event.preventDefault();
+      const question = $('question').value.trim();
+      if (!question) return;
+      $('submit').disabled = true; $('submit').textContent = '正在检索与生成…';
+      $('empty-answer').hidden = false; $('empty-answer').textContent = '正在查找相关资料并组织回答，请稍候。';
+      $('answer').replaceChildren(); $('answer-meta').replaceChildren(); $('answer-warning').hidden = true;
+      $('trace-panel').hidden = true; $('references').replaceChildren(node('p', '正在检索证据原文…', 'empty'));
+      try {
+        const result = await api('/api/ask', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({question, mode:$('mode').value})});
+        $('empty-answer').hidden = true;
+        renderAnswer(result.answer, result.references);
+        renderReferences(result.references, result.used_citations);
+        $('answer-meta').textContent = `${modeName(result.mode)} · ${result.duration_seconds} 秒 · 召回 ${result.references.length} 个片段`;
+        if (result.invalid_citations.length) { $('answer-warning').hidden = false; $('answer-warning').textContent = '回答中存在无法对应原文的引用编号，请核查。'; }
+        $('trace-panel').hidden = false;
+        $('trace').textContent = (result.trace.decompose || []).map((step, i) => `${i+1}. ${step.retriever_method || step.retrieved_task || '检索'} · ${(step.chunks || step.chunk_datas || []).length} 个文本片段 · ${(step.graphs || step.graph_data || []).length} 项图谱结果`).join('\n') || '本次未记录检索步骤。';
+      } catch (error) { $('empty-answer').textContent = error.message; $('references').replaceChildren(node('p', '本次未返回证据。', 'empty')); }
+      finally { $('submit').disabled = false; $('submit').textContent = '检索并回答 ↗'; }
+    };
+    document.querySelectorAll('[data-question]').forEach(button => button.onclick = () => { $('question').value = button.dataset.question; $('question').focus(); });
+    document.querySelectorAll('[data-tab]').forEach(button => button.onclick = () => {
+      document.querySelectorAll('.tab').forEach(section => section.hidden = section.id !== button.dataset.tab);
+      document.querySelectorAll('[data-tab]').forEach(item => item.classList.toggle('active', item === button));
+    });
+    function renderMaterials() {
+      const query = $('source-query').value.trim().toLowerCase();
+      const filtered = materials.filter(item => (item.title + item.content).toLowerCase().includes(query));
+      $('source-list').replaceChildren();
+      $('source-count').textContent = `匹配 ${filtered.length} 条，显示 ${Math.min(materialLimit, filtered.length)} 条`;
+      for (const item of filtered.slice(0, materialLimit)) {
+        const row = node('div', undefined, 'material'), detail = node('details');
+        detail.append(node('summary', item.title), node('p', item.kind + (item.page ? ` · 印刷页 ${item.page}` : ''), 'kind'), node('div', item.content, 'source-text'));
+        row.append(detail, sourceLink(item.url)); $('source-list').append(row);
+      }
+      $('more-sources').hidden = filtered.length <= materialLimit;
+    }
+    $('source-query').oninput = () => { materialLimit = 40; renderMaterials(); };
+    $('more-sources').onclick = () => { materialLimit += 40; renderMaterials(); };
+    async function loadCatalog() {
+      try {
+        materials = (await api('/api/catalog')).items;
+        const counts = [['可浏览资料', materials.length], ['案例与产品摘要', materials.filter(x => x.file.startsWith('public/')).length], ['中文基础条目', materials.filter(x => x.file.startsWith('foundation/usgs')).length], ['标准目录信息', materials.filter(x => x.file.startsWith('foundation/standard')).length]];
+        for (const [label, count] of counts) { const box = node('div', undefined, 'stat'); box.append(node('b', count), node('span', label)); $('source-stats').append(box); }
+        renderMaterials();
+      } catch (error) { $('source-count').textContent = error.message; }
+    }
+    async function loadReport() {
+      try {
+        const report = await api('/api/report'); $('report').replaceChildren();
+        $('report').append(node('h2', '最近一次评测'), node('p', `${report.question_count} 道题 · ${report.rows.length} 次运行 · ${new Date(report.created_at).toLocaleString('zh-CN')}`, 'muted'), node('p', report.note, 'warning'));
+        const wrap = node('div', undefined, 'table-wrap'), table = node('table'), head = node('tr');
+        ['检索方式','样本','事实规则命中','来源召回','引用编号有效','平均耗时'].forEach(text => head.append(node('th', text))); table.append(head);
+        for (const [mode, data] of Object.entries(report.summary)) {
+          const row = node('tr'); [modeName(mode), data.samples, `${Math.round(data.fact_rule_rate*100)}%`, `${Math.round(data.source_recall_rate*100)}%`, `${Math.round(data.citation_id_valid_rate*100)}%`, data.mean_seconds === null ? '—' : `${data.mean_seconds}s`].forEach(value => row.append(node('td', value))); table.append(row);
+        }
+        wrap.append(table); $('report').append(wrap);
+        for (const result of report.rows) { const detail = node('details'); detail.append(node('summary', `${modeName(result.mode)} · ${result.question}`), node('div', result.error ? '调用失败：' + result.error : result.answer, 'source-text')); $('report').append(detail); }
+      } catch (error) { $('report').replaceChildren(node('div', error.message, 'empty')); }
+    }
+    api('/health').then(() => $('status').textContent = '● 工作台已启动').catch(() => $('status').textContent = '工作台未连接');
+    loadCatalog(); loadReport();
+  </script>
+</body>
+</html>
