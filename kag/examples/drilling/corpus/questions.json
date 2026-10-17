@@ -1,0 +1,9 @@
+[
+  {"question":"吉木萨尔案例采用的耐冲击复合片取心钻头型号是什么？", "expected":"PC1336M-BJ", "source":"04-pc1336m-bj.md"},
+  {"question":"元深1井NR826M钻头的直径是多少？这是取心率数据吗？", "expected":"16英寸，406.4毫米；这是直径，不是取心率", "source":"05-nr826m.md"},
+  {"question":"平度复杂地层案例中，H规格绳索强制取心钻具如何割心，配什么钻头？", "expected":"通过泵量变化割心，配合隔液底喷钻头", "source":"01-complex-formations.md"},
+  {"question":"VIKING系列SHRED和LAVA胎体对应什么地层及莫氏硬度？", "expected":"SHRED极破碎或研磨性地层，3—5.5；LAVA硬至很硬，7—8.5；保留厂家归属", "source":"06-viking-matrices.md"},
+  {"question":"SPC是不是金刚石质量等级？STEP冠部是否适合所有破碎地层？", "expected":"SPC是每克拉颗粒数；STEP在破碎地层相对脆弱，不能普遍推荐", "source":"07-surface-set-profiles.md"},
+  {"question":"所有金刚石钻头都能在300℃条件下工作吗？", "expected":"不能推广，300℃仅对应报道的专门研发组合", "source":"08-high-temperature-tools.md"},
+  {"question":"PC1336M-BJ钻头的推荐钻压和转速各是多少？", "expected":"资料没有给出，不能编造参数", "source":"04-pc1336m-bj.md"}
+]

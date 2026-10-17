@@ -1,0 +1,10 @@
+[
+  {"question":"绳索取心为什么不必在每个回次起出全部钻杆？", "expected":"打捞器沿钻杆内部接合内管头并提取内管；不等于永远不用起钻", "source":"foundation/usgs-02.md"},
+  {"question":"泥浆黏度越高，密度就一定越大吗？", "expected":"不一定；黏度与密度是不同性质", "source":"foundation/usgs-06.md"},
+  {"question":"钻头直径不同时，能直接照搬相同转速吗？", "expected":"不能；直径与转速共同影响圆周速度，还需结合地层和振动", "source":"foundation/usgs-12.md"},
+  {"question":"为什么软硬互层取心中要注意给进变化？", "expected":"硬层进入软层后过快贯入可能堵塞岩心和排液通道", "source":"foundation/usgs-13.md"},
+  {"question":"岩心采取率高就能证明样品没有扰动吗？", "expected":"不能；还需考虑挤压、振动、污染、失水与保存等", "source":"foundation/usgs-21.md"},
+  {"question":"用空气取心就能完全保持岩心原始含水率吗？", "expected":"不能；可能导致失水或升温", "source":"foundation/usgs-25.md"},
+  {"question":"现有知识库能给出GB/T 16950-2014规定的NQ钻具尺寸公差吗？", "expected":"尚未取得标准全文，不能只凭目录元数据编造公差", "source":"foundation/standard-02.md"},
+  {"question":"不同资料都使用FACE DISCHARGE一词，就能认定结构和适用地层完全相同吗？", "expected":"不能；应核对液流路径、结构图、厂家定义并保留来源差异", "source":"foundation/usgs-15.md"}
+]

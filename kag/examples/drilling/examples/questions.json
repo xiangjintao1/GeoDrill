@@ -1,0 +1,22 @@
+[
+  {
+    "question": "柴达木盆地钾盐勘查案例采用了什么钻进取心工艺？",
+    "expected_source": "01-coring.md",
+    "review": "应提及局部卤水循环钻进取心工艺，并引用该案例。"
+  },
+  {
+    "question": "该钾盐勘查案例中，传统取心工艺遇到了什么问题？",
+    "expected_source": "01-coring.md",
+    "review": "应提及岩心滞留和按原位层序取出的困难。"
+  },
+  {
+    "question": "绿色钻探示范项目采用了什么钻头和钻机？",
+    "expected_source": "02-bits-tools.md",
+    "review": "应提及长寿命表孕镶金刚石钻头和模块化岩心钻机。"
+  },
+  {
+    "question": "这些示例资料给出的钻头具体型号和钻压数值是多少？",
+    "expected_source": null,
+    "review": "应说明资料未提供，不能编造型号或数值。"
+  }
+]

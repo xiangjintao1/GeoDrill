@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-10-17",
+  "pdf_pages": 106,
+  "printed_body_pages": 97,
+  "selected_source_pages": 28,
+  "new_chinese_concepts": 28,
+  "new_standard_metadata_records": 4,
+  "new_english_reference_files": 204,
+  "verified_source_files": 236,
+  "missing_files": [],
+  "total_stored_chunks": 248,
+  "indexes": [
+    34,
+    [
+      "ONLINE"
+    ],
+    [
+      512
+    ]
+  ],
+  "qa": [
+    {
+      "name": "mud",
+      "question": "泥浆黏度越高，密度就一定越大吗？",
+      "answer": "**不一定。泥浆黏度高，并不必然意味着密度大。**USGS TWRI 2-F1（1989）印刷页19第3段明确指出：黏稠的泥浆可能只比水稍重；反过来，较重的泥浆也可能黏度较低。<reference id=\"chunk:0_5\"></reference>\n\n原文依据是：\n> “a viscous mud actually can be only slightly heavier than water; conversely, a heavy mud might be low in viscosity.”<reference id=\"chunk:0_5\"></reference>\n\n因此，**黏度与密度是不同的性质，不能把泥浆的稀稠程度当作其密度大小的判断依据**。<reference id=\"chunk:0_0\"></reference>",
+      "status": "FINISH",
+      "reference_ids_checked": true,
+      "result_file": "../results/foundation-mud.json"
+    },
+    {
+      "name": "wireline",
+      "question": "绳索取心为什么不必在每个回次起出全部钻杆？",
+      "answer": "因为绳索取心能够**单独打捞内管总成及其中的岩心，而不必把外部钻杆柱一起提出**：一个取心回次完成后，打捞器经钻杆内部下入，与内管头部的打捞矛头接合，再由钢丝绳将内管总成和岩心提至地表；取出岩心、重新下入内管总成后，即可继续取心。因此，每次取心无需起出全部钻杆。<reference id=\"chunk:0_0\"></reference>\n\n这里的“不必起出全部钻杆”仅针对每个取心回次，**不意味着更换钻头或处理事故时也无需起钻**。<reference id=\"chunk:0_0\"></reference>",
+      "status": "FINISH",
+      "reference_ids_checked": true,
+      "result_file": "../results/foundation-wireline.json"
+    },
+    {
+      "name": "standard",
+      "question": "现有知识库能给出GB/T 16950-2014规定的NQ钻具尺寸公差吗？",
+      "answer": "**不能。当前知识库证据不足，无法给出GB/T 16950-2014规定的NQ钻具尺寸公差。**\n\n现有引用中，GB/T 16950-2014《地质岩心钻探钻具》仅有官方目录信息，明确注明“尚未取得并核对标准全文”，不能据此回答具体条款、尺寸或公差。<reference id=\"chunk:0_0\"></reference>\n\n要给出可靠结果，目前缺少：\n- 标准中适用于所问NQ钻具的原文及规格对应依据；\n- 对应零部件的尺寸表、公差要求、单位，以及条款号、图号或表号。\n\n因此，**目前不能列出具体公差数值，也不能据此认定该标准未作规定**；只能确认现有引用不足以查实。<reference id=\"chunk:0_0\"></reference>",
+      "status": "FINISH",
+      "reference_ids_checked": true,
+      "result_file": "../results/foundation-standard.json"
+    }
+  ],
+  "foundation_model_calls_in_build_log": 0,
+  "reference_model_calls_in_build_log": 0
+}

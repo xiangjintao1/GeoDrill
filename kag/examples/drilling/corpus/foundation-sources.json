@@ -1,0 +1,1960 @@
+{
+  "checked_at": "2026-10-17",
+  "pdf": {
+    "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+    "local_cache": "D:\\GeoDrill-local\\materials\\usgs\\TWRI_2-F1.pdf",
+    "pdf_pages": 106,
+    "sha256": "1e01581940b6bcdb6c6663e6c77ebbf341cb1c2e31c949ab3b4f98a0107ba638",
+    "year": 1989
+  },
+  "knowledge_cards": [
+    {
+      "file": "foundation/usgs-01.md",
+      "title": "取心钻进与全面钻进",
+      "printed_pages": "30",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "12b9b36f54e0c45900d1e46cccf60b930459c73eb9a5565a6418c427c0deb4c4",
+      "tokens": 268
+    },
+    {
+      "file": "foundation/usgs-02.md",
+      "title": "绳索取心的工作原理",
+      "printed_pages": "43、97",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "5098529377035b6686af746c090bd9ed320e1b80b53efef4441649436b9eed68",
+      "tokens": 275
+    },
+    {
+      "file": "foundation/usgs-03.md",
+      "title": "内管与外管分别做什么",
+      "printed_pages": "32、41",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "65550fa4952a950e560a6f824b52636caf6f8ec1861e7c21797329785eaecbc5",
+      "tokens": 263
+    },
+    {
+      "file": "foundation/usgs-04.md",
+      "title": "打捞器与内管打捞矛头",
+      "printed_pages": "43、96",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "780d7b5cdcdf307b43eb109843a8a75d20eef4e9aaee39a2814ffdda33011115",
+      "tokens": 265
+    },
+    {
+      "file": "foundation/usgs-05.md",
+      "title": "冲洗液的主要作用",
+      "printed_pages": "19、30",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "4d5c85c3260a4563d66eb0114e2d3754f97f95585e00b58e12117d71547eff1e",
+      "tokens": 250
+    },
+    {
+      "file": "foundation/usgs-06.md",
+      "title": "泥浆黏度与密度不是一回事",
+      "printed_pages": "19",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "e5ae3de950626a82eb7efefac61879c9c03bc346e6f3dfdcb1dc8a919a3ee612",
+      "tokens": 246
+    },
+    {
+      "file": "foundation/usgs-07.md",
+      "title": "泥皮对孔壁和岩心的作用",
+      "printed_pages": "19、32、40",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "9a40d2ee923960d7be354ea7c1dd13517cad631832d0c9c0ed5f09aa491e90a3",
+      "tokens": 255
+    },
+    {
+      "file": "foundation/usgs-08.md",
+      "title": "漏斗黏度测量的局限",
+      "printed_pages": "20、22",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "d47dbb28142975c3eceab4e77a1e64864053b3e914267f84cccdd388390a687f",
+      "tokens": 256
+    },
+    {
+      "file": "foundation/usgs-09.md",
+      "title": "含砂量与钻具磨损",
+      "printed_pages": "22",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "1fe768537b673131306e3bacfcd7f0cfa56fdc8af1545c90a39cdcb72d4560a5",
+      "tokens": 243
+    },
+    {
+      "file": "foundation/usgs-10.md",
+      "title": "泵压异常上升与堵塞",
+      "printed_pages": "35—36",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "a3d771bc9f114100039af2a7eb76e26a4764875494c6611cf1e792f258c69137",
+      "tokens": 264
+    },
+    {
+      "file": "foundation/usgs-11.md",
+      "title": "钻压与转速需要配合",
+      "printed_pages": "41",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "bd3d53ceeba6370a9c112952119509674917226fd6dcf11f8da453ab15597658",
+      "tokens": 257
+    },
+    {
+      "file": "foundation/usgs-12.md",
+      "title": "转速不能脱离钻头直径讨论",
+      "printed_pages": "41",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "cc1f7d59f3d7d3f316faa0b7035c9f97eb7f471744d8c81dfabed02faa8f5189",
+      "tokens": 240
+    },
+    {
+      "file": "foundation/usgs-13.md",
+      "title": "软硬互层为什么容易堵心",
+      "printed_pages": "35—36",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "3c2de8d4542faddd1de1e80d3c3f197c27cd02bdcd4edae7063d94188ba8d23f",
+      "tokens": 260
+    },
+    {
+      "file": "foundation/usgs-14.md",
+      "title": "松散地层与完整硬岩取心的差别",
+      "printed_pages": "34—37、41",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "74069fdbd0855eea001c620ddca4f040224e1cb8ae92cc743e5388facee59950",
+      "tokens": 254
+    },
+    {
+      "file": "foundation/usgs-15.md",
+      "title": "水口形式必须联系结构理解",
+      "printed_pages": "32",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "f46da7f500be671c4a792047ac1155b82222fc1819109319c784bd1b176e678a",
+      "tokens": 271
+    },
+    {
+      "file": "foundation/usgs-16.md",
+      "title": "内管间隙与单动效果",
+      "printed_pages": "32",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "c0b8d206e436bd8be0240e0d5e276ab8fbbd1c56d3d6ea2edc7f42350724b781",
+      "tokens": 235
+    },
+    {
+      "file": "foundation/usgs-17.md",
+      "title": "孔壁稳定与覆盖层套管",
+      "printed_pages": "39—40",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "68500d8fb4c5f09519f548a62ece2ec86f9ed83a5d6418db5861368221760ef7",
+      "tokens": 243
+    },
+    {
+      "file": "foundation/usgs-18.md",
+      "title": "漏失会怎样影响取心",
+      "printed_pages": "46—48",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "5a875222ddaaf86ca0895fe2326910b4ad600b610491c06f175b1a19be27fcc6",
+      "tokens": 258
+    },
+    {
+      "file": "foundation/usgs-19.md",
+      "title": "再次下钻前的孔底残心",
+      "printed_pages": "46",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "e371b8f89a333f53c236fad7a5068a8b46ce492300bad59be98ad4e84c96009c",
+      "tokens": 256
+    },
+    {
+      "file": "foundation/usgs-20.md",
+      "title": "岩心出管后的标识",
+      "printed_pages": "45",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "90d3207fa322bd099d43f9f98f8a2afc9d3bcb316a31e5b48a917ef764a06b48",
+      "tokens": 241
+    },
+    {
+      "file": "foundation/usgs-21.md",
+      "title": "采取率高不等于样品没有扰动",
+      "printed_pages": "81—83",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "595021a602d553df803d142b30c48004b6e316f24d086d3da8294e73b93a1eac",
+      "tokens": 253
+    },
+    {
+      "file": "foundation/usgs-22.md",
+      "title": "样品代表性和取样目标",
+      "printed_pages": "81",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "c29658f0a59a9b43602d802dc963c847efe822fdaf6ec44fd439e4a15ee121cb",
+      "tokens": 234
+    },
+    {
+      "file": "foundation/usgs-23.md",
+      "title": "样品直径与壁效应",
+      "printed_pages": "82",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "da63e84a048724515954dafc82c6a7c2d838e35b22b7caebe84494d18bc05b34",
+      "tokens": 248
+    },
+    {
+      "file": "foundation/usgs-24.md",
+      "title": "岩心保存与运输扰动",
+      "printed_pages": "83",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "64e37826e066dd33f0d77235e40797339d9177e3cd8dceb7b9aaf674ce60f901",
+      "tokens": 243
+    },
+    {
+      "file": "foundation/usgs-25.md",
+      "title": "空气取心也可能改变含水率",
+      "printed_pages": "48—49",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "96735b90d37631db2a7857351a04f3bd7a5907719f79d7c3d880dfe8da3c86af",
+      "tokens": 255
+    },
+    {
+      "file": "foundation/usgs-26.md",
+      "title": "钻杆与钻铤的作用",
+      "printed_pages": "96",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "39182e3416152d46291fd1153cf8d849d58fc835abd7eab3cb6e8697c81d4b10",
+      "tokens": 242
+    },
+    {
+      "file": "foundation/usgs-27.md",
+      "title": "套管与接头兼容性",
+      "printed_pages": "30、47、96—97",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "feecd24a52cd5edbbfea89235942dae724c00f884caee1a20cf1f7bb346cced0",
+      "tokens": 269
+    },
+    {
+      "file": "foundation/usgs-28.md",
+      "title": "空气与液体取心介质的设备差别",
+      "printed_pages": "48",
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "format": "中文知识条目",
+      "sha256": "d817f87109d31e002c5ceee2715355246df9af135fa5c3e62953d1da935fe9d6",
+      "tokens": 258
+    },
+    {
+      "file": "foundation/standard-01.md",
+      "title": "地质岩心钻探规程",
+      "source_url": "https://std.samr.gov.cn/hb/search/stdHBDetailedCNF?id=8B1827F1EA38BB19E05397BE0A0AB44A",
+      "format": "标准目录元数据，非全文",
+      "sha256": "a4c671ff90df0d6823c752bf8c7045e76a9fa43f8c34eb61a47e9ce28a309a21",
+      "tokens": 174
+    },
+    {
+      "file": "foundation/standard-02.md",
+      "title": "地质岩心钻探钻具",
+      "source_url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D7F337D3A7E05397BE0A0AB82A",
+      "format": "标准目录元数据，非全文",
+      "sha256": "a5882a2d1501e6d416942b8fce29a1376c84eb29dd98dcc7955d7bd38fb660c9",
+      "tokens": 173
+    },
+    {
+      "file": "foundation/standard-03.md",
+      "title": "地质岩心钻探金刚石钻头",
+      "source_url": "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=8B1827F262ECBB19E05397BE0A0AB44A",
+      "format": "标准目录元数据，非全文",
+      "sha256": "21b23fbc3c372cdbe7f3f8683d7d39c2fef6eb2007e9c9cdc08f6c0abedbe8e5",
+      "tokens": 177
+    },
+    {
+      "file": "foundation/standard-04.md",
+      "title": "地质岩心钻探金刚石扩孔器",
+      "source_url": "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=8B1827F26696BB19E05397BE0A0AB44A",
+      "format": "标准目录元数据，非全文",
+      "sha256": "7dcbdd88b2e77190587c529aaed9fecc0176037622ed77be80e8a2446b051faa",
+      "tokens": 178
+    }
+  ],
+  "reference_chunks": [
+    {
+      "file": "reference/usgs-p018-01.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 304,
+      "sha256": "ea19125128c0d61534e9be36a10a8163a8cdfd95a036d42cfed55ceebd0867e2"
+    },
+    {
+      "file": "reference/usgs-p018-02.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 316,
+      "sha256": "7742369dfb918be2d3132d6ee0c3cf4be0218fa59c5acaff672cb71230d33444"
+    },
+    {
+      "file": "reference/usgs-p018-03.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 308,
+      "sha256": "52edbda371e0d59c6708443d467a36592be5402923375403ee41b60214495d8b"
+    },
+    {
+      "file": "reference/usgs-p018-04.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 225,
+      "sha256": "9dcba283092b7d86b3a68cd5fd5ef836660ea3a9ad8f952414412b00db2f4345"
+    },
+    {
+      "file": "reference/usgs-p018-05.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 282,
+      "sha256": "7375050a6f03798d07fd1225bab3e4fbc82b47c52fe31c4832e8d35c252f04d1"
+    },
+    {
+      "file": "reference/usgs-p018-06.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 347,
+      "sha256": "b4ea634567b2dce90a3dbc62a987bcaf8fd61b76c8ae1ff47e72aa0607c6fef9"
+    },
+    {
+      "file": "reference/usgs-p018-07.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 351,
+      "sha256": "6e7198b1fc7fa38394ba3110a89ce15e986f7b9f79f796bf6075849ba2661967"
+    },
+    {
+      "file": "reference/usgs-p018-08.md",
+      "printed_page": 18,
+      "pdf_page": 27,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 217,
+      "sha256": "7e380960776dcf90bb5eab00c8eaafacf1edfd92cfc3da717c64001c205b5913"
+    },
+    {
+      "file": "reference/usgs-p019-01.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 246,
+      "sha256": "868f2f9baa59158b06dd490406e8edc31b27f216ea42d826ec0a078d894eb93f"
+    },
+    {
+      "file": "reference/usgs-p019-02.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 321,
+      "sha256": "6b6e969357f1ed32ce60995f7d62d06d2a780447f5fd723bd3fe5b78859f3565"
+    },
+    {
+      "file": "reference/usgs-p019-03.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 335,
+      "sha256": "0bf5cdd0dd6efe10500b59f20a3c94fbb6259ef82fad4d63234b1ae15a592042"
+    },
+    {
+      "file": "reference/usgs-p019-04.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 178,
+      "sha256": "ce7cd1ec999ca95709d688a7feb647fed54265a1963b2f8d17003ea4b57d82cd"
+    },
+    {
+      "file": "reference/usgs-p019-05.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 302,
+      "sha256": "d2ec1f0803d1ffa4b045a8890a7f2208a268ec5db663d20cb6883a73fa6f26dc"
+    },
+    {
+      "file": "reference/usgs-p019-06.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 232,
+      "sha256": "6cc5b04cc685bea1e466b7bcd033c8ed834c6f71b1cfd98eaf7406f695645162"
+    },
+    {
+      "file": "reference/usgs-p019-07.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 352,
+      "sha256": "06b490ba0c084115cb101a940d1c964505a37a095c0983bc5f112d137bddbf66"
+    },
+    {
+      "file": "reference/usgs-p019-08.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 335,
+      "sha256": "9d217abe3c42d2ea7e8ddaa7b91f4728996dda7daffa475b575869ba95eefab4"
+    },
+    {
+      "file": "reference/usgs-p019-09.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 266,
+      "sha256": "426675cc47fac7b6634e940434393fd3ed2cbd4b8056e26f692672337a348041"
+    },
+    {
+      "file": "reference/usgs-p019-10.md",
+      "printed_page": 19,
+      "pdf_page": 28,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 284,
+      "sha256": "59fb5870da10fa41b4760fc120be3c60496cbb4ddc5cdf067b466209486d0721"
+    },
+    {
+      "file": "reference/usgs-p020-01.md",
+      "printed_page": 20,
+      "pdf_page": 29,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 261,
+      "sha256": "a2e53f238a8be9e202a09d7c11ee0f6a2b3a28be5520f55d067a125ac3ca1447"
+    },
+    {
+      "file": "reference/usgs-p020-02.md",
+      "printed_page": 20,
+      "pdf_page": 29,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 269,
+      "sha256": "04f60c8c88af6b00ab2642a381218a2d712a4465f686271b7dc972a8c9af9912"
+    },
+    {
+      "file": "reference/usgs-p023-01.md",
+      "printed_page": 23,
+      "pdf_page": 32,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 275,
+      "sha256": "83769c9fe537e560d1a3c9e4babdfdc36b18a638d63a5e055c366df6088f8f23"
+    },
+    {
+      "file": "reference/usgs-p023-02.md",
+      "printed_page": 23,
+      "pdf_page": 32,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 211,
+      "sha256": "c8900ec4999f2ab2a1ac405d7600e1ea23a1c3d9db36a6471c2c2b4a4cd27e1a"
+    },
+    {
+      "file": "reference/usgs-p023-03.md",
+      "printed_page": 23,
+      "pdf_page": 32,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 345,
+      "sha256": "3ae65f31ad1e9ba36a9ab167d339fc3004db6bdbec6a53c1541d0e788ca488d0"
+    },
+    {
+      "file": "reference/usgs-p023-04.md",
+      "printed_page": 23,
+      "pdf_page": 32,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 269,
+      "sha256": "0699e3ec0ef8f882d1800ba52e6df3c3495c270c0cdcb44aa258015f43d9ee3e"
+    },
+    {
+      "file": "reference/usgs-p024-01.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 343,
+      "sha256": "f561d0ea967a61e06374ffe2d3fb9d590ee71dbd65cd84e342788962f2573a47"
+    },
+    {
+      "file": "reference/usgs-p024-02.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 157,
+      "sha256": "ba376bf97c6c6a05231459e4efa4583e28c8e17812b0430d7e5dfec6a0ffe48d"
+    },
+    {
+      "file": "reference/usgs-p024-03.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 310,
+      "sha256": "fccfdcf0ccc7691b7b7ba173c40a05905339a2609e66b3617430ea65c156cb26"
+    },
+    {
+      "file": "reference/usgs-p024-04.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 340,
+      "sha256": "52b2ae36dc7b4721900f1533c0e7f61bdf4809c3313684780e7a4c97a4beb7ad"
+    },
+    {
+      "file": "reference/usgs-p024-05.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 275,
+      "sha256": "46282df33968c818ace50221b686e1c2b0b87963ef9f1ee70364f4977fd1d2f9"
+    },
+    {
+      "file": "reference/usgs-p024-06.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 204,
+      "sha256": "845b9a18f9c336cf27b7ff819ef37f572495eea3d9ad552b6bdf8643cdbaeefa"
+    },
+    {
+      "file": "reference/usgs-p024-07.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 354,
+      "sha256": "67e5cefd2147339a550094bd739232fad8ddd0d227310c27a557a230037e9528"
+    },
+    {
+      "file": "reference/usgs-p024-08.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 242,
+      "sha256": "9999905461a3d396a1ad6909f9437aed717f1a1e3f6f1783a4f3f236a237fa07"
+    },
+    {
+      "file": "reference/usgs-p024-09.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 250,
+      "sha256": "cd742e83a85bcd1b7b8944de0e4d18f7e565e8206975784f9cb9b7d85bfba744"
+    },
+    {
+      "file": "reference/usgs-p024-10.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 296,
+      "sha256": "0b45d3a71c5ced704d6afaae393e92022889c6d5bbf50691fb4b728970101b1e"
+    },
+    {
+      "file": "reference/usgs-p024-11.md",
+      "printed_page": 24,
+      "pdf_page": 33,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 230,
+      "sha256": "98f5cc980d8ea10ed22557ab891a4f933707b6359b9e8a07072d950b489c4cc1"
+    },
+    {
+      "file": "reference/usgs-p029-01.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 333,
+      "sha256": "1a25798cff2f6d3e1395198fe3ad2efa4d01bba9f638c24da9082171321f19e5"
+    },
+    {
+      "file": "reference/usgs-p029-02.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 334,
+      "sha256": "1bda7b28f783f2679ea3b7cd757b272c66c0677146f35eef95adc4ddc6e631ff"
+    },
+    {
+      "file": "reference/usgs-p029-03.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 216,
+      "sha256": "432ec89dae29ecdb7268991295be0469dbbed80dfcd82bcd5c058abdfc00534f"
+    },
+    {
+      "file": "reference/usgs-p029-04.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 222,
+      "sha256": "8e713084208db7a5484fd329d0cf775bed4982472622f288e24a143e71f555d4"
+    },
+    {
+      "file": "reference/usgs-p029-05.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 259,
+      "sha256": "d251fcd4f871bfd56cdbcadbeb6e170c2a91b2ae0326c19eec55cedaa6338068"
+    },
+    {
+      "file": "reference/usgs-p029-06.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 259,
+      "sha256": "4b8c2584c8bb1327ab12078eaad9a77ef203b2383fe12276583365fea1359b9c"
+    },
+    {
+      "file": "reference/usgs-p029-07.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 360,
+      "sha256": "adacb28c2600bedac905f2ea3111e3b0a3967e01bae85c4ab1e1cf3ce8717cf1"
+    },
+    {
+      "file": "reference/usgs-p029-08.md",
+      "printed_page": 29,
+      "pdf_page": 38,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 181,
+      "sha256": "150100e7c644762767c26403d3168cfb880229ea9ca47a7cc1bf048dca009063"
+    },
+    {
+      "file": "reference/usgs-p030-01.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 253,
+      "sha256": "a4456defd00fb141da7eff34851a4e4cb8ef9d0b311fb2f6999ded90df717ce4"
+    },
+    {
+      "file": "reference/usgs-p030-02.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 213,
+      "sha256": "0fff979f5f770cc10990c67162fca9d7e32fb0420bc14f7400669e994e1a3879"
+    },
+    {
+      "file": "reference/usgs-p030-03.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 331,
+      "sha256": "481e6c4e95bbe6fe54dd3af39072f2430beef656dfc3dc540f8616679545a343"
+    },
+    {
+      "file": "reference/usgs-p030-04.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 214,
+      "sha256": "e38322b1e58f76450446572b2ab984f74933c58c882493922afc604d0fa4a2c1"
+    },
+    {
+      "file": "reference/usgs-p030-05.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 251,
+      "sha256": "99c027b36e3f91288922d4754b4bf2e11bbb04c6087b2010c1781fe1d20d9beb"
+    },
+    {
+      "file": "reference/usgs-p030-06.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 322,
+      "sha256": "7e3e51531056fc3ae3538a640642ef62168089244e5705c80f6c8f398f2b6459"
+    },
+    {
+      "file": "reference/usgs-p030-07.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 334,
+      "sha256": "baa45135822ea0d62163470f898f19752a3a8c3b0484b5d4455e3bb995a2194c"
+    },
+    {
+      "file": "reference/usgs-p030-08.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 331,
+      "sha256": "e6847cd73d23cc738a0957888c6a092133d99c40a2d6848c36c18c156f92db47"
+    },
+    {
+      "file": "reference/usgs-p030-09.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 164,
+      "sha256": "c5c9f6a44063d0973a3cf66d80a66246ba1b0040cf942b0bcd7882acde698e08"
+    },
+    {
+      "file": "reference/usgs-p030-10.md",
+      "printed_page": 30,
+      "pdf_page": 39,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 322,
+      "sha256": "4b870cf9a186b6b1bd8910324667e49110f54ac3b53704ad7cd5e5beca393b6f"
+    },
+    {
+      "file": "reference/usgs-p032-01.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 287,
+      "sha256": "a430a8f61aa0447106d016b4c9c212149a14cfd824bedd5e1ac2d740e1a2f785"
+    },
+    {
+      "file": "reference/usgs-p032-02.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 260,
+      "sha256": "741ddbb1e1c97fed8b5b3a222cc31ae62cd9fd448d302e584887b35a3fd29ed4"
+    },
+    {
+      "file": "reference/usgs-p032-03.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 280,
+      "sha256": "de56729a317b5339dcf57ead67d82e73e4f26a3ef398439950753d96ea96f05a"
+    },
+    {
+      "file": "reference/usgs-p032-04.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 356,
+      "sha256": "09c13df17913d439ed3c5c928d1c8031487d5ed172e9a8db37852825bcd03dab"
+    },
+    {
+      "file": "reference/usgs-p032-05.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 241,
+      "sha256": "675d07f35567b70e4e2377f52322fb29d664c0aad6f4faa376dc5408a381cfa1"
+    },
+    {
+      "file": "reference/usgs-p032-06.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 303,
+      "sha256": "e95042191d4e29359cbb7ebf62056ddeaf7d4dc1ce7b0a8cac94c097958dbe95"
+    },
+    {
+      "file": "reference/usgs-p032-07.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 346,
+      "sha256": "a0e03db0f4baf3274e3f4427ffe11c3f238f328ba27e3c8c983cca96748c10bb"
+    },
+    {
+      "file": "reference/usgs-p032-08.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 211,
+      "sha256": "0ca1f0756ca36bc789d1e40d77153b53b304238b65d8711916b8cc28487bab81"
+    },
+    {
+      "file": "reference/usgs-p032-09.md",
+      "printed_page": 32,
+      "pdf_page": 41,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 316,
+      "sha256": "a051bd3eaf19c73575b0cdabb42a6acc96b2f72010c329fb4bd0b72eda46dc47"
+    },
+    {
+      "file": "reference/usgs-p034-01.md",
+      "printed_page": 34,
+      "pdf_page": 43,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 353,
+      "sha256": "11bdf67821e100beac9efbf093c4b9538da823904b0107c1bb39dd62fd05a42a"
+    },
+    {
+      "file": "reference/usgs-p034-02.md",
+      "printed_page": 34,
+      "pdf_page": 43,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 204,
+      "sha256": "2f3b89d31d2391c88c37c789009770a3f37b80ffc5f8897265c0be39c1ea9d46"
+    },
+    {
+      "file": "reference/usgs-p034-03.md",
+      "printed_page": 34,
+      "pdf_page": 43,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 231,
+      "sha256": "3bfa490d3460f088b8009dc64c6323752b8d550f1402085a4c41aef7d9506470"
+    },
+    {
+      "file": "reference/usgs-p035-01.md",
+      "printed_page": 35,
+      "pdf_page": 44,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 350,
+      "sha256": "7b78dfe0eae085a86ec44b7705ff3de66145674ae69fd2f95201e58893435fe7"
+    },
+    {
+      "file": "reference/usgs-p035-02.md",
+      "printed_page": 35,
+      "pdf_page": 44,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 325,
+      "sha256": "0c551d5481e5579ed08727664c77a729fdd8ff7c8eb91fa9ad44c423a9df7b12"
+    },
+    {
+      "file": "reference/usgs-p035-03.md",
+      "printed_page": 35,
+      "pdf_page": 44,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 237,
+      "sha256": "597be3fbeedfeff2154057bc624bd9ff7654fdb7d402d4ddbd590d4fcf53cce2"
+    },
+    {
+      "file": "reference/usgs-p035-04.md",
+      "printed_page": 35,
+      "pdf_page": 44,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 346,
+      "sha256": "58e41d358418e6744989ceecd062a03cfa2f993bc5688c4b559e1fd211e4cd0b"
+    },
+    {
+      "file": "reference/usgs-p035-05.md",
+      "printed_page": 35,
+      "pdf_page": 44,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 209,
+      "sha256": "097e82b159b1ca4d231ce26a50a2840a043717fca6f11a49a5e8c35557fd3c75"
+    },
+    {
+      "file": "reference/usgs-p036-01.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 300,
+      "sha256": "b670404601469e704490d2a5c7503c8c7d42b5364778777118f0ea4c97faec30"
+    },
+    {
+      "file": "reference/usgs-p036-02.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 215,
+      "sha256": "619fafd20681c6902851339e2200b91bb3637509a575170416410575d5e5821e"
+    },
+    {
+      "file": "reference/usgs-p036-03.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 327,
+      "sha256": "1ba9cab95c139e57f5a3ca5a67d84fc8b78e1a65a6b8dc7cf2188f7a983195f9"
+    },
+    {
+      "file": "reference/usgs-p036-04.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 350,
+      "sha256": "2d4a351029b08bd80c4c11a947221186b0d2a06a629113a3030340834d50ebe7"
+    },
+    {
+      "file": "reference/usgs-p036-05.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 200,
+      "sha256": "3835d63d5581b2cd2350ad93f146da94299df995ff1f498fe077c230e2c4da05"
+    },
+    {
+      "file": "reference/usgs-p036-06.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 318,
+      "sha256": "72faee7ca2773b4a15afa819bdd42119f75663ce3ea03d953bfd7a4448cf04d9"
+    },
+    {
+      "file": "reference/usgs-p036-07.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 334,
+      "sha256": "69116401c52c5ab906527da1e131076bf38f20b1da309dfbe8109193ae16d261"
+    },
+    {
+      "file": "reference/usgs-p036-08.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 307,
+      "sha256": "b9f4b514dbf927c9f550b7a2b2ec64637f7009132bc411f660f218a78931d32e"
+    },
+    {
+      "file": "reference/usgs-p036-09.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 283,
+      "sha256": "24040dd678bf575854ec97341fe3cec985f8dc30fa81b27ab067c4866c2b7816"
+    },
+    {
+      "file": "reference/usgs-p036-10.md",
+      "printed_page": 36,
+      "pdf_page": 45,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 253,
+      "sha256": "f38377e5bd95147f07c9065b58a7343ce6b254e825f1a3fcaca4f51f6470178d"
+    },
+    {
+      "file": "reference/usgs-p037-01.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 228,
+      "sha256": "34b1478f8a779b1362d5b2462448613ff65dccd1968f352787d38239c2f3e889"
+    },
+    {
+      "file": "reference/usgs-p037-02.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 293,
+      "sha256": "b26a2ae8505b0638cc0c2b8b707b311cf4d2508f288d231a47ec97a705cd584c"
+    },
+    {
+      "file": "reference/usgs-p037-03.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 310,
+      "sha256": "a32cc150a2e135e69ab8cdda350a247456158a653866b8aab5c0c104409a6d49"
+    },
+    {
+      "file": "reference/usgs-p037-04.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 325,
+      "sha256": "1332abefb3aa1b1d8204c9fe4309aa9d32684c18840a27ef1e01e58e12a13b88"
+    },
+    {
+      "file": "reference/usgs-p037-05.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 250,
+      "sha256": "cb7239b7f41a507c73e793c243947b5590c3336ada1928bed188cf1e835bed4b"
+    },
+    {
+      "file": "reference/usgs-p037-06.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 201,
+      "sha256": "722d3eaf89ecc8e9d485d3f0f6f62f7dfe842a65f62a7d211f036212939ce6fb"
+    },
+    {
+      "file": "reference/usgs-p037-07.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 302,
+      "sha256": "24b48ff95ca15f32134f88acca2f2e1845d9dc2525f66033e6c4a0d85381605d"
+    },
+    {
+      "file": "reference/usgs-p037-08.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 357,
+      "sha256": "44c9698b91f07e87d42c15c2249bc352534bb6653a0d6fbd85e54ffbae89fbc2"
+    },
+    {
+      "file": "reference/usgs-p037-09.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 238,
+      "sha256": "2970637e2fe0eeb0dee790bb7f0176a3c32dd8d25d248341719d8d92781b7f4d"
+    },
+    {
+      "file": "reference/usgs-p037-10.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 345,
+      "sha256": "46b014d8ae923cf119158336856544641d5a9d065c863802f0b3629856e9ee8b"
+    },
+    {
+      "file": "reference/usgs-p037-11.md",
+      "printed_page": 37,
+      "pdf_page": 46,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 149,
+      "sha256": "7723b948a34fc426abeff59917ceae3f5a7b8e89e45e468b1433885096ebcdd6"
+    },
+    {
+      "file": "reference/usgs-p038-01.md",
+      "printed_page": 38,
+      "pdf_page": 47,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 333,
+      "sha256": "2e8b92f4affb71746cbdf6a7ea49069683d0ecb0ed43188d109d246c4384f1a8"
+    },
+    {
+      "file": "reference/usgs-p038-02.md",
+      "printed_page": 38,
+      "pdf_page": 47,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 331,
+      "sha256": "7fbb1d63e0721b163b5fa4bf698f41a3c4ce15ec500bab00339f61749468407e"
+    },
+    {
+      "file": "reference/usgs-p039-01.md",
+      "printed_page": 39,
+      "pdf_page": 48,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 233,
+      "sha256": "3c59c6715d543eb7695735fa505bca75df65953a6a05621d747c6ec93d881643"
+    },
+    {
+      "file": "reference/usgs-p039-02.md",
+      "printed_page": 39,
+      "pdf_page": 48,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 352,
+      "sha256": "bd99b0a7211562b43c807d843c4687a4f1b582b1cd46b69102cf1c56c75693e0"
+    },
+    {
+      "file": "reference/usgs-p039-03.md",
+      "printed_page": 39,
+      "pdf_page": 48,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 296,
+      "sha256": "71fc74a4d376d54f12ed2285909ba8b919552c6260804a93e7b299a7f273f24a"
+    },
+    {
+      "file": "reference/usgs-p039-04.md",
+      "printed_page": 39,
+      "pdf_page": 48,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 307,
+      "sha256": "a1960b26923caa833ce929790f87a40a4ec11cb575b19224ee14387ee4b6bd86"
+    },
+    {
+      "file": "reference/usgs-p040-01.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 245,
+      "sha256": "f7cac964e3327f6e9bc892725f4d6bf0811130ab4d991b6a43d6bac07cff87ba"
+    },
+    {
+      "file": "reference/usgs-p040-02.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 294,
+      "sha256": "30007896c5767c3a1c2ddd9580ab3b3bceeb1b2e875d7e3e4f9c68235bd164ff"
+    },
+    {
+      "file": "reference/usgs-p040-03.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 247,
+      "sha256": "d6aa0a63b7caa78bcd48a5304b2e47310b5d61a4736d3c9b5443be90f447dd53"
+    },
+    {
+      "file": "reference/usgs-p040-04.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 260,
+      "sha256": "8b81b08023220690f4974ed810c7257d56f870d4e7bd0c21a1f96097dca0adeb"
+    },
+    {
+      "file": "reference/usgs-p040-05.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 224,
+      "sha256": "4ddb97558cf29a7f9a0392208f793ae84cbbd362e10d1b48d0f437a0967cc58a"
+    },
+    {
+      "file": "reference/usgs-p040-06.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 245,
+      "sha256": "2ed9787222cdf788bfb0c946c567bf097c838bc00be6f0bcb5c0c43c9f6f4cfb"
+    },
+    {
+      "file": "reference/usgs-p040-07.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 318,
+      "sha256": "b1bda4bbe3aac32808d301c6aee51d1beb439b62fa4784f73a3d917c10989bc4"
+    },
+    {
+      "file": "reference/usgs-p040-08.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 299,
+      "sha256": "68611b679f29d51ec0192d27d3a2a8ab45d313618973398c2619180350520fff"
+    },
+    {
+      "file": "reference/usgs-p040-09.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 345,
+      "sha256": "3fe66328c6181817f18fa4dd0ddec6b1f107495b4de3be62120430cee36a2ffb"
+    },
+    {
+      "file": "reference/usgs-p040-10.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 311,
+      "sha256": "7bb0e285d83f32e45485ae4c4ceaf3170440cd8bd6c73eda0158d5c16be251af"
+    },
+    {
+      "file": "reference/usgs-p040-11.md",
+      "printed_page": 40,
+      "pdf_page": 49,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 200,
+      "sha256": "1940972c5442f94fe1dddef81f5af0eeb1c182e91e68f3089961eab4f53571e3"
+    },
+    {
+      "file": "reference/usgs-p041-01.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 191,
+      "sha256": "8b289f161ed4d91f24e83194aa1ac60c843ae2e88f4ef0f411b0cdecf9ed9589"
+    },
+    {
+      "file": "reference/usgs-p041-02.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 333,
+      "sha256": "862ac22f8c31c6f1073d910cf915c592202fa830a07c83ae169f31283cec1d83"
+    },
+    {
+      "file": "reference/usgs-p041-03.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 239,
+      "sha256": "76bf254ea398b8628cc9efab5b3a9862fee56ec8e2a67d5a81ba5ec2e56cd7fd"
+    },
+    {
+      "file": "reference/usgs-p041-04.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 358,
+      "sha256": "4389408be5385c617f3ba4d9cb8621bebacb80a7b2598874b44548b8f028aec3"
+    },
+    {
+      "file": "reference/usgs-p041-05.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 299,
+      "sha256": "851e58b86850bb3dc90dc9396d4a65b35bfad627f614cdc444f8f3eb30ce5772"
+    },
+    {
+      "file": "reference/usgs-p041-06.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 195,
+      "sha256": "fbfba9b0633b2dae5df38e405c5e06efe2524f9989cbdd131f4827b0407007e7"
+    },
+    {
+      "file": "reference/usgs-p041-07.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 321,
+      "sha256": "bc70c789efb462597eed5ebc776318f715cfc1b814c50104cd7a9d3fa9604352"
+    },
+    {
+      "file": "reference/usgs-p041-08.md",
+      "printed_page": 41,
+      "pdf_page": 50,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 221,
+      "sha256": "b99d1f4cf7592b6e0683ea12955e83b50362fb1114ab7d1f3d6fa642b5e0ad3b"
+    },
+    {
+      "file": "reference/usgs-p043-01.md",
+      "printed_page": 43,
+      "pdf_page": 52,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 194,
+      "sha256": "446031726bfb3719966a5f65490a1f600bcf1a64d7b499d10c90b61ee308eb16"
+    },
+    {
+      "file": "reference/usgs-p043-02.md",
+      "printed_page": 43,
+      "pdf_page": 52,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 297,
+      "sha256": "024585bacd47f46d051f59e9796ce6e3ef667f23c62b5864b785c3e65e25565b"
+    },
+    {
+      "file": "reference/usgs-p043-03.md",
+      "printed_page": 43,
+      "pdf_page": 52,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 243,
+      "sha256": "f4a45a23a6c754457956b46e18e49200be1c35c8feba4f484ab9a1e619a12f6b"
+    },
+    {
+      "file": "reference/usgs-p043-04.md",
+      "printed_page": 43,
+      "pdf_page": 52,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 307,
+      "sha256": "3376ca75bb028ca7bc72dc5c9a0e04c4899a07964e5f889041ceb53fca9da850"
+    },
+    {
+      "file": "reference/usgs-p043-05.md",
+      "printed_page": 43,
+      "pdf_page": 52,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 299,
+      "sha256": "a0d7b3703ca58c6cc5d81c191060e68ca044046365931efca10b1ba08d9bb16d"
+    },
+    {
+      "file": "reference/usgs-p044-01.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 215,
+      "sha256": "07df4979b4bdcce6443518c3c791a5230871e76ac3f1003f3dd9b760757c69d1"
+    },
+    {
+      "file": "reference/usgs-p044-02.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 191,
+      "sha256": "7971dc33c366fdca8a026c6367e149b748b67995127642fcea6209cfde760510"
+    },
+    {
+      "file": "reference/usgs-p044-03.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 212,
+      "sha256": "7ac5a4d3bc2535bfcd54445d412414a81ea69dd014b14b49d3f3df242f6ea9fb"
+    },
+    {
+      "file": "reference/usgs-p044-04.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 277,
+      "sha256": "777061463729040acae28ee21eb4f14914c8f39bbcd9e3a016975fcbed33cbcc"
+    },
+    {
+      "file": "reference/usgs-p044-05.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 331,
+      "sha256": "5a11bf71016167a43b614ab39e9e19d8fcf06406385e12980a50b50ded7c0021"
+    },
+    {
+      "file": "reference/usgs-p044-06.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 239,
+      "sha256": "d880bc90868a59f939694495669dec363afe0e55612c02fee40bd82a0933a34c"
+    },
+    {
+      "file": "reference/usgs-p044-07.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 258,
+      "sha256": "fed1d07470deb2f3a7c66f5b7e350b18e94b3fa53afd232e457b15166ef9b454"
+    },
+    {
+      "file": "reference/usgs-p044-08.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 319,
+      "sha256": "01065a9ecdb44e5df675254c0dc52864772a7d80610f1696497a07197af900ac"
+    },
+    {
+      "file": "reference/usgs-p044-09.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 354,
+      "sha256": "2d200e0ca88b96e2446b23678f54dc1aac2616c46ff8db723c8dbb4f533304f1"
+    },
+    {
+      "file": "reference/usgs-p044-10.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 271,
+      "sha256": "1df49157ce39ad02074a9ad3e5c085458f473ac013ec0d03690ce9d48ae5178d"
+    },
+    {
+      "file": "reference/usgs-p044-11.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 236,
+      "sha256": "1389eef57d80dc0aa83f46ecf4dfc4ac127a0b5740dda223b1f51467388a0d18"
+    },
+    {
+      "file": "reference/usgs-p044-12.md",
+      "printed_page": 44,
+      "pdf_page": 53,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 198,
+      "sha256": "44e21eed24e79499685c72b64c04b8786878128f41a198539fff44cf2722fbbc"
+    },
+    {
+      "file": "reference/usgs-p045-01.md",
+      "printed_page": 45,
+      "pdf_page": 54,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 357,
+      "sha256": "9dcac6e76db4729fa565ea66e9d670c03338ddb12ef001c0691823471dda0df2"
+    },
+    {
+      "file": "reference/usgs-p045-02.md",
+      "printed_page": 45,
+      "pdf_page": 54,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 361,
+      "sha256": "82408f25b7805653c0224167c50d9ffc7758ed45345089605ac19eff99e9b77a"
+    },
+    {
+      "file": "reference/usgs-p046-01.md",
+      "printed_page": 46,
+      "pdf_page": 55,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 300,
+      "sha256": "6b4f6b24974958fa7bd4d30696d664376231ce05c77046e1497803c4127ffcba"
+    },
+    {
+      "file": "reference/usgs-p046-02.md",
+      "printed_page": 46,
+      "pdf_page": 55,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 204,
+      "sha256": "43c88aafe1628bf1b1c8064ec8c814605734847e84785d3e9ad950b6e7d3fd82"
+    },
+    {
+      "file": "reference/usgs-p046-03.md",
+      "printed_page": 46,
+      "pdf_page": 55,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 286,
+      "sha256": "ab1238d1aa666ba810d50dcd97a2c4da8ae6c4a5c5139467e059009760930f53"
+    },
+    {
+      "file": "reference/usgs-p046-04.md",
+      "printed_page": 46,
+      "pdf_page": 55,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 215,
+      "sha256": "53454fa4f7c76357961297657bd3a688ee2548f55ac15386a309b0b080704840"
+    },
+    {
+      "file": "reference/usgs-p046-05.md",
+      "printed_page": 46,
+      "pdf_page": 55,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 211,
+      "sha256": "fe4528dcfc876a07c7ed2752bededa1d651ecb6c405f4804b12844a2bbdc7200"
+    },
+    {
+      "file": "reference/usgs-p046-06.md",
+      "printed_page": 46,
+      "pdf_page": 55,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 347,
+      "sha256": "01faadab7cc4e21f240e32297867a8ad4065514aaa6f82b5144ee5ba28e894ee"
+    },
+    {
+      "file": "reference/usgs-p046-07.md",
+      "printed_page": 46,
+      "pdf_page": 55,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 359,
+      "sha256": "5b9cb3d6b094789fa147bc48e81026bfdfa2f20a5f7d5d2f83b9321d6850f0d0"
+    },
+    {
+      "file": "reference/usgs-p047-01.md",
+      "printed_page": 47,
+      "pdf_page": 56,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 236,
+      "sha256": "a9ae7e73c5a2412eb199bf9ad8cab1939abd7971c269365d3f3746d7f7a7aa2a"
+    },
+    {
+      "file": "reference/usgs-p047-02.md",
+      "printed_page": 47,
+      "pdf_page": 56,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 337,
+      "sha256": "74a52b53e872a9666d8218a999bd40617054175a4f984c02dcac0f991931d942"
+    },
+    {
+      "file": "reference/usgs-p047-03.md",
+      "printed_page": 47,
+      "pdf_page": 56,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 230,
+      "sha256": "b90474b91b9f6f250388219b3022ef5652c84662fe6d9dfd00d266c014b12a8b"
+    },
+    {
+      "file": "reference/usgs-p047-04.md",
+      "printed_page": 47,
+      "pdf_page": 56,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 290,
+      "sha256": "eecfe217cff29e1a08d764ad65f5dbc7ea90fb7ae6bcfa7aa1e97229732441f4"
+    },
+    {
+      "file": "reference/usgs-p047-05.md",
+      "printed_page": 47,
+      "pdf_page": 56,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 352,
+      "sha256": "cfa5537e4901d8a9baad50d8a6682b1d64ad5cee4dd7e5c34fb3f715f6b0de9f"
+    },
+    {
+      "file": "reference/usgs-p047-06.md",
+      "printed_page": 47,
+      "pdf_page": 56,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 260,
+      "sha256": "f2b3537fbbb24939bdd2fcd9d98e80448a0c4446e9926f0c336e0229c14b6444"
+    },
+    {
+      "file": "reference/usgs-p048-01.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 310,
+      "sha256": "cc98922fa1c2604a1c2dc2b5e34e22037a938981e9184b5a459723f49cd3cb97"
+    },
+    {
+      "file": "reference/usgs-p048-02.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 310,
+      "sha256": "e7da9d0a28313093edf3409909a4176104ab8de5bb94b41ce608c87f7279e39e"
+    },
+    {
+      "file": "reference/usgs-p048-03.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 267,
+      "sha256": "4e1b4511545cf208d1caf6d7b6dedb3529d58eb053d8e5d0f760b6c4e27d6499"
+    },
+    {
+      "file": "reference/usgs-p048-04.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 231,
+      "sha256": "d4b813941911b85410d018ddef809bac2276b3719964ab6cac52e10dad108907"
+    },
+    {
+      "file": "reference/usgs-p048-05.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 228,
+      "sha256": "88ba552eb972ca626cc8b11ee5b0ae3e3fd10e82e59ac9cda3eb271af02bb5c1"
+    },
+    {
+      "file": "reference/usgs-p048-06.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 350,
+      "sha256": "bd24476d666865bba0ff11af4a62f0bd3ddc268e69df913ba0ee3920a4be9b2e"
+    },
+    {
+      "file": "reference/usgs-p048-07.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 318,
+      "sha256": "63465c9bd811e8843cb45cecf320283ee285c802e679096e20c8d4615e092bd8"
+    },
+    {
+      "file": "reference/usgs-p048-08.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 314,
+      "sha256": "d5867ea7600d6c71a1d5bba1860b0c0576a5cb0799746c00df991c8cfa6afd65"
+    },
+    {
+      "file": "reference/usgs-p048-09.md",
+      "printed_page": 48,
+      "pdf_page": 57,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 204,
+      "sha256": "46a6fd0f16bf0c49723a62ed4b1abfcb80c74fcf8654903b459d2eae86ed6361"
+    },
+    {
+      "file": "reference/usgs-p049-01.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 295,
+      "sha256": "7ff6c510f0a18c7e0fa36215266a67bf01023b5eb5e909fe70b9dca08fe0bdb7"
+    },
+    {
+      "file": "reference/usgs-p049-02.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 274,
+      "sha256": "659871afc0bd1765e948f7ee89b14f0dbc89a098d520034c7c6c646e285c3d51"
+    },
+    {
+      "file": "reference/usgs-p049-03.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 307,
+      "sha256": "d90a142ded7fad81487985cc9cb54e2b6d907fd3d2d18ae5ba08f36c7b263b96"
+    },
+    {
+      "file": "reference/usgs-p049-04.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 255,
+      "sha256": "c67acf08f4866b2e90d320c331ec3ebe5fd69e9f8a68cf33f638827ccf2fa375"
+    },
+    {
+      "file": "reference/usgs-p049-05.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 234,
+      "sha256": "c7357cc5445912fa8c07428820cf87e4bfd74901c795c00983908e967d211040"
+    },
+    {
+      "file": "reference/usgs-p049-06.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 308,
+      "sha256": "05569354ef03fc296cf7d66ae30d6689337ebc2add3de6004cea390bfe6fcc11"
+    },
+    {
+      "file": "reference/usgs-p049-07.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 213,
+      "sha256": "08199a647db1b29e3ed35f91ce199da4bdc62639c39aa81d46177321cb0a5f69"
+    },
+    {
+      "file": "reference/usgs-p049-08.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 289,
+      "sha256": "c563e5e8c3a253c5b61d2aa5c8bef9fdff7d2633507a918f8a39f02bee990ef7"
+    },
+    {
+      "file": "reference/usgs-p049-09.md",
+      "printed_page": 49,
+      "pdf_page": 58,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 331,
+      "sha256": "36daeea881e06c0ac13a1b810a0b56b28b126d3928145d6f6233aceba25fe130"
+    },
+    {
+      "file": "reference/usgs-p080-01.md",
+      "printed_page": 80,
+      "pdf_page": 89,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 286,
+      "sha256": "cdea19b1965e226d1dec2125c8b7d0977bf7fd0077af3f3b5b9706d54935d51e"
+    },
+    {
+      "file": "reference/usgs-p080-02.md",
+      "printed_page": 80,
+      "pdf_page": 89,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 337,
+      "sha256": "b59d7cb6bfb163a79d70377df9dab1e3ad4c3bd3f2a0b21b26e89d74e5ccd4bf"
+    },
+    {
+      "file": "reference/usgs-p080-03.md",
+      "printed_page": 80,
+      "pdf_page": 89,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 322,
+      "sha256": "ea80367f3a3d6aef42630be67eb017e3abf6aca04a381fab278e443c8762b9cd"
+    },
+    {
+      "file": "reference/usgs-p080-04.md",
+      "printed_page": 80,
+      "pdf_page": 89,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 251,
+      "sha256": "1c105a28cdc55063224cb3ca6d3df4573a05ef242fb33a1ac6f43fb3d3f77817"
+    },
+    {
+      "file": "reference/usgs-p080-05.md",
+      "printed_page": 80,
+      "pdf_page": 89,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 238,
+      "sha256": "2efcd40aa6615c2a9cd836a8be8b2c9ed79b6f4a62f60a46539d0bf83cac88fd"
+    },
+    {
+      "file": "reference/usgs-p081-01.md",
+      "printed_page": 81,
+      "pdf_page": 90,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 312,
+      "sha256": "abc43617618199a7cfaa7e683c2bf5f2ac6f549c21495928939dc7bf53d41508"
+    },
+    {
+      "file": "reference/usgs-p081-02.md",
+      "printed_page": 81,
+      "pdf_page": 90,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 350,
+      "sha256": "525ddbbc30801eaf5fcaab97457639a570d90c879779d0db794fa2c7e3359b93"
+    },
+    {
+      "file": "reference/usgs-p081-03.md",
+      "printed_page": 81,
+      "pdf_page": 90,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 354,
+      "sha256": "9bd4f17c5a6918a0e97f85c3a2c45705722bf54b62f8ec73d041f5660f005d02"
+    },
+    {
+      "file": "reference/usgs-p081-04.md",
+      "printed_page": 81,
+      "pdf_page": 90,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 244,
+      "sha256": "604d1f56d3f0accb514f02b148b613f2fc92e0748cfd85e1f2115bf67faeaebe"
+    },
+    {
+      "file": "reference/usgs-p081-05.md",
+      "printed_page": 81,
+      "pdf_page": 90,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 341,
+      "sha256": "6c735071504fb1106fec4f40692f63d71f73f49cda6e01b5012d3b5a6202855f"
+    },
+    {
+      "file": "reference/usgs-p081-06.md",
+      "printed_page": 81,
+      "pdf_page": 90,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 196,
+      "sha256": "66a9f5a87cf8e2f1d56f65735a021aeadbfafd1d6e548755b8beaffc64c4cb9b"
+    },
+    {
+      "file": "reference/usgs-p082-01.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 297,
+      "sha256": "31a02eb83906353d4fa56e0650eca2679f642dab10dc3b376652d72d5e7e39c9"
+    },
+    {
+      "file": "reference/usgs-p082-02.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 340,
+      "sha256": "edfaa891527034b472e3a230e7ea8fc1e90f68e8d37c2ab2c367929c7aef2a94"
+    },
+    {
+      "file": "reference/usgs-p082-03.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 217,
+      "sha256": "0a5478d06c4edf3cd25912ddc401683f5f476e11d7558878df2fcf5a3174f45e"
+    },
+    {
+      "file": "reference/usgs-p082-04.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 264,
+      "sha256": "8aab2fd09d301cd16b6fd127c36394f026507a4834a591c365c7294f632d9373"
+    },
+    {
+      "file": "reference/usgs-p082-05.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 220,
+      "sha256": "db0de936568afc50ddec11a11d53db6319d2615bfc814cd894e8b557b5e00881"
+    },
+    {
+      "file": "reference/usgs-p082-06.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 204,
+      "sha256": "4876aa2f8b7478af9d48af1e766a40e42d948a0f494789e053b719d249d651de"
+    },
+    {
+      "file": "reference/usgs-p082-07.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 259,
+      "sha256": "89e5c05cb70ce5c4ec5afaddbbc64515e794f1ceb67fffff51c01cc908023fb5"
+    },
+    {
+      "file": "reference/usgs-p082-08.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 333,
+      "sha256": "1c7e952d8315949815cc2033c7b6a446ac4db3d7f19303f3196e503535448f95"
+    },
+    {
+      "file": "reference/usgs-p082-09.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 318,
+      "sha256": "b9b37c199f13483479bea958bdfcbc39963601bf66225a24adbb06d064f3ca92"
+    },
+    {
+      "file": "reference/usgs-p082-10.md",
+      "printed_page": 82,
+      "pdf_page": 91,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 223,
+      "sha256": "07052c46f0fcbff65d4b2a973dfd43283c209c51ae0f936d000f3e323e11bf97"
+    },
+    {
+      "file": "reference/usgs-p083-01.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 225,
+      "sha256": "af51aeea4b35a106e9dcb8f1216be24d4778124d4cdb8f340a1c1ba1198d2156"
+    },
+    {
+      "file": "reference/usgs-p083-02.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 297,
+      "sha256": "c3daa3e6dafef27228402e0a2d0aa5627099b308ba418d04514d453455a3afa5"
+    },
+    {
+      "file": "reference/usgs-p083-03.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 279,
+      "sha256": "edbe692cbaf4ed63204f1930f00df3574a311ffe6906c731e5c2ac1cec54b4b0"
+    },
+    {
+      "file": "reference/usgs-p083-04.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 335,
+      "sha256": "e03937c9ed34dfc67f16da62c6f5ee47cb22f026dd5653e8f0c88ed17671e987"
+    },
+    {
+      "file": "reference/usgs-p083-05.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 162,
+      "sha256": "2859ae1360d7219dc126004795310181690e9287b4f6bb83936f25281bf8dd2c"
+    },
+    {
+      "file": "reference/usgs-p083-06.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 222,
+      "sha256": "a679176ae7b27d47446af2d00eeecc807549be870473f8f06eb6c1d13853c930"
+    },
+    {
+      "file": "reference/usgs-p083-07.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 236,
+      "sha256": "4024e5dd35f60b569a9fc903034ed3f225acca4f405c091d5c23b38d9abc3ad6"
+    },
+    {
+      "file": "reference/usgs-p083-08.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 252,
+      "sha256": "942aa4ad2fab8ef3ee019f20143c6104c6de9bf87c78cd0d7f9186fe08f0beba"
+    },
+    {
+      "file": "reference/usgs-p083-09.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 343,
+      "sha256": "04977f52f197035a341589411c9820532ec462ffef0b100ce44a63fe2d0d751b"
+    },
+    {
+      "file": "reference/usgs-p083-10.md",
+      "printed_page": 83,
+      "pdf_page": 92,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 329,
+      "sha256": "036d7906e00a030e3e5c4c05ba71a112e7f852f07c44873a7601ccc1a6acbb2c"
+    },
+    {
+      "file": "reference/usgs-p084-01.md",
+      "printed_page": 84,
+      "pdf_page": 93,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 359,
+      "sha256": "370bf79a04bfb0839c2dba6b532e52118d0f9456e1ebddf419f8a9866297bd80"
+    },
+    {
+      "file": "reference/usgs-p084-02.md",
+      "printed_page": 84,
+      "pdf_page": 93,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 262,
+      "sha256": "78a3a252ec94042ac7d24227554625f798df907617b56bccef91a693dc317b91"
+    },
+    {
+      "file": "reference/usgs-p084-03.md",
+      "printed_page": 84,
+      "pdf_page": 93,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 226,
+      "sha256": "366479fdeb81c922d55eadef2af4c75e3dc9bb7b20df4d443221cf8a895f2e45"
+    },
+    {
+      "file": "reference/usgs-p084-04.md",
+      "printed_page": 84,
+      "pdf_page": 93,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 299,
+      "sha256": "bb3b6ee38e8a6334398a652c28011f089bdac6b18011570d6e600c3d642224a8"
+    },
+    {
+      "file": "reference/usgs-p084-05.md",
+      "printed_page": 84,
+      "pdf_page": 93,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 357,
+      "sha256": "5df99904dd5f6646ce1c8557c9ca726e2a5ed24e1877e718d9dec64cf7106401"
+    },
+    {
+      "file": "reference/usgs-p084-06.md",
+      "printed_page": 84,
+      "pdf_page": 93,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 231,
+      "sha256": "308d8de03cdcfcdb617a5b701a92e7e95e58487d588259360f0593ea72ee31be"
+    },
+    {
+      "file": "reference/usgs-p084-07.md",
+      "printed_page": 84,
+      "pdf_page": 93,
+      "source_url": "https://pubs.usgs.gov/twri/twri2-f1/pdf/TWRI_2-F1.pdf",
+      "tokens": 335,
+      "sha256": "da22f8d341666ef4174acf3e6d41fa01007a242ad52c3c6417eaac3441402030"
+    }
+  ],
+  "selected_printed_pages": [
+    18,
+    19,
+    20,
+    23,
+    24,
+    29,
+    30,
+    32,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    80,
+    81,
+    82,
+    83,
+    84
+  ]
+}

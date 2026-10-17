@@ -1,0 +1,66 @@
+[
+  {
+    "file": "public/01-complex-formations.md",
+    "source_url": "https://m.cgs.gov.cn/kxjs/201912/t20191216_499155.html",
+    "checked_at": "2026-10-17",
+    "sha256": "921acaba813783c9e96fde15196c46d0e985b61cb73131384b83f86565aad59b",
+    "embedding_tokens": 333,
+    "format": "中文来源摘要"
+  },
+  {
+    "file": "public/02-deep-wireline.md",
+    "source_url": "https://www.cgs.gov.cn/ywdt/dwdt/202112/t20211223_834432.html",
+    "checked_at": "2026-10-17",
+    "sha256": "c1d2a602abb23a96a3284aeefd7f9faf5959fd64788bbad6fb7b62e71433334c",
+    "embedding_tokens": 308,
+    "format": "中文来源摘要"
+  },
+  {
+    "file": "public/03-hydraulic-coring.md",
+    "source_url": "https://www.cgs.gov.cn/ywdt/dwdt/202205/t20220519_834936.html",
+    "checked_at": "2026-10-17",
+    "sha256": "02192fe2461ed9116d84302ac2eb1a31f3616046f75fa6b99157be64e4a75728",
+    "embedding_tokens": 288,
+    "format": "中文来源摘要"
+  },
+  {
+    "file": "public/04-pc1336m-bj.md",
+    "source_url": "https://www.cgs.gov.cn/ywdt/dwdt/201911/t20191114_831450.html",
+    "checked_at": "2026-10-17",
+    "sha256": "01ac70ee812fd3c22c47e49fa9aa8431011ec84bdfc5ca272de44e067e690e1a",
+    "embedding_tokens": 304,
+    "format": "中文来源摘要"
+  },
+  {
+    "file": "public/05-nr826m.md",
+    "source_url": "https://www.cgs.gov.cn/ywdt/dwdt/202107/t20210728_833963.html",
+    "checked_at": "2026-10-17",
+    "sha256": "94f704a777af0e05623c66358fcf48842ec3d6ca1930598cd7e958dfbf6aaf30",
+    "embedding_tokens": 302,
+    "format": "中文来源摘要"
+  },
+  {
+    "file": "public/06-viking-matrices.md",
+    "source_url": "https://www.epiroc.com/en-hk/products/exploration-geoscience/core-drilling/diamond-tools/diamond-core-bits/viking-core-bits",
+    "checked_at": "2026-10-17",
+    "sha256": "9ba68d8b08460234cb64cf30b69f85671a03f489eca3430129436fa1e2193d96",
+    "embedding_tokens": 331,
+    "format": "中文来源摘要"
+  },
+  {
+    "file": "public/07-surface-set-profiles.md",
+    "source_url": "https://www.epiroc.com/en-us/products/exploration-geoscience/core-drilling/diamond-tools/surface-set-core-bits",
+    "checked_at": "2026-10-17",
+    "sha256": "f03724fe799e0e7dee8a9fd8e3219778a4068cfc4c900a75b88999fb86f67434",
+    "embedding_tokens": 275,
+    "format": "中文来源摘要"
+  },
+  {
+    "file": "public/08-high-temperature-tools.md",
+    "source_url": "https://www.cgs.gov.cn/ywdt/dwdt/201811/t20181107_829880.html",
+    "checked_at": "2026-10-17",
+    "sha256": "5deaa45f68df1a43887b9107cdbb8a97840b4344b6e97d8f396d7ab2eba629dc",
+    "embedding_tokens": 307,
+    "format": "中文来源摘要"
+  }
+]

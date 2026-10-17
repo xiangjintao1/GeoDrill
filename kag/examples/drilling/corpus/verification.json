@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-17",
+  "new_sources": 8,
+  "new_source_chunks_verified": 8,
+  "total_chunks": 12,
+  "total_nodes": 109,
+  "total_relations": 155,
+  "vector_indexes": [
+    34,
+    [
+      "ONLINE"
+    ],
+    [
+      512
+    ]
+  ],
+  "qa": [
+    {
+      "result_file": "../results/public-corpus-model.json",
+      "status": "FINISH",
+      "source_retrieved": true,
+      "answer": "- **取心钻头型号：PC1336M-BJ型耐冲击复合片取心钻头。**北京探矿工程研究所针对吉木萨尔页岩油勘探中弹塑性地层钻进慢、取心效果不佳的问题研发了该钻头。<reference id=\"chunk:0_0\"></reference>\n- **钻压和转速：所提供的案例摘要未给出该案例的具体钻压、转速数值。**资料性质为官方工程案例摘要，并明确未提供通用钻压、转速。<reference id=\"chunk:0_0\"></reference>\n\n**当前知识库证据不足**：缺少来源报道全文或该案例实际钻进参数记录，因此尚未完成对原文是否记载钻压、转速的核验，不能将“摘要未提供”认定为“原文未记载”，也不能用通用推荐参数替代该案例的实际参数。"
+    },
+    {
+      "result_file": "../results/public-corpus-conditions.json",
+      "status": "FINISH",
+      "source_retrieved": true,
+      "answer": "根据当前提供的 **Epiroc《Surface Set Core Bits》产品页中文摘要**：\n\n- **SPC**：指“每克拉的金刚石颗粒数”，**不是金刚石质量等级**。<reference id=\"chunk:0_0\"></reference>\n- **STEP（阶梯式冠部）**：有利于较快进尺，常配绳索取心钻具；但其在**破碎岩层中相对脆弱**，因此不能据此推荐它用于所有破碎地层。这里的限制也不等于“所有破碎地层都禁止使用STEP”。<reference id=\"chunk:0_0\"></reference>\n\n**证据边界：**当前资料明确属于厂家产品说明的中文摘要，不含英文原文，不能将上述表述当作经核验的英文逐字引文。若需核对英文原句，**当前知识库证据不足**，缺少该产品页相关段落的英文原文。<reference id=\"chunk:0_0\"></reference>"
+    }
+  ]
+}
