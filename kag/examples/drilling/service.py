@@ -15,6 +15,8 @@ import run as cli
 ROOT = cli.PROJECT_DIR
 DEFAULT_CONFIG = ROOT / "kag_config.local.yaml"
 CITATION = re.compile(r'<reference\s+id=["\']([^"\']+)["\']\s*>\s*</reference>')
+_configuration = None
+_pipelines = {}
 
 
 def clean_text(value):
@@ -52,15 +54,45 @@ def retrieval_config(config, mode):
     return config
 
 
-async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG):
+async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG, strategy="optimized", on_event=None):
+    # 每个查询进程同一时刻只处理一个请求，缓存和全局 KAG 配置不跨进程共享。
+    global _configuration
     question = question.strip()
     if not 1 <= len(question) <= 800:
         raise ValueError("请输入1—800字的问题")
-    config = retrieval_config(cli.load_config(Path(config_path)), mode)
-    cli.validate_config(config)
-    cli.init_runtime(config)
     started = time.perf_counter()
-    result = await cli.ask(config, question, emit=False)
+    if strategy not in {"baseline", "optimized"}:
+        raise ValueError("不支持的问答策略")
+    base = cli.load_config(Path(config_path))
+    signature = hashlib.sha256(json.dumps(base, sort_keys=True).encode()).hexdigest()
+    config = retrieval_config(base, mode)
+    cli.validate_config(config)
+    reused = strategy == "optimized" and _configuration == signature
+    if not reused:
+        _pipelines.clear()
+        _configuration = None
+        cli.init_runtime(config)
+        if strategy == "optimized":
+            _configuration = signature
+    from kag.examples.drilling.telemetry import CURRENT, QueryMetrics
+
+    metrics = QueryMetrics(strategy, on_event)
+    metrics.started = started
+    metrics.spans.append({"name": "initialization", "seconds": round(time.perf_counter() - started, 3)})
+    config["kag_solver_pipeline"]["type"] = "drilling_profiled_pipeline"
+    config["kag_solver_pipeline"]["executors"][0]["type"] = "drilling_profiled_retriever"
+    if strategy == "optimized":
+        config["kag_solver_pipeline"]["planner"]["plan_prompt"]["type"] = "drilling_fast_planning"
+    token = CURRENT.set(metrics)
+    try:
+        pipeline = None
+        if strategy == "optimized":
+            if mode not in _pipelines:
+                _pipelines[mode] = cli.create_pipeline(config)
+            pipeline = _pipelines[mode]
+        result = await cli.ask(config, question, emit=False, pipeline=pipeline)
+    finally:
+        CURRENT.reset(token)
     if result["status"] != "FINISH":
         raise RuntimeError("问答流水线未正常完成")
     refs = references(result)
@@ -70,6 +102,7 @@ async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG):
         "mode": mode, "duration_seconds": round(time.perf_counter() - started, 2),
         "references": refs, "used_citations": used,
         "invalid_citations": [key for key in used if key not in known],
+        "strategy": strategy, "runtime_reused": reused, "performance": metrics.summary(),
     })
     return result
 

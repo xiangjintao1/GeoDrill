@@ -86,6 +86,7 @@ def init_runtime(config):
     os.environ["KAG_PROJECT_HOST_ADDR"] = config["project"]["host_addr"]
     os.environ["KAG_PROJECT_NAMESPACE"] = config["project"]["namespace"]
     importlib.import_module("kag.examples.drilling.prompts")
+    importlib.import_module("kag.examples.drilling.query_pipeline")
     if config["openie_llm"].get("type") == "chatgpt_oauth":
         importlib.import_module("kag.examples.drilling.chatgpt_client")
 
@@ -126,12 +127,19 @@ async def build(config, files):
         CheckpointerManager.close()
 
 
-async def ask(config, question, output=None, emit=True):
+def create_pipeline(config):
     from kag.interface import SolverPipelineABC
+    from kag.examples.drilling.telemetry import stage
+
+    with stage("pipeline_init"):
+        return SolverPipelineABC.from_config(config["kag_solver_pipeline"])
+
+
+async def ask(config, question, output=None, emit=True, pipeline=None):
     from kag.solver.reporter.trace_log_reporter import TraceLogReporter
 
     reporter = TraceLogReporter()
-    pipeline = SolverPipelineABC.from_config(config["kag_solver_pipeline"])
+    pipeline = pipeline or create_pipeline(config)
     answer = await pipeline.ainvoke(question, reporter=reporter)
     trace, status = reporter.generate_report_data()
     result = {"question": question, "answer": answer, "status": status, "trace": trace.to_dict()}

@@ -13,6 +13,7 @@ import threading
 import time
 import uuid
 import webbrowser
+from contextlib import contextmanager
 from ctypes import wintypes
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
@@ -88,8 +89,36 @@ def validate_identity(token, client_id, nonce):
     return identity
 
 
-def access_token():
+@contextmanager
+def credential_lock():
+    """刷新令牌需要跨查询进程互斥，避免同时轮换同一个 refresh token。"""
+    import msvcrt
+
     with LOCK:
+        STORE.mkdir(parents=True, exist_ok=True)
+        with (STORE / "refresh.lock").open("a+b") as handle:
+            if handle.seek(0, 2) == 0:
+                handle.write(b"0")
+                handle.flush()
+            deadline = time.monotonic() + 45
+            while True:
+                handle.seek(0)
+                try:
+                    msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+                    break
+                except OSError:
+                    if time.monotonic() >= deadline:
+                        raise TimeoutError("模型授权刷新繁忙，请稍后重试") from None
+                    time.sleep(.05)
+            try:
+                yield
+            finally:
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+
+
+def access_token():
+    with credential_lock():
         record = read_record()
         if not record.get("access_token"):
             raise ValueError("请先运行 chatgpt_auth.py login 完成登录")

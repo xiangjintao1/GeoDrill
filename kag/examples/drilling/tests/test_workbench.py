@@ -50,14 +50,15 @@ class WorkbenchTests(unittest.TestCase):
 
     def test_answer_reports_unknown_ids_and_rejects_partial_results(self):
         result = {"answer": '<reference id="chunk:0_9"></reference>', "status": "FINISH", "trace": {}}
-        with patch.object(service.cli, "load_config", return_value={}), \
+        config = {"kag_solver_pipeline": {"executors": [{}]}}
+        with patch.object(service.cli, "load_config", return_value=config), \
              patch.object(service.cli, "validate_config"), patch.object(service.cli, "init_runtime"), \
              patch.object(service.cli, "ask", new=AsyncMock(return_value=result)):
-            actual = asyncio.run(service.answer("取心"))
+            actual = asyncio.run(service.answer("取心", strategy="baseline"))
             self.assertEqual(actual["invalid_citations"], ["chunk:0_9"])
             result["status"] = "RUNNING"
             with self.assertRaises(RuntimeError):
-                asyncio.run(service.answer("取心"))
+                asyncio.run(service.answer("取心", strategy="baseline"))
 
     def test_failed_requests_count_in_rates(self):
         summary = evaluate.summarize([
@@ -69,7 +70,10 @@ class WorkbenchTests(unittest.TestCase):
         self.assertEqual(summary["p95_seconds"], 3)
 
     def test_http_validation_busy_and_answer(self):
-        with patch.object(web.cli, "load_config", return_value={}), patch.object(web.cli, "validate_config"):
+        original = web.QueryWorker
+        with patch.object(web.cli, "load_config", return_value={}), patch.object(web.cli, "validate_config"), \
+             patch.object(web, "QUERY_CONCURRENCY", 1), \
+             patch.object(web, "QueryWorker", side_effect=lambda: original(isolated=False)):
             with TestClient(web.app) as client:
                 self.assertEqual(client.post("/api/ask", json={"question": " "}).status_code, 422)
                 self.assertEqual(client.post("/api/ask", json={"question": "问", "mode": "other"}).status_code, 422)

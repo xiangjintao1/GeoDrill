@@ -10,6 +10,7 @@ from kag.solver.prompt.reference_generator import ReferGeneratorPrompt
 from kag.solver.generator.llm_index_generator import LLMIndexGenerator
 from kag.solver.prompt.lf_static_planning_prompt import RetrieverLFStaticPlanningPrompt
 from kag.solver.prompt.without_reference_generator import WithOutReferGeneratorPrompt
+from kag.examples.drilling.telemetry import stage
 
 
 @PromptABC.register("drilling_ner")
@@ -69,6 +70,10 @@ class DrillingAnswer(ReferGeneratorPrompt):
 
 @GeneratorABC.register("drilling_generator")
 class DrillingGenerator(LLMIndexGenerator):
+    async def ainvoke(self, query, context, **kwargs):
+        with stage("generation"):
+            return await super().ainvoke(query, context, **kwargs)
+
     def generate_answer(self, query, content, refer_data, **kwargs):
         if not refer_data:
             answer = "当前知识库证据不足：未召回可引用的原文，无法回答该问题。"
@@ -103,4 +108,17 @@ usesCoringMethod（采用取心方法）、usesDrillingMethod（采用钻进方�
 applicableTo（适用地层）、affectsQuality（影响质量）、componentOf（组成部分）、encounters（遇到地层）。
 无法确定谓词时保留无类型 p=p1 进行检索，不创造谓词。不要提前填写未知答案。
 仅使用 Retrieval、Deduce 和 Output；参数和数值问题必须先检索原文，不调用 Math。
+"""
+
+
+@PromptABC.register("drilling_fast_planning")
+class DrillingFastPlanning(DrillingPlanning):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.template += """
+减少无必要的串行步骤：单个定义、原理、型号、尺寸、工况限制、证据不足判断，
+默认只生成一次 Retrieval 和一次 Output，直接检索原问题；最终生成器负责解释证据。
+不要仅因为问题包含“为什么”就增加 Deduce。
+仅当确实需要查询中间实体后再次检索、对比多个独立对象或独立计算时，才增加检索/推理步骤。
+这条规则不能省略检索，也不能用计划中的猜测代替证据。
 """

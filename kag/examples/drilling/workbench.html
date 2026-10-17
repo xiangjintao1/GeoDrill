@@ -44,6 +44,7 @@
     .answer { white-space:pre-wrap; overflow-wrap:anywhere; margin-top:20px; line-height:1.95; }
     .answer blockquote { color:var(--muted); }
     .meta { display:flex; gap:12px; color:var(--muted); font-size:12px; margin-top:12px; flex-wrap:wrap; }
+    .performance { color:var(--muted); font-size:12px; line-height:1.8; margin-top:10px; }
     .ref { border:0; background:#e5f0e7; color:var(--green); border-radius:4px; padding:0 5px; font-size:12px; margin:0 2px; }
     .warning { color:#a35222; background:#fff4e8; border-radius:7px; padding:9px 12px; font-size:13px; margin-top:12px; }
     .empty { color:var(--muted); font-size:14px; padding:22px 0; }
@@ -96,7 +97,7 @@
             <div class="toolbar"><select id="mode" aria-label="检索方式"><option value="hybrid">混合检索</option><option value="vector">仅向量检索</option></select><button class="primary" id="submit">检索并回答 ↗</button></div>
             <div class="chips"><button type="button" class="chip" data-question="绳索取心为什么不必每回次起出全部钻杆？">绳索取心原理</button><button type="button" class="chip" data-question="泥浆黏度越高，密度就一定越大吗？">黏度与密度</button><button type="button" class="chip" data-question="吉木萨尔案例的耐冲击复合片取心钻头是什么型号？">钻头型号</button></div>
           </form>
-          <div class="panel" id="result-panel" aria-live="polite"><h2 id="answer-heading">回答</h2><div class="empty" id="empty-answer">输入一个问题，开始查阅知识库。</div><div id="answer-meta" class="meta"></div><div id="answer" class="answer"></div><div id="answer-warning" class="warning" hidden></div></div>
+          <div class="panel" id="result-panel" aria-live="polite"><h2 id="answer-heading">回答</h2><div class="empty" id="empty-answer">输入一个问题，开始查阅知识库。</div><div id="answer-meta" class="meta"></div><div id="performance" class="performance"></div><div id="answer" class="answer"></div><div id="answer-warning" class="warning" hidden></div></div>
           <details class="panel" id="trace-panel" hidden><summary>查看检索过程</summary><div id="trace" class="steps"></div></details>
         </div>
         <div class="panel"><h2>证据原文</h2><p class="muted" style="font-size:12px">点击回答中的引用编号，定位对应片段。</p><div id="references" class="empty">检索完成后，这里会显示召回资料及来源链接。</div></div>
@@ -127,6 +128,44 @@
       const body = await response.json();
       if (!response.ok) throw new Error(typeof body.detail === 'string' ? body.detail : '请求未完成，请稍后重试');
       return body;
+    }
+    async function streamQuestion(question, mode) {
+      const response = await fetch('/api/ask/stream', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({question, mode})});
+      if (!response.ok) { const body = await response.json(); throw new Error(typeof body.detail === 'string' ? body.detail : '请求未完成'); }
+      const reader = response.body.getReader(), decoder = new TextDecoder();
+      let buffer = '', partial = '', result = null;
+      const stages = {initialization:'准备问答服务', planning:'分析问题与检索计划', retrieval:'检索知识库', generation:'生成有引用的回答', 'task.Deduce':'整合多步证据'};
+      function handle(line) {
+        if (!line.trim()) return;
+        const event = JSON.parse(line);
+        if (event.type === 'error') throw new Error(event.message);
+        if (event.type === 'result') { result = event.result; return; }
+        if (event.type === 'route' && event.route === 'direct') $('empty-answer').textContent = '单项问题：直接检索知识库…';
+        if (event.type === 'stage' && event.status === 'started' && stages[event.stage]) $('empty-answer').textContent = stages[event.stage] + '…';
+        if (event.type === 'retrieved') {
+          $('references').replaceChildren(node('p', `已召回 ${event.chunks} 个片段，正在核验和生成回答。`, 'muted'));
+          for (let title of event.titles) {
+            try { const decoded = JSON.parse(title); if (typeof decoded === 'string') title = decoded; } catch {}
+            $('references').append(node('p', title, 'source-text'));
+          }
+        }
+        if (event.type === 'delta') {
+          partial += event.text;
+          $('empty-answer').textContent = '回答生成中，引用将在完成后核验…';
+          $('answer').textContent = partial.replace(/<reference[\s\S]*?(?:<\/reference>|$)/g, '');
+        }
+      }
+      try {
+        while (true) {
+          const {value, done} = await reader.read();
+          buffer += decoder.decode(value, {stream:!done});
+          const lines = buffer.split('\n'); buffer = lines.pop();
+          for (const line of lines) handle(line);
+          if (done) { if (buffer.trim()) handle(buffer); break; }
+        }
+        if (!result) throw new Error('响应中断，未收到完整答案');
+        return result;
+      } finally { reader.releaseLock(); }
     }
     function sourceLink(url) {
       const anchor = node('a', '打开原始来源 ↗');
@@ -175,17 +214,21 @@
       $('submit').disabled = true; $('submit').textContent = '正在检索与生成…';
       $('empty-answer').hidden = false; $('empty-answer').textContent = '正在查找相关资料并组织回答，请稍候。';
       $('answer').replaceChildren(); $('answer-meta').replaceChildren(); $('answer-warning').hidden = true;
+      $('performance').textContent = '';
       $('trace-panel').hidden = true; $('references').replaceChildren(node('p', '正在检索证据原文…', 'empty'));
       try {
-        const result = await api('/api/ask', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({question, mode:$('mode').value})});
+        const result = await streamQuestion(question, $('mode').value);
         $('empty-answer').hidden = true;
         renderAnswer(result.answer, result.references);
         renderReferences(result.references, result.used_citations);
         $('answer-meta').textContent = `${modeName(result.mode)} · ${result.duration_seconds} 秒 · 召回 ${result.references.length} 个片段`;
+        const stages = result.performance?.stages_seconds || {};
+        const preparation = ((stages.initialization || 0) + (stages.pipeline_init || 0)).toFixed(3);
+        $('performance').textContent = `准备 ${preparation}s · 规划 ${stages.planning ?? '—'}s · 检索 ${stages.retrieval ?? '—'}s · 生成 ${stages.generation ?? '—'}s · 模型调用 ${result.performance?.model_calls ?? '—'} 次${result.runtime_reused ? ' · 已复用运行实例' : ''}`;
         if (result.invalid_citations.length) { $('answer-warning').hidden = false; $('answer-warning').textContent = '回答中存在无法对应原文的引用编号，请核查。'; }
         $('trace-panel').hidden = false;
         $('trace').textContent = (result.trace.decompose || []).map((step, i) => `${i+1}. ${step.retriever_method || step.retrieved_task || '检索'} · ${(step.chunks || step.chunk_datas || []).length} 个文本片段 · ${(step.graphs || step.graph_data || []).length} 项图谱结果`).join('\n') || '本次未记录检索步骤。';
-      } catch (error) { $('empty-answer').textContent = error.message; $('references').replaceChildren(node('p', '本次未返回证据。', 'empty')); }
+      } catch (error) { $('empty-answer').textContent = error.message; $('answer').replaceChildren(); $('references').replaceChildren(node('p', '本次未完成，未核验内容已清除。', 'empty')); }
       finally { $('submit').disabled = false; $('submit').textContent = '检索并回答 ↗'; }
     };
     document.querySelectorAll('[data-question]').forEach(button => button.onclick = () => { $('question').value = button.dataset.question; $('question').focus(); });
