@@ -13,11 +13,36 @@ from unittest.mock import AsyncMock, patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import service
 from benchmark_latency import summarize
-from kag.examples.drilling.query_pipeline import can_generate_directly
+from kag.examples.drilling.query_pipeline import can_generate_directly, is_simple_question, DrillingPipeline
 from kag.examples.drilling.telemetry import CURRENT, QueryMetrics, stage
 
 
 class PerformanceTests(unittest.TestCase):
+    def test_router_preserves_complex_and_unknown_questions(self):
+        for query in ["元深1井使用的NR826M钻头直径是多少毫米？", "绳索取心为什么不用起出全部钻杆？"]:
+            self.assertTrue(is_simple_question(query))
+        for query in ["比较两种取心工艺的成本", "根据地层选择钻头并计算钻压", "天气是什么",
+                      "钻头是什么？取心是什么？", "分别列出NQ与HQ的尺寸"]:
+            self.assertFalse(is_simple_question(query))
+
+    def test_direct_route_skips_planner_and_keeps_request_local_tasks(self):
+        planner = SimpleNamespace(ainvoke=AsyncMock(return_value=[]))
+        pipeline = DrillingPipeline(planner, [], None)
+        async def work():
+            token = CURRENT.set(QueryMetrics("optimized"))
+            try:
+                first = await pipeline.planning("钻头直径是多少？", None)
+                second = await pipeline.planning("取心原理是什么？", None)
+                planner.ainvoke.assert_not_awaited()
+                self.assertIsNot(first[0], second[0])
+                self.assertIs(first[0].children[0], first[1])
+                self.assertIs(first[1].parents[0], first[0])
+                await pipeline.planning("比较两种取心工艺", None)
+                planner.ainvoke.assert_awaited_once()
+            finally:
+                CURRENT.reset(token)
+        asyncio.run(work())
+
     def test_latency_report_does_not_exclude_errors_from_quality_rates(self):
         report = summarize([
             {"strategy": "baseline", "duration_seconds": 5, "performance": {"model_calls": 4}, "rule_pass": True},

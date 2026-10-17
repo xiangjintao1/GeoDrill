@@ -140,6 +140,7 @@
         const event = JSON.parse(line);
         if (event.type === 'error') throw new Error(event.message);
         if (event.type === 'result') { result = event.result; return; }
+        if (event.type === 'route' && event.route === 'direct') $('empty-answer').textContent = '单项问题：直接检索知识库…';
         if (event.type === 'stage' && event.status === 'started' && stages[event.stage]) $('empty-answer').textContent = stages[event.stage] + '…';
         if (event.type === 'retrieved') {
           $('references').replaceChildren(node('p', `已召回 ${event.chunks} 个片段，正在核验和生成回答。`, 'muted'));

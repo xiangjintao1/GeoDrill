@@ -18,9 +18,12 @@ class QueryMetrics:
         self.spans = []
         self.lock = Lock()
         self.first_answer_token_seconds = None
+        self.route = None
 
     def emit(self, event):
         elapsed = round(time.perf_counter() - self.started, 3)
+        if event.get("type") == "route":
+            self.route = event["route"]
         if event.get("type") == "delta":
             with self.lock:
                 if self.first_answer_token_seconds is None:
@@ -36,6 +39,7 @@ class QueryMetrics:
             stages[item["name"]] = round(stages.get(item["name"], 0) + item["seconds"], 3)
         calls = [x for x in spans if x["name"] == "model"]
         return {"stages_seconds": stages, "model_calls": len(calls), "calls": calls,
+                "route": self.route,
                 "first_answer_token_seconds": self.first_answer_token_seconds,
                 "note": "阶段存在嵌套或并行，耗时不可直接相加；未使用答案缓存。"}
 
