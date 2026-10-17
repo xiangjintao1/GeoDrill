@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "引用 GeoDrill 软件时，请使用以下项目信息。"
+title: "GeoDrill：钻探知识工作台"
+type: software
+authors:
+  - family-names: "向"
+    given-names: "金涛"
+    affiliation: "吉林大学"
+license: Apache-2.0
+abstract: "面向钻进工艺与取心、钻头与钻具的知识问答、证据溯源和检索评测工作台。"

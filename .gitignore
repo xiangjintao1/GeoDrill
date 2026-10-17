@@ -1,0 +1,56 @@
+/*.whl
+/*.egg-info/
+/build/
+# *.json
+*.jsonl
+# *.csv
+#*.txt
+*.log
+*.out
+*.key
+*.jc
+*.pyc
+/dist
+.vscode/
+.idea/
+.venv/
+__pycache__/
+.DS_Store
+*.bak
+*.backup
+*.orig
+*.rej
+
+# Drilling domain: local corpora, generated outputs and connection overrides.
+/kag/examples/drilling/data/
+/kag/examples/drilling/results/
+/kag/examples/drilling/ckpt/
+/kag/examples/drilling/kag_config.local.yaml
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# Local databases, checkpoints, and generated evaluation output
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+/kag/examples/**/ckpt/
+/kag/examples/**/*_ckpt/
+/kag/examples/**/hotpotqa_res_*.json
+/kag/examples/**/hotpotqa_metrics_*.json
+
+# Public benchmark datasets are not needed to run the drilling application.
+/kag/open_benchmark/**/data/
