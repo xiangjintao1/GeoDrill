@@ -133,7 +133,8 @@ async def diagnose(case, config_path=DEFAULT_CONFIG, on_event=None):
                 "type": "drilling_diagnosis_pipeline",
                 "graph": {"type": "drilling_diagnosis_graph", "host_addr": config["project"]["host_addr"],
                           "project_id": config["project"]["id"]},
-                "reasoning": {"type": "drilling_diagnosis_rules"}})
+                "reasoning": {"type": "drilling_diagnosis_rules"},
+                "case_comparison": {"type": "drilling_diagnosis_cases"}})
         result = await _pipelines["diagnosis"].ainvoke(case.model_dump())
     finally:
         CURRENT.reset(token)

@@ -1,5 +1,5 @@
 {
-  "version": "1",
+  "version": "2",
   "observations": {
     "stuck": "钻柱旋转或轴向运动受限",
     "overbalance": "已有压力资料表明井内压力高于地层孔隙压力",
@@ -23,7 +23,8 @@
     {"id":"mechanical", "name":"机械阻碍卡钻", "requires":["stuck","obstruction"], "source":"slb-mechanical"},
     {"id":"packoff", "name":"环空堵塞", "requires":["circulation_restricted","pump_pressure_rise"], "source":"slb-packoff"},
     {"id":"natural-loss", "name":"天然通道漏失", "requires":["lost_returns","natural_path"], "source":"slb-loss"},
-    {"id":"induced-loss", "name":"压力诱发裂缝漏失", "requires":["lost_returns","above_fracture_limit"], "source":"slb-loss"}
+    {"id":"induced-loss", "name":"压力诱发裂缝漏失", "requires":["lost_returns","above_fracture_limit"], "source":"slb-loss"},
+    {"id":"packoff-sticking", "name":"环空堵塞相关卡钻", "requires":["stuck"], "requires_rules":["packoff"], "source":"slb-packoff"}
   ],
   "scope":"作者据公开术语定义设计的机制相容性检查，非专家验证的故障诊断标准；条件列表不是必要充分条件，否定观测也不等于排除现场故障。摘要为自行整理，来源版权归原权利人。"
 }

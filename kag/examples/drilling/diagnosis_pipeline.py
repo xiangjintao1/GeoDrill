@@ -2,10 +2,12 @@
 # Affiliation: 吉林大学
 """在 KAG 扩展接口上组合图谱读取、条件推理和可追溯输出。"""
 
+import asyncio
+
 from kag.interface import Context, ExecutorABC, SolverPipelineABC, Task
 from kag.interface.solver.planner_abc import TaskStatus
 from kag.examples.drilling.telemetry import stage
-from diagnosis import DiagnosisCase, reason
+from diagnosis import DiagnosisCase, reason, related_cases
 from diagnosis_graph import load_graph
 
 
@@ -31,24 +33,41 @@ class DiagnosticRules(ExecutorABC):
         return result
 
 
+@ExecutorABC.register("drilling_diagnosis_cases")
+class DiagnosticCases(ExecutorABC):
+    def invoke(self, query, task, context, **kwargs):
+        with stage("diagnosis.cases"):
+            result = related_cases(DiagnosisCase.model_validate(query), task.parents[0].result)
+        task.update_result(result)
+        return result
+
+
 @SolverPipelineABC.register("drilling_diagnosis_pipeline")
 class DiagnosticPipeline(SolverPipelineABC):
-    def __init__(self, graph: ExecutorABC, reasoning: ExecutorABC):
+    def __init__(self, graph: ExecutorABC, reasoning: ExecutorABC, case_comparison: ExecutorABC = None):
         super().__init__()
         self.graph, self.reasoning = graph, reasoning
+        self.case_comparison = case_comparison or DiagnosticCases()
 
     async def ainvoke(self, query, **kwargs):
         context = Context()
         graph = Task("DiagnosticGraph", {}, id="graph")
         reasoning = Task("DiagnosticRules", {}, parents=[graph], id="reasoning")
+        cases = Task("DiagnosticCases", {}, parents=[graph], id="cases")
         graph.add_child(reasoning)
+        graph.add_child(cases)
         context.add_task(graph)
         context.add_task(reasoning)
+        context.add_task(cases)
         await self.graph.ainvoke(query, graph, context)
         graph.status = TaskStatus.SUCCESS
-        result = await self.reasoning.ainvoke(query, reasoning, context)
+        result, comparisons = await asyncio.gather(
+            self.reasoning.ainvoke(query, reasoning, context), self.case_comparison.ainvoke(query, cases, context))
         reasoning.status = TaskStatus.SUCCESS
+        cases.status = TaskStatus.SUCCESS
+        result["related_cases"] = comparisons
         result["trace"] = [
             {"task": graph.id, "executor": graph.executor, "depends_on": [], "status": graph.status.value},
-            {"task": reasoning.id, "executor": reasoning.executor, "depends_on": [graph.id], "status": reasoning.status.value}]
+            {"task": reasoning.id, "executor": reasoning.executor, "depends_on": [graph.id], "status": reasoning.status.value},
+            {"task": cases.id, "executor": cases.executor, "depends_on": [graph.id], "status": cases.status.value}]
         return result
