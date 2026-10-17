@@ -3,13 +3,23 @@
 """把 KAG 的文本提示词交给官方 ChatGPT 套餐 Responses 接口。"""
 
 import asyncio
+import atexit
 import time
+from functools import lru_cache
 
 from openai import OpenAI
 from kag.interface.common.llm_client import LLMClient
 from kag.interface.solver.reporter_abc import do_report
 from kag.examples.drilling.chatgpt_auth import RESOURCE, access_token
 from kag.examples.drilling.telemetry import CURRENT, stage
+
+
+@lru_cache(maxsize=1)
+def shared_client():
+    # SDK 在发出请求时调用凭据提供函数，连接池可复用，刷新后的凭据也能立即生效。
+    client = OpenAI(api_key=access_token, base_url=RESOURCE, max_retries=0, timeout=120)
+    atexit.register(client.close)
+    return client
 
 
 def response_input(prompt, messages=None):
@@ -63,10 +73,15 @@ class ChatGPTClient(LLMClient):
                 record.setdefault("first_token_seconds", round(time.perf_counter() - started, 3))
                 if metrics and role == "generation":
                     metrics.emit({"type": "delta", "text": delta})
-            with OpenAI(api_key=access_token(), base_url=RESOURCE, max_retries=0, timeout=120) as client:
+            baseline = metrics and metrics.strategy == "baseline"
+            client = OpenAI(api_key=access_token(), base_url=RESOURCE, max_retries=0, timeout=120) if baseline else shared_client()
+            try:
                 with client.responses.create(model=self.model, input=response_input(prompt, kwargs.get("messages")),
                                              store=False, stream=True) as events:
                     answer, usage = collect_response(events, on_delta)
+            finally:
+                if baseline:
+                    client.close()
             if usage:
                 record.update(input_tokens=usage.input_tokens, output_tokens=usage.output_tokens)
         if usage:

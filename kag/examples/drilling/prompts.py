@@ -109,3 +109,16 @@ applicableTo（适用地层）、affectsQuality（影响质量）、componentOf�
 无法确定谓词时保留无类型 p=p1 进行检索，不创造谓词。不要提前填写未知答案。
 仅使用 Retrieval、Deduce 和 Output；参数和数值问题必须先检索原文，不调用 Math。
 """
+
+
+@PromptABC.register("drilling_fast_planning")
+class DrillingFastPlanning(DrillingPlanning):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.template += """
+减少无必要的串行步骤：单个定义、原理、型号、尺寸、工况限制、证据不足判断，
+默认只生成一次 Retrieval 和一次 Output，直接检索原问题；最终生成器负责解释证据。
+不要仅因为问题包含“为什么”就增加 Deduce。
+仅当确实需要查询中间实体后再次检索、对比多个独立对象或独立计算时，才增加检索/推理步骤。
+这条规则不能省略检索，也不能用计划中的猜测代替证据。
+"""

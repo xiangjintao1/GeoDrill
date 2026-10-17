@@ -54,11 +54,11 @@ class WorkbenchTests(unittest.TestCase):
         with patch.object(service.cli, "load_config", return_value=config), \
              patch.object(service.cli, "validate_config"), patch.object(service.cli, "init_runtime"), \
              patch.object(service.cli, "ask", new=AsyncMock(return_value=result)):
-            actual = asyncio.run(service.answer("取心"))
+            actual = asyncio.run(service.answer("取心", strategy="baseline"))
             self.assertEqual(actual["invalid_citations"], ["chunk:0_9"])
             result["status"] = "RUNNING"
             with self.assertRaises(RuntimeError):
-                asyncio.run(service.answer("取心"))
+                asyncio.run(service.answer("取心", strategy="baseline"))
 
     def test_failed_requests_count_in_rates(self):
         summary = evaluate.summarize([
