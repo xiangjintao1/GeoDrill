@@ -329,9 +329,10 @@ class RateLimiterManger:
 
 
 def get_now(language="zh"):
+    today = datetime.datetime.now()
     if language == "zh":
         days_of_week = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
-        date_format = "%Y年%m月%d日"
+        date_text = f"{today.year:04d}年{today.month:02d}月{today.day:02d}日"
     elif language == "en":
         days_of_week = [
             "Monday",
@@ -342,14 +343,13 @@ def get_now(language="zh"):
             "Saturday",
             "Sunday",
         ]
-        date_format = "%Y-%m-%d"
+        date_text = f"{today.year:04d}-{today.month:02d}-{today.day:02d}"
     else:
         raise ValueError(
             "Unsupported language. Please use 'zh' for Chinese or 'en' for English."
         )
 
-    today = datetime.datetime.now()
-    return today.strftime(date_format) + " (" + days_of_week[today.weekday()] + ")"
+    return date_text + " (" + days_of_week[today.weekday()] + ")"
 
 
 def generate_random_string(bit=8):
