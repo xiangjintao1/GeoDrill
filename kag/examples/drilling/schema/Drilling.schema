@@ -82,6 +82,31 @@ EngineeringCase(工程案例): EntityType
             constraint: MultiValue
         sourceUrl(来源地址): Text
 
+DiagnosticKnowledge(诊断知识版本): EntityType
+    properties:
+        version(内容指纹): Text
+        desc(适用范围): Text
+        hasRule(包含规则): DiagnosticRule
+            constraint: MultiValue
+
+DiagnosticRule(机制检查规则): EntityType
+    properties:
+        logic(条件组合方式): Text
+        requiresCondition(需要观测): DiagnosticCondition
+            constraint: MultiValue
+        supportedBy(来源依据): DiagnosticSource
+            constraint: MultiValue
+
+DiagnosticCondition(观测条件): EntityType
+    properties:
+        fieldName(字段标识): Text
+
+DiagnosticSource(诊断来源): EntityType
+    properties:
+        sourceUrl(来源地址): Text
+        desc(内容摘要): Text
+        verified(核验日期): Text
+
 Others(其他): EntityType
     properties:
         desc(描述): Text

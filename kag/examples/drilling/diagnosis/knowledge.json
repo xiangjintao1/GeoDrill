@@ -1,0 +1,29 @@
+{
+  "version": "1",
+  "observations": {
+    "stuck": "钻柱旋转或轴向运动受限",
+    "overbalance": "已有压力资料表明井内压力高于地层孔隙压力",
+    "permeable": "已有资料证实相关层段具有渗透性",
+    "filter_cake": "已有记录支持钻柱接触滤饼",
+    "obstruction": "已识别井眼障碍、键槽或岩屑堆积等机械阻碍",
+    "circulation_restricted": "循环能力突然降低或丧失",
+    "pump_pressure_rise": "泵压随循环受阻而升高",
+    "lost_returns": "持续泵入时返出减少或消失，已核对泵入和地面损耗",
+    "natural_path": "已有资料证实天然裂隙或溶洞等漏失通道",
+    "above_fracture_limit": "已有依据表明井内压力超过地层承受能力"
+  },
+  "sources": [
+    {"id":"slb-differential", "title":"SLB Energy Glossary: differential sticking", "url":"https://glossary.slb.com/en/terms/d/differential_sticking", "summary":"压差吸附涉及井内与地层间压差，以及钻柱和滤饼的接触；相关描述包含渗透层段。单个条件不能确认原因。", "verified":"2026-10-17"},
+    {"id":"slb-mechanical", "title":"SLB Energy Glossary: mechanical sticking", "url":"https://glossary.slb.com/en/terms/m/mechanical_sticking", "summary":"机械卡钻指压差吸附之外的运动阻碍，可能涉及落物、井眼几何异常、水泥、键槽或环空岩屑堆积。", "verified":"2026-10-17"},
+    {"id":"slb-packoff", "title":"SLB Energy Glossary: pack off", "url":"https://glossary.slb.com/en/terms/p/pack_off", "summary":"环空堵塞可能涉及岩屑携带不良或井壁坍塌，表现可包括循环能力骤降及随后泵压升高，并可能发展成卡钻。", "verified":"2026-10-17"},
+    {"id":"slb-loss", "title":"SLB Energy Glossary: lost circulation", "url":"https://glossary.slb.com/en/terms/l/lost_circulation", "summary":"泵入时返出减少或消失是井漏线索；可能涉及天然通道，或压力超过地层承受能力而形成裂缝。返出异常本身不足以确定机制。", "verified":"2026-10-17"}
+  ],
+  "rules": [
+    {"id":"differential", "name":"压差吸附卡钻", "requires":["stuck","overbalance","permeable","filter_cake"], "source":"slb-differential"},
+    {"id":"mechanical", "name":"机械阻碍卡钻", "requires":["stuck","obstruction"], "source":"slb-mechanical"},
+    {"id":"packoff", "name":"环空堵塞", "requires":["circulation_restricted","pump_pressure_rise"], "source":"slb-packoff"},
+    {"id":"natural-loss", "name":"天然通道漏失", "requires":["lost_returns","natural_path"], "source":"slb-loss"},
+    {"id":"induced-loss", "name":"压力诱发裂缝漏失", "requires":["lost_returns","above_fracture_limit"], "source":"slb-loss"}
+  ],
+  "scope":"作者据公开术语定义设计的机制相容性检查，非专家验证的故障诊断标准；条件列表不是必要充分条件，否定观测也不等于排除现场故障。摘要为自行整理，来源版权归原权利人。"
+}

@@ -107,6 +107,40 @@ async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG, strategy="
     return result
 
 
+async def diagnose(case, config_path=DEFAULT_CONFIG, on_event=None):
+    """独立的 KAG 诊断扩展，不走简单问答快捷路径，也不让模型补齐未知观测。"""
+    global _configuration
+    from diagnosis import DiagnosisCase, KNOWLEDGE_HASH
+    from kag.examples.drilling.telemetry import CURRENT, QueryMetrics
+
+    case = DiagnosisCase.model_validate(case)
+    config = cli.load_config(Path(config_path))
+    cli.validate_config(config)
+    signature = hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()
+    reused = _configuration == signature
+    metrics = QueryMetrics("diagnosis", on_event)
+    metrics.route = "diagnosis"
+    token = CURRENT.set(metrics)
+    try:
+        if not reused:
+            _pipelines.clear()
+            _configuration = None
+            cli.init_runtime(config)
+            _configuration = signature
+        if "diagnosis" not in _pipelines:
+            from kag.interface import SolverPipelineABC
+            _pipelines["diagnosis"] = SolverPipelineABC.from_config({
+                "type": "drilling_diagnosis_pipeline",
+                "graph": {"type": "drilling_diagnosis_graph", "host_addr": config["project"]["host_addr"],
+                          "project_id": config["project"]["id"]},
+                "reasoning": {"type": "drilling_diagnosis_rules"}})
+        result = await _pipelines["diagnosis"].ainvoke(case.model_dump())
+    finally:
+        CURRENT.reset(token)
+    return {**result, "knowledge_hash": KNOWLEDGE_HASH, "status": "FINISH", "runtime_reused": reused,
+            "performance": metrics.summary(), "duration_seconds": round(time.perf_counter() - metrics.started, 3)}
+
+
 def catalog():
     """只暴露清单中的语料，不接受任意文件路径。"""
     records = []
