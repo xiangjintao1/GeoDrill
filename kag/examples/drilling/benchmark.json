@@ -1,0 +1,10 @@
+[
+  {"id":"coring-principle","question":"绳索取心回收岩心时，为什么不用每次都起出全部钻杆？","facts":[["内管"],["打捞"]],"source_any":["绳索取心的工作原理","印刷页43"],"kind":"原理"},
+  {"id":"mud-properties","question":"泥浆看起来很黏，就能说明它密度一定很大吗？","facts":[["不一定","不能"],["黏度"],["密度"]],"source_any":["泥浆黏度与密度不是一回事","印刷页19"],"kind":"概念辨析"},
+  {"id":"bit-model","question":"吉木萨尔页岩油勘探采用的耐冲击复合片取心钻头是什么型号？","facts":[["PC1336M-BJ"]],"source_any":["20191114_831450"],"kind":"型号"},
+  {"id":"bit-diameter","question":"元深1井使用的NR826M钻头直径是多少毫米？","facts":[["406.4"]],"source_any":["20210728_833963"],"kind":"单位数值"},
+  {"id":"core-disturbance","question":"取心获得的岩心很完整，就能确定含水率和结构都没有改变吗？","facts":[["不能","不一定"],["失水","含水"],["扰动","振动","挤压"]],"source_any":["采取率高不等于样品没有扰动","印刷页81","印刷页83"],"kind":"质量"},
+  {"id":"air-coring","question":"空气取心能否保证岩心含水率完全不变？","facts":[["不能","不一定","无法保证"],["失水","水分","含水率"]],"source_any":["空气取心也可能改变含水率","印刷页49"],"kind":"工况限制"},
+  {"id":"missing-pressure","question":"PC1336M-BJ取心钻头推荐钻压、转速具体是多少？","facts":[["未提供","未给出","没有给出","证据不足"]],"forbidden":["推荐钻压为","推荐转速为"],"source_any":["20191114_831450"],"kind":"缺失参数","unanswerable":true},
+  {"id":"missing-standard","question":"请列出GB/T 16950-2014中NQ钻具的尺寸公差。","facts":[["标准全文"],["无法","不能","不足"]],"forbidden":["公差为±","公差为 ±"],"source_any":["71F772D7F337D3A7E05397BE0A0AB82A"],"kind":"缺失标准全文","unanswerable":true}
+]
