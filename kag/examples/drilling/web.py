@@ -15,12 +15,19 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
-from service import DEFAULT_CONFIG, ROOT, answer, catalog
+from service import DEFAULT_CONFIG, ROOT, answer, catalog, diagnose
+from diagnosis import DiagnosisCase, KNOWLEDGE
 import run as cli
 
 logger = logging.getLogger(__name__)
 QUERY_CONCURRENCY = 2
 _query_loop = None
+
+
+async def dispatch(question, mode, strategy, on_event):
+    if mode == "diagnosis":
+        return await diagnose(json.loads(question), on_event=on_event)
+    return await answer(question, mode, strategy=strategy, on_event=on_event)
 
 
 def run_isolated(question, mode, strategy, sender):
@@ -35,7 +42,7 @@ def run_isolated(question, mode, strategy, sender):
         with send_lock:
             sender.send(event)
     try:
-        return _query_loop.run_until_complete(answer(question, mode, strategy=strategy, on_event=emit))
+        return _query_loop.run_until_complete(dispatch(question, mode, strategy, emit))
     finally:
         sender.close()
 
@@ -70,7 +77,7 @@ class QueryWorker:
         if self.loop is None:
             self.loop = asyncio.new_event_loop()
             asyncio.set_event_loop(self.loop)
-        return self.loop.run_until_complete(answer(question, mode, strategy=strategy, on_event=on_event))
+        return self.loop.run_until_complete(dispatch(question, mode, strategy, on_event))
 
     def close(self):
         def close_loop():
@@ -121,7 +128,11 @@ def materials():
 
 
 async def submit(body, on_event=None):
-    if not body.question.strip():
+    if isinstance(body, DiagnosisCase):
+        question, mode, strategy = body.model_dump_json(), "diagnosis", "optimized"
+    else:
+        question, mode, strategy = body.question.strip(), body.mode, body.strategy
+    if not question:
         raise HTTPException(422, "问题不能为空")
     if app.state.lock.locked():
         raise HTTPException(409, "问答并发已满，请稍后再试")
@@ -129,7 +140,7 @@ async def submit(body, on_event=None):
     try:
         loop = asyncio.get_running_loop()
         future = loop.run_in_executor(app.state.worker.executor, app.state.worker.run,
-                                      body.question, body.mode, body.strategy, on_event)
+                                      question, mode, strategy, on_event)
     except BaseException:
         app.state.lock.release()
         raise
@@ -190,6 +201,22 @@ def report():
     if not path.exists():
         raise HTTPException(404, "暂无评测结果")
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+@app.get("/api/diagnosis/schema")
+def diagnosis_schema():
+    cases = json.loads((ROOT / "diagnosis/cases.json").read_text(encoding="utf-8"))
+    return {"observations": KNOWLEDGE["observations"], "scope": KNOWLEDGE["scope"], "cases": cases["cases"]}
+
+
+@app.post("/api/diagnose")
+async def diagnostic_analysis(body: DiagnosisCase):
+    future = await submit(body)
+    try:
+        return await asyncio.shield(future)
+    except Exception:
+        logger.exception("Diagnosis failed")
+        raise HTTPException(503, "诊断图谱未就绪或分析失败，请检查 OpenSPG 并核对诊断知识版本") from None
 
 
 if __name__ == "__main__":

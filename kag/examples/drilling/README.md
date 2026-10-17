@@ -1,8 +1,10 @@
-# GeoDrill · 钻探知识工作台
+# GeoDrill · 钻井异常辅助诊断与知识工作台
 
 范围：**钻进工艺与取心、钻头与钻具**。已连接本地 OpenSPG、BGE 中文向量模型和对话模型，建有 248 个知识片段；其中 244 条公开资料可在目录浏览，其余为最初的示例片段。
 
 ## 工作台与评测
+
+新增[钻井异常分析原型](diagnosis/README.md)：8个已发表案例摘要、5条机制检查规则，支持未知观测、不符线索和追问；通过KAG业务执行器读取OpenSPG诊断图谱，不修改框架源码。现有资料问答保留。案例不是独立核验的根因金标准。
 
 已有本地环境可直接启动，访问 **http://127.0.0.1:8090**：
 
@@ -28,7 +30,7 @@ powershell -ExecutionPolicy Bypass -File deploy/local/start.ps1
 
 ## 文件
 
-- `schema/Drilling.schema`：8 类领域实体及关系草案。
+- `schema/Drilling.schema`：8类原领域实体及4类诊断知识实体。
 - `prompts.py`：仅从原文抽取、实体别名统一、引用回答。
 - `kag_config.yaml`：构建与问答流水线；默认最多并行处理 2 个构建任务。
 - `run.py`：检查语料、检查配置、同步 Schema、建库、问答。

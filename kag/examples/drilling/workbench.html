@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>GeoDrill · 钻探知识工作台</title>
+  <title>GeoDrill · 钻井异常辅助诊断</title>
   <style>
     :root { color-scheme:light; --ink:#19332e; --muted:#677c73; --green:#19745c; --line:#dce5df; --paper:#f4f7f2; }
     * { box-sizing:border-box; }
@@ -69,6 +69,10 @@
     th,td { text-align:left; border-bottom:1px solid var(--line); padding:13px 10px; }
     th { color:var(--muted); font-weight:500; }
     .table-wrap { overflow:auto; }
+    .observation-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+    .observation-grid label { font-size:13px; margin-bottom:5px; }
+    .observation-grid select { width:100%; }
+    @media(max-width:700px) { .observation-grid { grid-template-columns:1fr; } nav { flex-wrap:wrap; } }
     .hidden,[hidden] { display:none !important; }
     @media(max-width:1050px) { main { padding:25px; } .grid { grid-template-columns:1fr; } }
     @media(max-width:700px) { aside { position:static; width:100%; padding:20px; } .tagline,.side-note { display:none; } nav { display:flex; margin-top:14px; } nav button { padding:8px 12px; } main { margin:0; padding:20px; } h1 { font-size:26px; } .stats { grid-template-columns:repeat(2,1fr); } .toolbar { flex-wrap:wrap; } }
@@ -77,17 +81,30 @@
 <body>
   <aside>
     <div class="brand">Geo<span>Drill</span></div>
-    <div class="tagline">钻探知识工作台</div>
+    <div class="tagline">钻井异常辅助诊断</div>
     <nav aria-label="主导航">
-      <button class="active" data-tab="qa">01　知识问答</button>
-      <button data-tab="sources">02　资料目录</button>
-      <button data-tab="evaluation">03　质量评测</button>
+      <button class="active" data-tab="diagnosis">01　异常分析</button>
+      <button data-tab="qa">02　知识问答</button>
+      <button data-tab="sources">03　资料目录</button>
+      <button data-tab="evaluation">04　质量评测</button>
     </nav>
     <div class="side-note">钻进工艺与取心<br>钻头与钻具<br><br>本地知识 · 有据可查</div>
   </aside>
   <main>
     <header><div class="eyebrow">GEOSCIENCE / DRILLING KNOWLEDGE</div><span class="status" id="status">正在连接工作台</span></header>
-    <section id="qa" class="tab">
+    <section id="diagnosis" class="tab">
+      <div class="hero"><div class="eyebrow">DRILLING / EVIDENCE & REASONING</div><h1>从异常现象，追溯候选原因。</h1><p class="muted">卡钻、环空堵塞与井漏机制分析。选择已核实的观测，查看支持线索、不符条件和待补证据。</p></div>
+      <div class="grid"><div>
+        <form class="panel" id="diagnosis-form">
+          <h2>工况与观测</h2><p class="muted">没有记录的条件保留“未知”；“否”表示已有相反证据。</p>
+          <div class="toolbar"><select id="diagnosis-case" aria-label="选择已发表案例"><option value="">自定义观测</option></select><button type="button" class="chip" id="reset-observations">重置为未知</button></div>
+          <div class="observation-grid" id="observations"></div>
+          <button class="primary" id="diagnose-submit">分析证据链 ↗</button>
+        </form>
+        <div class="panel" id="diagnosis-result" aria-live="polite"><p class="empty">选择观测后开始分析。当前为机制检查原型，结论需人工核查。</p></div>
+      </div><div class="panel"><h2>已发表案例</h2><div id="diagnosis-case-detail" class="source-text">选择案例查看经过、出处和作者分析；只把事发观测填入诊断输入。</div></div></div>
+    </section>
+    <section id="qa" class="tab" hidden>
       <div class="hero"><div class="eyebrow">KNOWLEDGE WORKSPACE</div><h1>让钻探知识，有据可查。</h1><p class="muted">围绕钻进工艺、岩心与钻具提问，查看回答所依据的资料与适用条件。</p></div>
       <div class="grid">
         <div>
@@ -129,6 +146,63 @@
       if (!response.ok) throw new Error(typeof body.detail === 'string' ? body.detail : '请求未完成，请稍后重试');
       return body;
     }
+    let diagnosticSchema;
+    function fillObservations(values = {}) {
+      for (const field of Object.keys(diagnosticSchema.observations)) $('observation-' + field).value = values[field] || 'unknown';
+    }
+    async function loadDiagnosis() {
+      diagnosticSchema = await api('/api/diagnosis/schema');
+      for (const [field, label] of Object.entries(diagnosticSchema.observations)) {
+        const item = node('div'), caption = node('label', label), select = node('select');
+        select.id = 'observation-' + field; caption.htmlFor = select.id;
+        for (const [value, text] of [['unknown','未知 / 未核实'],['yes','是 / 有记录支持'],['no','否 / 有相反证据']]) {
+          const option = node('option', text); option.value = value; select.append(option);
+        }
+        item.append(caption, select); $('observations').append(item);
+      }
+      for (const item of diagnosticSchema.cases) {
+        const option = node('option', item.name); option.value = item.id; $('diagnosis-case').append(option);
+      }
+    }
+    $('diagnosis-case').onchange = () => {
+      const item = diagnosticSchema.cases.find(item => item.id === $('diagnosis-case').value);
+      fillObservations(item?.observations); $('diagnosis-case-detail').replaceChildren();
+      if (!item) return;
+      const analysis = node('details'); analysis.append(node('summary', '查看原作者分析（不传入诊断输入）'), node('p', item.author_analysis));
+      $('diagnosis-case-detail').append(node('p', item.facts.join('；')), node('p', item.anchor), sourceLink(item.source_url), analysis,
+        node('p', item.label_strength + '；' + item.limitations.join('；')));
+    };
+    $('reset-observations').onclick = () => { if (diagnosticSchema) { $('diagnosis-case').value = ''; fillObservations(); $('diagnosis-case-detail').replaceChildren(); } };
+    $('diagnosis-form').onsubmit = async event => {
+      event.preventDefault(); if (!diagnosticSchema) return;
+      const observations = Object.fromEntries(Object.keys(diagnosticSchema.observations).map(field => [field, $('observation-' + field).value]));
+      $('diagnose-submit').disabled = true; $('diagnosis-result').replaceChildren(node('p', '正在读取诊断图谱并核对条件…', 'muted'));
+      try {
+        const result = await api('/api/diagnose', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({observations})});
+        const target = $('diagnosis-result'); target.replaceChildren(node('h2', '机制线索分析'), node('p', result.conclusion, 'muted'));
+        target.append(node('p', `${result.duration_seconds} 秒 · ${result.candidates.length} 条机制规则 · 来源于 OpenSPG 诊断图谱`, 'meta'));
+        const statuses = {compatible:'条件相容，仍待核查', incomplete:'条件不完整', conflicting:'存在不符线索'};
+        for (const candidate of result.candidates) {
+          const detail = node('details'); detail.open = candidate.status === 'compatible';
+          detail.append(node('summary', candidate.name + ' · ' + statuses[candidate.status]));
+          for (const [key, label] of [['support','支持'],['counterevidence','不符'],['missing','未知']])
+            detail.append(node('p', label + '：' + (candidate[key].map(item => item.label).join('；') || '无'), 'source-text'));
+          const source = result.sources.find(item => item.id === candidate.source_id);
+          detail.append(node('p', '证据路径：观测条件 → ' + candidate.id + ' 规则 → ' + candidate.name + ' → ' + source.title, 'source-text'), sourceLink(source.url));
+          target.append(detail);
+        }
+        if (result.follow_up.length) {
+          target.append(node('h3', '建议补充的观测'));
+          for (const item of result.follow_up) {
+            const button = node('button', item.question, 'chip'); button.type = 'button';
+            button.onclick = () => $('observation-' + item.field).focus(); target.append(button);
+          }
+        }
+        target.append(node('p', result.scope, 'source-text'));
+      } catch (error) { $('diagnosis-result').replaceChildren(node('p', error.message, 'warning')); }
+      finally { $('diagnose-submit').disabled = false; }
+    };
+    loadDiagnosis().catch(error => { $('diagnosis-result').replaceChildren(node('p', error.message, 'warning')); });
     async function streamQuestion(question, mode) {
       const response = await fetch('/api/ask/stream', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({question, mode})});
       if (!response.ok) { const body = await response.json(); throw new Error(typeof body.detail === 'string' ? body.detail : '请求未完成'); }
