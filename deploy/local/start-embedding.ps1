@@ -1,4 +1,5 @@
 $ErrorActionPreference = 'Stop'
+$env:PYTHONUTF8 = '1'
 $workspace = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 $python = Join-Path $workspace '.venv/Scripts/python.exe'
 $script = Join-Path $PSScriptRoot 'embedding_server.py'
