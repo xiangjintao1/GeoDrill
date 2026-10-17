@@ -10,6 +10,7 @@ from kag.solver.prompt.reference_generator import ReferGeneratorPrompt
 from kag.solver.generator.llm_index_generator import LLMIndexGenerator
 from kag.solver.prompt.lf_static_planning_prompt import RetrieverLFStaticPlanningPrompt
 from kag.solver.prompt.without_reference_generator import WithOutReferGeneratorPrompt
+from kag.examples.drilling.telemetry import stage
 
 
 @PromptABC.register("drilling_ner")
@@ -69,6 +70,10 @@ class DrillingAnswer(ReferGeneratorPrompt):
 
 @GeneratorABC.register("drilling_generator")
 class DrillingGenerator(LLMIndexGenerator):
+    async def ainvoke(self, query, context, **kwargs):
+        with stage("generation"):
+            return await super().ainvoke(query, context, **kwargs)
+
     def generate_answer(self, query, content, refer_data, **kwargs):
         if not refer_data:
             answer = "当前知识库证据不足：未召回可引用的原文，无法回答该问题。"

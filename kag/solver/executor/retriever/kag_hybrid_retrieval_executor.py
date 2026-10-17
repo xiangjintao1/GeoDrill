@@ -15,6 +15,7 @@ import logging
 from collections import defaultdict
 from typing import List, Optional
 from concurrent.futures import ThreadPoolExecutor
+from contextvars import copy_context
 from functools import partial
 
 from tenacity import stop_after_attempt, retry, wait_exponential
@@ -174,7 +175,7 @@ class KAGHybridRetrievalExecutor(ExecutorABC):
                         tag_id,
                         kwargs.copy(),
                     )
-                    future = executor.submit(func)
+                    future = executor.submit(copy_context().run, func)
                     # Save future, retriever, and start_time together
                     futures.append((future, retriever))
 

@@ -86,6 +86,7 @@ def init_runtime(config):
     os.environ["KAG_PROJECT_HOST_ADDR"] = config["project"]["host_addr"]
     os.environ["KAG_PROJECT_NAMESPACE"] = config["project"]["namespace"]
     importlib.import_module("kag.examples.drilling.prompts")
+    importlib.import_module("kag.examples.drilling.query_pipeline")
     if config["openie_llm"].get("type") == "chatgpt_oauth":
         importlib.import_module("kag.examples.drilling.chatgpt_client")
 

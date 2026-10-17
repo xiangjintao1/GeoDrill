@@ -50,7 +50,8 @@ class WorkbenchTests(unittest.TestCase):
 
     def test_answer_reports_unknown_ids_and_rejects_partial_results(self):
         result = {"answer": '<reference id="chunk:0_9"></reference>', "status": "FINISH", "trace": {}}
-        with patch.object(service.cli, "load_config", return_value={}), \
+        config = {"kag_solver_pipeline": {"executors": [{}]}}
+        with patch.object(service.cli, "load_config", return_value=config), \
              patch.object(service.cli, "validate_config"), patch.object(service.cli, "init_runtime"), \
              patch.object(service.cli, "ask", new=AsyncMock(return_value=result)):
             actual = asyncio.run(service.answer("取心"))

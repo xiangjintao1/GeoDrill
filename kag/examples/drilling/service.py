@@ -52,15 +52,28 @@ def retrieval_config(config, mode):
     return config
 
 
-async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG):
+async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG, strategy="baseline", on_event=None):
     question = question.strip()
     if not 1 <= len(question) <= 800:
         raise ValueError("请输入1—800字的问题")
+    started = time.perf_counter()
+    if strategy not in {"baseline", "optimized"}:
+        raise ValueError("不支持的问答策略")
     config = retrieval_config(cli.load_config(Path(config_path)), mode)
     cli.validate_config(config)
     cli.init_runtime(config)
-    started = time.perf_counter()
-    result = await cli.ask(config, question, emit=False)
+    from kag.examples.drilling.telemetry import CURRENT, QueryMetrics
+
+    metrics = QueryMetrics(strategy, on_event)
+    metrics.started = started
+    metrics.spans.append({"name": "initialization", "seconds": round(time.perf_counter() - started, 3)})
+    config["kag_solver_pipeline"]["type"] = "drilling_profiled_pipeline"
+    config["kag_solver_pipeline"]["executors"][0]["type"] = "drilling_profiled_retriever"
+    token = CURRENT.set(metrics)
+    try:
+        result = await cli.ask(config, question, emit=False)
+    finally:
+        CURRENT.reset(token)
     if result["status"] != "FINISH":
         raise RuntimeError("问答流水线未正常完成")
     refs = references(result)
@@ -70,6 +83,7 @@ async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG):
         "mode": mode, "duration_seconds": round(time.perf_counter() - started, 2),
         "references": refs, "used_citations": used,
         "invalid_citations": [key for key in used if key not in known],
+        "strategy": strategy, "performance": metrics.summary(),
     })
     return result
 
