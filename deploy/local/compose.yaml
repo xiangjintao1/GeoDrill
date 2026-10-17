@@ -1,0 +1,81 @@
+# Based on OpenSPG v0.8's release compose. Local ports and persistent volumes added.
+name: geodrill-local
+services:
+  server:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-server@sha256:fe6708deef9ebb8da8da7b1cb643e83b827769a5be8811961311639aa1f2cb88
+    # The image already defines java -jar; reset it so JVM flags precede -jar.
+    entrypoint: []
+    restart: unless-stopped
+    ports: ["127.0.0.1:8887:8887"]
+    mem_limit: 4g
+    depends_on:
+      mysql:
+        condition: service_healthy
+      neo4j:
+        condition: service_started
+      minio:
+        condition: service_started
+    environment:
+      TZ: Asia/Shanghai
+      LANG: C.UTF-8
+    command:
+      - java
+      - -Dfile.encoding=UTF-8
+      - -Xms512m
+      - -Xmx3072m
+      - -jar
+      - arks-sofaboot-0.0.1-SNAPSHOT-executable.jar
+      - --server.repository.impl.jdbc.host=mysql
+      - --server.repository.impl.jdbc.password=openspg
+      - --builder.model.execute.num=2
+      - --cloudext.graphstore.url=neo4j://neo4j:7687?user=neo4j&password=neo4j@openspg&database=neo4j
+      - --cloudext.searchengine.url=neo4j://neo4j:7687?user=neo4j&password=neo4j@openspg&database=neo4j
+  mysql:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-mysql@sha256:71eb546d5fc5faf70b3d8a358c022f601591b54a029b79298f2fa0302e46de9a
+    restart: unless-stopped
+    mem_limit: 1g
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: openspg
+      MYSQL_DATABASE: openspg
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_general_ci"]
+    volumes: ["mysql-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+  neo4j:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-neo4j@sha256:4bc5b7f6b83d333b1d2c8f60ac145c068d77d50bca65b3a07c927f9e2a541eb9
+    restart: unless-stopped
+    mem_limit: 2500m
+    ports: ["127.0.0.1:7474:7474", "127.0.0.1:7687:7687"]
+    environment:
+      TZ: Asia/Shanghai
+      NEO4J_AUTH: neo4j/neo4j@openspg
+      NEO4J_PLUGINS: '["apoc"]'
+      NEO4J_server_memory_heap_initial__size: 512M
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_server_memory_pagecache_size: 512M
+      NEO4J_apoc_export_file_enabled: "true"
+      NEO4J_apoc_import_file_enabled: "true"
+      NEO4J_dbms_security_procedures_unrestricted: "*"
+      NEO4J_dbms_security_procedures_allowlist: "*"
+    volumes: ["neo4j-data:/data", "neo4j-logs:/logs"]
+  minio:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-minio@sha256:9493c8e8f77edb10d556255d49ba8b5761b0fe57889235dfd10619c0513da007
+    restart: unless-stopped
+    mem_limit: 512m
+    command: server --console-address ":9001" /data
+    ports: ["127.0.0.1:9000:9000", "127.0.0.1:9001:9001"]
+    environment:
+      TZ: Asia/Shanghai
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio@openspg
+    volumes: ["minio-data:/data"]
+volumes:
+  mysql-data:
+  neo4j-data:
+  neo4j-logs:
+  minio-data:
