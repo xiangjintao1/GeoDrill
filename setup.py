@@ -19,12 +19,12 @@ package_name = "openspg-kag"
 
 # version
 cwd = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(cwd, "KAG_VERSION"), "r") as rf:
+with open(os.path.join(cwd, "KAG_VERSION"), "r", encoding="utf-8") as rf:
     version = rf.readline().strip("\n").strip()
 
 # license
 license = ""
-with open(os.path.join(cwd, "LICENSE"), "r") as rf:
+with open(os.path.join(cwd, "LICENSE"), "r", encoding="utf-8") as rf:
     line = rf.readline()
     while line:
         line = line.strip()
@@ -62,7 +62,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         r.strip()
-        for r in open("requirements.txt", "r")
+        for r in open("requirements.txt", "r", encoding="utf-8")
         if not r.strip().startswith("#")
     ],
     include_package_data=True,
