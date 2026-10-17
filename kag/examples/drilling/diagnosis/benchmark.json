@@ -1,0 +1,17 @@
+{
+  "scope":"人工设计的逻辑回归题，不是真实井场根因金标准；不用于宣称诊断准确率。",
+  "cases":[
+    {"id":"empty","observations":{},"expected":{"packoff":"incomplete","packoff-sticking":"incomplete"}},
+    {"id":"stuck-alone","observations":{"stuck":"yes"},"expected":{"mechanical":"incomplete","differential":"incomplete","packoff-sticking":"incomplete"},"follow_up":["circulation_restricted","pump_pressure_rise"]},
+    {"id":"packoff-without-motion-record","observations":{"circulation_restricted":"yes","pump_pressure_rise":"yes"},"expected":{"packoff":"compatible","packoff-sticking":"incomplete"}},
+    {"id":"linked-sticking","observations":{"stuck":"yes","circulation_restricted":"yes","pump_pressure_rise":"yes"},"expected":{"packoff":"compatible","packoff-sticking":"compatible","mechanical":"incomplete"},"path":["packoff","packoff-sticking"]},
+    {"id":"blocked-parent","observations":{"stuck":"yes","circulation_restricted":"no","pump_pressure_rise":"yes"},"expected":{"packoff":"conflicting","packoff-sticking":"conflicting"}},
+    {"id":"unknown-parent","observations":{"stuck":"yes","pump_pressure_rise":"unknown"},"expected":{"packoff":"incomplete","packoff-sticking":"incomplete"}},
+    {"id":"coexisting","observations":{"stuck":"yes","circulation_restricted":"yes","pump_pressure_rise":"yes","lost_returns":"yes","natural_path":"yes"},"expected":{"packoff-sticking":"compatible","natural-loss":"compatible","induced-loss":"incomplete"}},
+    {"id":"differential-supported","observations":{"stuck":"yes","overbalance":"yes","permeable":"yes","filter_cake":"yes"},"expected":{"differential":"compatible","packoff-sticking":"incomplete"}},
+    {"id":"differential-conflict","observations":{"stuck":"yes","overbalance":"no","permeable":"yes","filter_cake":"yes"},"expected":{"differential":"conflicting"}},
+    {"id":"loss-not-enough","observations":{"lost_returns":"yes"},"expected":{"natural-loss":"incomplete","induced-loss":"incomplete"}},
+    {"id":"induced-loss-supported","observations":{"lost_returns":"yes","above_fracture_limit":"yes"},"expected":{"induced-loss":"compatible","natural-loss":"incomplete"}},
+    {"id":"no-motion-limit","observations":{"stuck":"no","circulation_restricted":"yes","pump_pressure_rise":"yes"},"expected":{"packoff":"compatible","packoff-sticking":"conflicting","mechanical":"conflicting"}}
+  ]
+}

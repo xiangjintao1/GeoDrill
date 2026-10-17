@@ -4,7 +4,7 @@
 
 ## 工作台与评测
 
-新增[钻井异常分析原型](diagnosis/README.md)：8个已发表案例摘要、5条机制检查规则，支持未知观测、不符线索和追问；通过KAG业务执行器读取OpenSPG诊断图谱，不修改框架源码。现有资料问答保留。案例不是独立核验的根因金标准。
+新增[钻井异常分析原型](diagnosis/README.md)：8个已发表案例、6条机制检查规则，支持机制依赖链、观测对照、未知和不符线索、按证据缺口追问；通过KAG业务执行器读取OpenSPG诊断图谱，不修改框架源码。现有资料问答保留。案例不是独立核验的根因金标准。
 
 已有本地环境可直接启动，访问 **http://127.0.0.1:8090**：
 
@@ -30,7 +30,7 @@ powershell -ExecutionPolicy Bypass -File deploy/local/start.ps1
 
 ## 文件
 
-- `schema/Drilling.schema`：8类原领域实体及4类诊断知识实体。
+- `schema/Drilling.schema`：8类原领域实体及5类诊断知识实体。
 - `prompts.py`：仅从原文抽取、实体别名统一、引用回答。
 - `kag_config.yaml`：构建与问答流水线；默认最多并行处理 2 个构建任务。
 - `run.py`：检查语料、检查配置、同步 Schema、建库、问答。
