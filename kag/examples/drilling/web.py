@@ -5,7 +5,8 @@
 import asyncio
 import json
 import logging
-from concurrent.futures import ThreadPoolExecutor
+import multiprocessing
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 from contextlib import asynccontextmanager
 from threading import Event
 from typing import Literal
@@ -18,15 +19,54 @@ from service import DEFAULT_CONFIG, ROOT, answer, catalog
 import run as cli
 
 logger = logging.getLogger(__name__)
+QUERY_CONCURRENCY = 2
+_query_loop = None
+
+
+def run_isolated(question, mode, strategy, sender):
+    """子进程独占配置、流水线和事件循环；只回传进度和业务结果。"""
+    global _query_loop
+    if _query_loop is None:
+        _query_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(_query_loop)
+    from threading import Lock
+    send_lock = Lock()
+    def emit(event):
+        with send_lock:
+            sender.send(event)
+    try:
+        return _query_loop.run_until_complete(answer(question, mode, strategy=strategy, on_event=emit))
+    finally:
+        sender.close()
 
 
 class QueryWorker:
-    """KAG 配置为进程级，使用固定工作线程和事件循环，避免跨请求复用异步限流器。"""
-    def __init__(self):
-        self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="drilling-query")
+    """有界进程池隔离 KAG 状态；线程仅转发子进程事件，不执行并发 KAG。"""
+    def __init__(self, isolated=True):
+        self.context = multiprocessing.get_context("spawn")
+        self.processes = ProcessPoolExecutor(QUERY_CONCURRENCY, mp_context=self.context) if isolated else None
+        self.executor = ThreadPoolExecutor(max_workers=QUERY_CONCURRENCY if isolated else 1,
+                                           thread_name_prefix="drilling-query")
         self.loop = None
 
     def run(self, question, mode, strategy, on_event):
+        if self.processes:
+            receiver, sender = self.context.Pipe(duplex=False)
+            try:
+                future = self.processes.submit(run_isolated, question, mode, strategy, sender)
+                while not future.done():
+                    if receiver.poll(.02):
+                        event = receiver.recv()
+                        if on_event:
+                            on_event(event)
+                while receiver.poll():
+                    event = receiver.recv()
+                    if on_event:
+                        on_event(event)
+                return future.result()
+            finally:
+                receiver.close()
+                sender.close()
         if self.loop is None:
             self.loop = asyncio.new_event_loop()
             asyncio.set_event_loop(self.loop)
@@ -40,13 +80,15 @@ class QueryWorker:
                 self.loop.close()
         self.executor.submit(close_loop).result()
         self.executor.shutdown(wait=True)
+        if self.processes:
+            self.processes.shutdown(wait=True)
 
 
 @asynccontextmanager
 async def lifespan(app):
     config = cli.load_config(DEFAULT_CONFIG)
     cli.validate_config(config)
-    app.state.lock = asyncio.Lock()
+    app.state.lock = asyncio.Semaphore(QUERY_CONCURRENCY)
     app.state.worker = QueryWorker()
     try:
         yield
@@ -82,7 +124,7 @@ async def submit(body, on_event=None):
     if not body.question.strip():
         raise HTTPException(422, "问题不能为空")
     if app.state.lock.locked():
-        raise HTTPException(409, "已有问题正在处理，请稍后再试")
+        raise HTTPException(409, "问答并发已满，请稍后再试")
     await app.state.lock.acquire()
     try:
         loop = asyncio.get_running_loop()

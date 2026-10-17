@@ -70,7 +70,10 @@ class WorkbenchTests(unittest.TestCase):
         self.assertEqual(summary["p95_seconds"], 3)
 
     def test_http_validation_busy_and_answer(self):
-        with patch.object(web.cli, "load_config", return_value={}), patch.object(web.cli, "validate_config"):
+        original = web.QueryWorker
+        with patch.object(web.cli, "load_config", return_value={}), patch.object(web.cli, "validate_config"), \
+             patch.object(web, "QUERY_CONCURRENCY", 1), \
+             patch.object(web, "QueryWorker", side_effect=lambda: original(isolated=False)):
             with TestClient(web.app) as client:
                 self.assertEqual(client.post("/api/ask", json={"question": " "}).status_code, 422)
                 self.assertEqual(client.post("/api/ask", json={"question": "问", "mode": "other"}).status_code, 422)

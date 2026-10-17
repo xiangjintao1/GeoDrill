@@ -1,9 +1,12 @@
 # Copyright 2026 向金涛
 # Affiliation: 吉林大学
-"""验证流式终态、后台串行隔离和事件循环复用。"""
+"""验证流式终态、进程状态隔离、授权刷新和事件循环复用。"""
 
 import asyncio
 import json
+import os
+import tempfile
+import time
 import sys
 import unittest
 from concurrent.futures import ThreadPoolExecutor
@@ -16,7 +19,73 @@ import web
 from fastapi.testclient import TestClient
 
 
+def isolated_probe(question, mode, strategy, sender):
+    """在真实子进程内替换外部模型，验证 IPC、配置和循环归属。"""
+    import service
+    service._configuration = question
+    async def fake_answer(query, mode, **kwargs):
+        kwargs["on_event"]({"type": "delta", "text": query})
+        await asyncio.sleep(.5)
+        return {"answer": service._configuration, "pid": os.getpid(),
+                "loop": id(asyncio.get_running_loop())}
+    web.answer = fake_answer
+    return web.run_isolated(question, mode, strategy, sender)
+
+
+def refresh_probe(directory):
+    import chatgpt_auth as auth
+    auth.STORE = Path(directory)
+    record_file = auth.STORE / "fake-account.json"
+    count_file = auth.STORE / "refresh-count.txt"
+    def exchange(_):
+        count_file.write_text(str(int(count_file.read_text()) + 1))
+        time.sleep(.3)
+        return {"access_token": "refreshed-test-token", "expires_at": time.time() + 3600}
+    with patch.object(auth, "read_record", side_effect=lambda: json.loads(record_file.read_text())), \
+         patch.object(auth, "save_record", side_effect=lambda record: record_file.write_text(json.dumps(record))), \
+         patch.object(auth, "exchange", side_effect=exchange):
+        return auth.access_token()
+
+
+class ProcessIsolationTests(unittest.TestCase):
+    def test_expired_credential_is_refreshed_once_across_processes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "fake-account.json").write_text(json.dumps({"access_token": "expired-test-token",
+                "expires_at": 0, "client_id": "test", "refresh_token": "test-refresh"}))
+            (root / "refresh-count.txt").write_text("0")
+            with web.ProcessPoolExecutor(2, mp_context=web.multiprocessing.get_context("spawn")) as pool:
+                futures = [pool.submit(refresh_probe, directory) for _ in range(2)]
+                self.assertEqual([future.result(timeout=30) for future in futures], ["refreshed-test-token"] * 2)
+            self.assertEqual((root / "refresh-count.txt").read_text(), "1")
+
+    def test_two_queries_use_separate_process_state_and_streams(self):
+        worker = web.QueryWorker()
+        events = {"A": [], "B": []}
+        try:
+            with patch.object(web, "run_isolated", new=isolated_probe), ThreadPoolExecutor(2) as pool:
+                futures = {key: pool.submit(worker.run, key, "hybrid", "optimized", events[key].append)
+                           for key in events}
+                results = {key: future.result(timeout=30) for key, future in futures.items()}
+            self.assertNotEqual(results["A"]["pid"], results["B"]["pid"])
+            for key in events:
+                self.assertEqual(results[key]["answer"], key)
+                self.assertEqual(events[key], [{"type": "delta", "text": key}])
+        finally:
+            worker.close()
+
+
 class StreamingTests(unittest.TestCase):
+    def setUp(self):
+        # HTTP 单元测试使用本地替身；进程隔离由单独测试和真实接口回归覆盖。
+        original = web.QueryWorker
+        self.worker_patch = patch.object(web, "QueryWorker", side_effect=lambda: original(isolated=False))
+        self.worker_patch.start()
+        self.addCleanup(self.worker_patch.stop)
+        self.concurrency_patch = patch.object(web, "QUERY_CONCURRENCY", 1)
+        self.concurrency_patch.start()
+        self.addCleanup(self.concurrency_patch.stop)
+
     def client(self):
         return TestClient(web.app)
 

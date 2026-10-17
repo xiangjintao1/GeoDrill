@@ -55,7 +55,7 @@ def retrieval_config(config, mode):
 
 
 async def answer(question, mode="hybrid", config_path=DEFAULT_CONFIG, strategy="optimized", on_event=None):
-    # Web 调用由一个固定工作线程串行处理；此缓存不支持并行切换全局 KAG 配置。
+    # 每个查询进程同一时刻只处理一个请求，缓存和全局 KAG 配置不跨进程共享。
     global _configuration
     question = question.strip()
     if not 1 <= len(question) <= 800:
