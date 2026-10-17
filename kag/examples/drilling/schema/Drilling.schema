@@ -1,0 +1,90 @@
+namespace Drilling
+
+DrillingMethod(钻进方法): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text
+        usesBit(使用钻头): DrillBit
+            constraint: MultiValue
+        usesTool(使用钻具): DrillingTool
+            constraint: MultiValue
+        applicableTo(适用地层): Formation
+            constraint: MultiValue
+        usesCoringMethod(采用取心方法): CoringMethod
+            constraint: MultiValue
+
+CoringMethod(取心方法): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text
+        usesTool(使用钻具): DrillingTool
+            constraint: MultiValue
+        applicableTo(适用地层): Formation
+            constraint: MultiValue
+        affectsQuality(影响取心质量): QualityIndicator
+            constraint: MultiValue
+
+DrillBit(钻头): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text
+        applicableTo(适用地层): Formation
+            constraint: MultiValue
+        model(型号): Text
+            index: Text
+
+DrillingTool(钻具): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text
+        model(型号): Text
+            index: Text
+        componentOf(属于钻具): DrillingTool
+            constraint: MultiValue
+
+Formation(地层条件): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text
+
+QualityIndicator(取心质量指标): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text
+
+EngineeringCase(工程案例): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text
+        usesDrillingMethod(采用钻进方法): DrillingMethod
+            constraint: MultiValue
+        usesCoringMethod(采用取心方法): CoringMethod
+            constraint: MultiValue
+        usesBit(使用钻头): DrillBit
+            constraint: MultiValue
+        usesTool(使用钻具): DrillingTool
+            constraint: MultiValue
+        encounters(遇到地层): Formation
+            constraint: MultiValue
+        sourceUrl(来源地址): Text
+
+Others(其他): EntityType
+    properties:
+        desc(描述): Text
+            index: TextAndVector
+        semanticType(语义类型): Text
+            index: Text

@@ -1,0 +1,116 @@
+# 钻探领域配置；基于 GeoDrill / OpenSPG KAG 的通用流水线。
+# 连接信息通过 DRILLING_* 环境变量传入，见 README.md。
+project:
+  biz_scene: drilling
+  language: zh
+  namespace: Drilling
+  host_addr: YOUR_OPENSPG_HOST_ADDR
+  id: YOUR_OPENSPG_PROJECT_ID
+  checkpoint_path: ckpt
+
+openie_llm: &llm
+  type: openai
+  base_url: YOUR_API_BASE_URL
+  api_key: YOUR_API_KEY
+  model: YOUR_CHAT_MODEL
+  temperature: 0
+  enable_check: false
+chat_llm: *llm
+vectorize_model: &embedding
+  type: openai
+  base_url: YOUR_EMBEDDING_BASE_URL
+  api_key: YOUR_EMBEDDING_API_KEY
+  model: YOUR_EMBEDDING_MODEL
+  vector_dimensions: 1536
+  enable_check: false
+vectorizer: *embedding
+log:
+  level: INFO
+
+kag_builder_pipeline:
+  chain:
+    type: unstructured_builder_chain
+    reader:
+      type: md_reader
+    splitter:
+      type: length_splitter
+      split_length: 1600
+      window_length: 100
+    extractor:
+      type: schema_free_extractor
+      llm: *llm
+      ner_prompt:
+        type: drilling_ner
+      std_prompt:
+        type: drilling_std
+      triple_prompt:
+        type: drilling_triple
+    vectorizer:
+      type: batch_vectorizer
+      vectorize_model: *embedding
+    post_processor:
+      type: kag_post_processor
+    writer:
+      type: kg_writer
+
+search_api: &search
+  type: openspg_search_api
+graph_api: &graph
+  type: openspg_graph_api
+chain_vectorizer:
+  type: batch
+  vectorize_model: *embedding
+
+kag_solver_pipeline:
+  type: kag_static_pipeline
+  planner:
+    type: lf_kag_static_planner
+    llm: *llm
+    plan_prompt:
+      type: drilling_planning
+    rewrite_prompt:
+      type: default_rewrite_sub_task_query
+  executors:
+    - type: kag_hybrid_retrieval_executor
+      retrievers:
+        - type: kg_cs_open_spg
+          priority: 0
+          graph_api: *graph
+          search_api: *search
+          path_select:
+            type: exact_one_hop_select
+            graph_api: *graph
+            search_api: *search
+          entity_linking:
+            type: entity_linking
+            graph_api: *graph
+            search_api: *search
+            recognition_threshold: 0.9
+            exclude_types: [Chunk, Doc, Summary, Outline, AtomicQuery, KnowledgeUnit]
+        - type: rc_open_spg
+          priority: 0
+          top_k: 5
+          vectorize_model: *embedding
+          graph_api: *graph
+          search_api: *search
+          vector_chunk_retriever:
+            type: vector_chunk_retriever
+            vectorize_model: *embedding
+            search_api: *search
+            score_threshold: 0.65
+      merger:
+        type: kag_merger
+      enable_summary: true
+      with_llm_select: false
+      summary_prompt:
+        type: default_thought_then_answer
+    - type: kag_deduce_executor
+      llm_module: *llm
+    - type: kag_output_executor
+      llm_module: *llm
+  generator:
+    type: drilling_generator
+    llm_client: *llm
+    generated_prompt:
+      type: drilling_refer_generator_prompt
+    enable_ref: true
