@@ -145,7 +145,17 @@ class KAGStaticPipeline(SolverPipelineABC):
                 )
 
             answer = await self.generator.ainvoke(query, context, **kwargs)
-            task_count = sum(1 for _ in context.gen_task(group=False))
+            from kag.common.utils import red, green, reset
+
+            task_info = []
+            for task in context.gen_task(group=False):
+                task_info.append(
+                    {
+                        "task": task.arguments,
+                        "memory": task.memory,
+                        "result": task.result,
+                    }
+                )
             if num_retry > 0:
                 if "unknown" in answer.lower():
                     finished = False
@@ -153,10 +163,16 @@ class KAGStaticPipeline(SolverPipelineABC):
                     finished = await self.planner.finish_judger(query, answer)
             if not finished and self.max_iteration > 1:
                 if num_retry <= 0:
-                    logger.warning("Static pipeline exhausted retries (%d tasks)", task_count)
+                    print(
+                        f"{red}Failed to answer quesion: {query}\nTasks:{task_info}\n{reset}\n{answer}"
+                    )
                 else:
                     num_retry -= 1
-                    logger.debug("Retrying static pipeline (%d tasks)", task_count)
+                    print(
+                        f"{red}Retry to answer quesion: {query}\nTasks:{task_info}\n{reset}\n{answer}"
+                    )
                     continue
-            logger.debug("Static pipeline completed (%d tasks)", task_count)
+            print(
+                f"{green}Input Query: {query}\n\nTasks:\n\n{task_info}\n\nFinal Answer: {answer}\nGold Answer: {kwargs.get('gold')}{reset}"
+            )
             return answer

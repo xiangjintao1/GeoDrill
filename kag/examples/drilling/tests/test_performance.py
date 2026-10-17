@@ -8,16 +8,39 @@ import sys
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import service
 from benchmark_latency import summarize
-from kag.examples.drilling.query_pipeline import can_generate_directly, is_simple_question, DrillingPipeline
+from kag.examples.drilling.query_pipeline import can_generate_directly, is_simple_question, DrillingPipeline, DrillingRetriever
+from kag.interface.solver.retriever_abc import RetrieverOutput
 from kag.examples.drilling.telemetry import CURRENT, QueryMetrics, stage
 
 
 class PerformanceTests(unittest.TestCase):
+    def test_business_adapter_propagates_metrics_through_framework_thread_pool(self):
+        def retrieve(*args, **kwargs):
+            self.assertIs(CURRENT.get(), metrics)
+            with stage("model", role="retrieval"):
+                pass
+            return RetrieverOutput()
+        original = [SimpleNamespace(name=name, priority=0, invoke=retrieve) for name in ["graph", "vector"]]
+        retriever = object.__new__(DrillingRetriever)
+        retriever.retrievers = original
+        retriever.merger = SimpleNamespace(invoke=lambda *args, **kwargs: RetrieverOutput())
+        retriever.do_data_report = Mock()
+        metrics = QueryMetrics("optimized")
+        token = CURRENT.set(metrics)
+        try:
+            result = retriever.do_retrieval("取心", "test", None, None)
+            self.assertIsInstance(result, RetrieverOutput)
+            self.assertEqual(metrics.summary()["model_calls"], 2)
+            self.assertIs(retriever.retrievers, original)
+        finally:
+            CURRENT.reset(token)
+        self.assertIsNone(CURRENT.get())
+
     def test_router_preserves_complex_and_unknown_questions(self):
         for query in ["元深1井使用的NR826M钻头直径是多少毫米？", "绳索取心为什么不用起出全部钻杆？"]:
             self.assertTrue(is_simple_question(query))
