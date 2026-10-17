@@ -11,7 +11,9 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 KNOWLEDGE_PATH = Path(__file__).with_name("diagnosis") / "knowledge.json"
 KNOWLEDGE = json.loads(KNOWLEDGE_PATH.read_text(encoding="utf-8"))
-KNOWLEDGE_HASH = hashlib.sha256(KNOWLEDGE_PATH.read_bytes()).hexdigest()
+KNOWLEDGE_HASH = hashlib.sha256(json.dumps(
+    KNOWLEDGE, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+).encode("utf-8")).hexdigest()
 
 
 class DiagnosisCase(BaseModel):
