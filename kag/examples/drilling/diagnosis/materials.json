@@ -1,0 +1,122 @@
+{
+  "verified": "2026-10-17",
+  "dataset_commit": "1297d8b274042904fbd0fb95f2521a953eedbab6",
+  "total_csv_rows": 52905,
+  "raw_files_redistributed": false,
+  "files": [
+    {
+      "file": "menengai-2014.pdf",
+      "url": "https://gogn.orkustofnun.is/unu-gtp-report/UNU-GTP-2014-27.pdf",
+      "bytes": 5509348,
+      "sha256": "e0fae8970467d03f3535a1fed76555a4e03dbdcb641917a6f2c92d67beb7d2f5"
+    },
+    {
+      "file": "nov-stuck-case.pdf",
+      "url": "https://assets.nov.com/NCP4N68N/at/kk3xrntg3729jf4t6nfqxk3q/DBA_Stuck_Pipe_Managed_with_Real_Time_DBA_Alerts_Case_Study.pdf",
+      "bytes": 106159,
+      "sha256": "5a192fe8e9015e49f22ca5ce174a92d90d71ff4eab96a73a05095eb0a5367f57"
+    },
+    {
+      "file": "sandia-drilling-handbook.pdf",
+      "url": "https://www.energy.gov/sites/prod/files/2014/02/f7/drillinghandbook.pdf",
+      "bytes": 885480,
+      "sha256": "2503fe8a225dd122cf6af0f8f16a364ef594dc6f7332bae6d7cc5abec2e0876d"
+    },
+    {
+      "file": "bohai-a-2018.pdf",
+      "url": "https://journal.lnpu.edu.cn/syhg/CN/article/downloadArticleFile.do?attachType=PDF&id=2244",
+      "bytes": 3444287,
+      "sha256": "005b34025834284b865732277a874273076496631adb1cea93048e637ce4cea3"
+    },
+    {
+      "file": "kqt-b2h-2017.html",
+      "url": "https://html.rhhz.net/hysy/html/20170314.htm",
+      "bytes": 29207,
+      "sha256": "c8dc89ddcaee730bc67bbdb17203a9a0627c8f746b53c922013bcbd8ba455556"
+    },
+    {
+      "file": "tspp/TSPP1.csv",
+      "url": "https://raw.githubusercontent.com/promiseeee/Time-series-stuck-pipe-prediction/1297d8b274042904fbd0fb95f2521a953eedbab6/TSPP/TSPP/TSPP1.csv",
+      "bytes": 2722605,
+      "sha256": "21bf5d518d91e8b267f8a313d1f504123a8ef80e1c811aab6f975e8694c0edc1",
+      "rows": 21120,
+      "columns": [
+        "date",
+        "Average Hookload kkgf",
+        "Hole depth (MD) m",
+        "Weight on Bit kkgf",
+        "Block Position m",
+        "Average Rotary Speed rpm",
+        "Average Surface Torque kN.m",
+        "Bit Depth (MD) m",
+        "Average Standpipe Pressure kPa",
+        "Mud Flow In L/min",
+        "Rate of Penetration m/h"
+      ],
+      "label_values": []
+    },
+    {
+      "file": "tspp/TSPP2.csv",
+      "url": "https://raw.githubusercontent.com/promiseeee/Time-series-stuck-pipe-prediction/1297d8b274042904fbd0fb95f2521a953eedbab6/TSPP/TSPP/TSPP2.csv",
+      "bytes": 1033913,
+      "sha256": "0b1a7b908d834af9e32bc8a82fa7f5d24a58b723087de8ecd16f867d52d63d12",
+      "rows": 8499,
+      "columns": [
+        "date",
+        "Hole Depth (MD) m",
+        "Bit Depth (MD) m",
+        "Block Position m",
+        "Mud Flow In L/min",
+        "Average Standpipe Pressure kPa",
+        "Average Hookload kkgf",
+        "Average Surface Torque kN.m",
+        "Average Rotary Speed rpm",
+        "Weight on Bit kkgf",
+        "Rate of Penetration m/h"
+      ],
+      "label_values": []
+    },
+    {
+      "file": "tspp/TSPP3.csv",
+      "url": "https://raw.githubusercontent.com/promiseeee/Time-series-stuck-pipe-prediction/1297d8b274042904fbd0fb95f2521a953eedbab6/TSPP/TSPP/TSPP3.csv",
+      "bytes": 1468108,
+      "sha256": "66daff6a4f3ecedb71679eeca3585f7aea8c6b7d90b905c06e99ea2d7536279d",
+      "rows": 12533,
+      "columns": [
+        "date",
+        "Hole depth (MD) m",
+        "Bit Depth (MD) m",
+        "Block Position m",
+        "RPM30s rpm",
+        "Average Hookload kkgf",
+        "Average Standpipe Pressure kPa",
+        "Mud Flow In L/min",
+        "Averaged WOB kkgf",
+        "Average Surface Torque kN.m",
+        "Rate of Penetration  m/h"
+      ],
+      "label_values": []
+    },
+    {
+      "file": "tspp/TSPP4.csv",
+      "url": "https://raw.githubusercontent.com/promiseeee/Time-series-stuck-pipe-prediction/1297d8b274042904fbd0fb95f2521a953eedbab6/TSPP/TSPP/TSPP4.csv",
+      "bytes": 1357012,
+      "sha256": "9a0d84eb76593c307bc282fe039906483f26ba465895144db0132378cd195bda",
+      "rows": 10753,
+      "columns": [
+        "date",
+        "Hole Depth (MD) m",
+        "Bit Depth (MD) m",
+        "Block Position m",
+        "Average Hookload kkgf",
+        "Average Standpipe Pressure kPa",
+        "Mud Flow In L/min",
+        "Average Surface Torque kN.m",
+        "Average Rotary Speed rpm",
+        "Weight on Bit kkgf",
+        "Rate of Penetration m/h"
+      ],
+      "label_values": []
+    }
+  ]
+}
