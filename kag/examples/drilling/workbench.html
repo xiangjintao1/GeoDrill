@@ -95,8 +95,18 @@
     <section id="diagnosis" class="tab">
       <div class="hero"><div class="eyebrow">DRILLING / EVIDENCE & REASONING</div><h1>从异常现象，追溯候选原因。</h1><p class="muted">卡钻、环空堵塞与井漏机制分析。选择已核实的观测，查看支持线索、不符条件和待补证据。</p></div>
       <div class="grid"><div>
+        <div class="panel">
+          <label for="incident-text">描述异常经过</label>
+          <textarea id="incident-text" maxlength="4000" placeholder="例如：本次事件中，钻柱无法旋转或上下移动，循环突然受阻，泵压随之升高。未记录地层压力和漏失通道。"></textarea>
+          <div class="toolbar"><span class="muted">提取原句 → 人工核对 → 填入观测</span><button type="button" class="primary" id="extract-submit" disabled>提取观测</button></div>
+          <div id="extraction-preview" aria-live="polite"></div>
+          <div id="extraction-review" hidden>
+            <label><input type="checkbox" id="extraction-confirm"> 我已核对原句、事件时段及是/否含义</label>
+            <button type="button" class="chip" id="apply-extraction" disabled>替换下方观测</button>
+          </div>
+        </div>
         <form class="panel" id="diagnosis-form">
-          <h2>工况与观测</h2><p class="muted">没有记录的条件保留“未知”；“否”表示已有相反证据。</p>
+          <h2>工况与观测</h2><p class="muted">仅分析下方已核对观测；描述不会自动成为事实。没有记录的条件保留“未知”；“否”表示已有相反证据。</p>
           <div class="toolbar"><select id="diagnosis-case" aria-label="选择已发表案例"><option value="">自定义观测</option></select><button type="button" class="chip" id="reset-observations">重置为未知</button></div>
           <div class="observation-grid" id="observations"></div>
           <button class="primary" id="diagnose-submit">分析证据链 ↗</button>
@@ -146,10 +156,50 @@
       if (!response.ok) throw new Error(typeof body.detail === 'string' ? body.detail : '请求未完成，请稍后重试');
       return body;
     }
-    let diagnosticSchema;
+    let diagnosticSchema, extractionDraft = null, extractionRevision = 0;
     function fillObservations(values = {}) {
       for (const field of Object.keys(diagnosticSchema.observations)) $('observation-' + field).value = values[field] || 'unknown';
+      $('diagnosis-result').replaceChildren(node('p', '观测已更新，请重新分析证据链。', 'muted'));
     }
+    function clearExtraction() {
+      extractionRevision++; extractionDraft = null;
+      $('extraction-review').hidden = true; $('extraction-confirm').checked = false; $('apply-extraction').disabled = true;
+      $('extraction-preview').replaceChildren();
+    }
+    $('incident-text').oninput = () => {
+      clearExtraction();
+      $('extraction-preview').append(node('p', '描述已更改，下方观测未自动更新。请重新提取核对或手动填写。', 'muted'));
+    };
+    $('extract-submit').onclick = async () => {
+      const text = $('incident-text').value.trim();
+      if (!text || !diagnosticSchema) { $('incident-text').focus(); return; }
+      clearExtraction(); const revision = extractionRevision;
+      $('extract-submit').disabled = true;
+      $('extraction-preview').append(node('p', '正在提取有原句支持的观测草稿…', 'muted'));
+      try {
+        const result = await api('/api/diagnosis/extract', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({text})});
+        if (revision !== extractionRevision) return;
+        extractionDraft = result;
+        const preview = $('extraction-preview'); preview.replaceChildren(node('p', result.note, 'warning'));
+        preview.append(node('p', `${result.duration_seconds} 秒 · ${result.evidence.length} 项待核对证据 · 未提及的字段保持未知`, 'meta'));
+        for (const item of result.evidence) {
+          const conflict = result.conflicts.includes(item.field);
+          preview.append(node('p', diagnosticSchema.observations[item.field] + ' · ' + (item.value === 'yes' ? '是' : '否') + (conflict ? '（有冲突，保留未知）' : '')));
+          for (const quote of item.quotes) preview.append(node('blockquote', quote, 'source-text'));
+        }
+        if (!result.evidence.length) preview.append(node('p', '没有明确观测，请补充描述或手动填写。', 'muted'));
+        $('extraction-review').hidden = !result.evidence.length;
+      } catch (error) {
+        if (revision === extractionRevision) $('extraction-preview').replaceChildren(node('p', error.message, 'warning'));
+      } finally { $('extract-submit').disabled = false; }
+    };
+    $('extraction-confirm').onchange = () => { $('apply-extraction').disabled = !extractionDraft || !$('extraction-confirm').checked; };
+    $('apply-extraction').onclick = () => {
+      if (!extractionDraft || !$('extraction-confirm').checked) return;
+      fillObservations(extractionDraft.observations);
+      $('diagnosis-case').value = ''; $('diagnosis-case-detail').replaceChildren();
+      clearExtraction(); $('extraction-preview').append(node('p', '已替换下方观测。可继续修改，再点击“分析证据链”。', 'muted'));
+    };
     async function loadDiagnosis() {
       diagnosticSchema = await api('/api/diagnosis/schema');
       for (const [field, label] of Object.entries(diagnosticSchema.observations)) {
@@ -163,6 +213,7 @@
       for (const item of diagnosticSchema.cases) {
         const option = node('option', item.name); option.value = item.id; $('diagnosis-case').append(option);
       }
+      $('extract-submit').disabled = false;
     }
     $('diagnosis-case').onchange = () => {
       const item = diagnosticSchema.cases.find(item => item.id === $('diagnosis-case').value);
