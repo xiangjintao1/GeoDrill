@@ -60,6 +60,9 @@ def retrieval_config(config, mode):
     if mode not in {"hybrid", "vector"}:
         raise ValueError("不支持的检索方式")
     config = copy.deepcopy(config)
+    if mode == "hybrid":
+        config["kag_solver_pipeline"]["executors"][0].setdefault("retrievers", []).insert(0, {
+            "type": "drilling_record_lookup", "priority": -1, "top_k": 6})
     if mode == "vector":
         executor = config["kag_solver_pipeline"]["executors"][0]
         executor["retrievers"] = [r for r in executor["retrievers"] if r["type"] == "rc_open_spg"]
@@ -190,4 +193,7 @@ def catalog():
                 "kind": row.get("format", "英文手册原文"), "url": url, "content": text,
                 "page": row.get("printed_page", row.get("printed_pages", "")),
             })
+    imported = ROOT / "data/knowledge/catalog.json"
+    if imported.exists():
+        records.extend(json.loads(imported.read_text(encoding="utf-8")))
     return records
