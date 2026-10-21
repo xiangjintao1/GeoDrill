@@ -28,3 +28,12 @@ jobs:
         run: python -m compileall -q kag/examples/drilling deploy/local
       - name: Test configuration, authentication protocol and workbench
         run: python -m unittest discover -s kag/examples/drilling/tests -v
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check workbench script and observation review flow
+        run: |
+          python -c "import os; from pathlib import Path; page=Path('kag/examples/drilling/workbench.html').read_text(encoding='utf-8'); (Path(os.environ['RUNNER_TEMP'])/'workbench-check.js').write_text(page.split('<script>')[1].split('</script>')[0], encoding='utf-8')"
+          node --check "$env:RUNNER_TEMP/workbench-check.js"
+          node kag/examples/drilling/tests/workbench_extraction_test.cjs
