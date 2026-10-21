@@ -82,6 +82,85 @@ EngineeringCase(工程案例): EntityType
             constraint: MultiValue
         sourceUrl(来源地址): Text
 
+DiagnosticKnowledge(诊断知识版本): EntityType
+    properties:
+        version(内容指纹): Text
+        desc(适用范围): Text
+        hasRule(包含规则): DiagnosticRule
+            constraint: MultiValue
+        hasCase(包含观测案例): DiagnosticCase
+            constraint: MultiValue
+
+DiagnosticRule(机制检查规则): EntityType
+    properties:
+        logic(条件组合方式): Text
+        requiresCondition(需要观测): DiagnosticCondition
+            constraint: MultiValue
+        supportedBy(来源依据): DiagnosticSource
+            constraint: MultiValue
+        requiresMechanism(前置机制线索): DiagnosticRule
+            constraint: MultiValue
+
+DiagnosticCase(已发表事发观测): EntityType
+    properties:
+        domain(钻井类型): Text
+        sourceUrl(来源地址): Text
+        anchor(原文定位): Text
+        observations(结构化观测): Text
+        facts(事实摘要): Text
+        limitations(资料限制): Text
+        hasObservation(记录观测条件): DiagnosticCondition
+            constraint: MultiValue
+
+DiagnosticCondition(观测条件): EntityType
+    properties:
+        fieldName(字段标识): Text
+
+DiagnosticSource(诊断来源): EntityType
+    properties:
+        sourceUrl(来源地址): Text
+        desc(内容摘要): Text
+        verified(核验日期): Text
+
+Chunk(文本块): IndexType
+    properties:
+        content(内容): Text
+            index: TextAndVector
+
+KnowledgeDataset(公开数据来源): EntityType
+    properties:
+        sourceUrl(来源地址): Text
+        fileHash(文件指纹): Text
+        attribution(来源署名): Text
+        license(源许可): Text
+        profile(实测数据统计): Text
+        scope(使用范围): Text
+        source(原文索引): Chunk
+            constraint: MultiValue
+
+Wellbore(井筒): EntityType
+    properties:
+        usage(数据用途): Text
+
+DrillingRecord(钻井原始记录): EntityType
+    properties:
+        kind(记录类型): Text
+        anchor(原文定位): Text
+        startTime(发生开始时刻): Text
+        endTime(发生结束时刻): Text
+        reportStart(报告开始时刻): Text
+        reportEnd(报告结束时刻): Text
+        text(原文): Text
+        state(原始状态): Text
+        stateDetail(原始状态细项): Text
+        categories(候选筛查类别): Text
+        reviewStatus(证据状态): Text
+        fromDataset(来自数据集): KnowledgeDataset
+        inWell(所属井筒): Wellbore
+        inReport(所属日报): DrillingRecord
+        source(原文索引): Chunk
+            constraint: MultiValue
+
 Others(其他): EntityType
     properties:
         desc(描述): Text
