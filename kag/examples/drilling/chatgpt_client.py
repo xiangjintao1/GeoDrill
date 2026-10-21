@@ -65,7 +65,8 @@ class ChatGPTClient(LLMClient):
     def __call__(self, prompt="", **kwargs):
         if kwargs.get("tools") or kwargs.get("image_url"):
             raise ValueError("钻探适配器仅支持文本调用")
-        role = "generation" if kwargs.get("segment_name") == "answer" else "planning" if kwargs.get("segment_name") == "thinker" else "intermediate"
+        role = {"answer": "generation", "thinker": "planning", "diagnosis_extraction": "extraction"}.get(
+            kwargs.get("segment_name"), "intermediate")
         metrics = CURRENT.get()
         with stage("model", role=role) as record:
             started = time.perf_counter()

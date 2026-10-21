@@ -15,8 +15,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
-from service import DEFAULT_CONFIG, ROOT, answer, catalog, diagnose
+from service import DEFAULT_CONFIG, ROOT, answer, catalog, diagnose, extract_observations
 from diagnosis import DiagnosisCase, KNOWLEDGE
+from diagnosis_extract import NarrativeInput
 import run as cli
 
 logger = logging.getLogger(__name__)
@@ -27,6 +28,8 @@ _query_loop = None
 async def dispatch(question, mode, strategy, on_event):
     if mode == "diagnosis":
         return await diagnose(json.loads(question), on_event=on_event)
+    if mode == "extraction":
+        return await extract_observations(json.loads(question), on_event=on_event)
     return await answer(question, mode, strategy=strategy, on_event=on_event)
 
 
@@ -130,6 +133,8 @@ def materials():
 async def submit(body, on_event=None):
     if isinstance(body, DiagnosisCase):
         question, mode, strategy = body.model_dump_json(), "diagnosis", "optimized"
+    elif isinstance(body, NarrativeInput):
+        question, mode, strategy = body.model_dump_json(), "extraction", "optimized"
     else:
         question, mode, strategy = body.question.strip(), body.mode, body.strategy
     if not question:
@@ -217,6 +222,16 @@ async def diagnostic_analysis(body: DiagnosisCase):
     except Exception:
         logger.exception("Diagnosis failed")
         raise HTTPException(503, "诊断图谱未就绪或分析失败，请检查 OpenSPG 并核对诊断知识版本") from None
+
+
+@app.post("/api/diagnosis/extract")
+async def observation_extraction(body: NarrativeInput):
+    future = await submit(body)
+    try:
+        return await asyncio.shield(future)
+    except Exception:
+        logger.exception("Observation extraction failed")
+        raise HTTPException(503, "观测提取未完成或原句校验失败，请检查模型授权后重试，也可手动填写观测") from None
 
 
 if __name__ == "__main__":
