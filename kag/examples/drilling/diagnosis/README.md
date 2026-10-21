@@ -18,6 +18,8 @@ PDF和CSV仅下载至本机 `D:\GeoDrill-local\materials\diagnosis`，本仓库�
 
 工作台“异常分析”可选择案例填入已知观测。`GET /api/diagnosis/schema` 返回字段与案例，`POST /api/diagnose` 接收 `{"observations":{"stuck":"yes"}}`；值仅允许 `yes/no/unknown`，作者原因分析不能混入请求。
 
+也可输入事件描述，点击“提取观测”，核对原句、否定词和时段，勾选后点击“替换下方观测”，再分析证据链。`POST /api/diagnosis/extract` 接收 `{"text":"钻柱无法旋转或上下移动。"}`；只生成草稿，不自动诊断或写入图谱。引文必须逐字存在于描述中；是/否冲突保留未知。原句匹配不等于语义正确，时段选择与否定含义仍须人工检查；修改描述会作废未应用的草稿。
+
 构图命令（本模块共5类诊断实体，29个节点、46条边）：
 
 ```powershell
@@ -28,6 +30,15 @@ KAG注册接口编排“图谱读取→条件/依赖检查与案例对照”任�
 前置未知或不符会传递至下游。追问按影响的规则数量排序，这不是故障概率或信息增益估计。
 8个案例的事发观测存入OpenSPG。对照只使用已知观测，展示一致、不符和原案例未记载项；原作者原因分析不入诊断图谱、不参与排序。
 图谱缺失、版本或来源不匹配会报错，不回退成本地规则冒充图谱查询。框架源码保持不动。
-本版是KAG任务编排加业务规则原型，不调用大模型生成诊断；尚未实现自然语言观测抽取、时序异常检测或专家验证的根因推断，也不能据此宣称优于RAG。
+本版是KAG任务编排加业务规则原型，大模型仅提取待核对观测，不生成根因结论；尚未实现时序异常检测或专家验证的根因推断，也不能据此宣称优于RAG。
 
-逻辑回归验收：`.venv\Scripts\python.exe kag/examples/drilling/evaluate_diagnosis.py`。12道人工设计的逻辑题经真实HTTP接口验收，报告保存于`results/diagnosis/latest.json`；它们不是新增的12个真实案例。单元与集成测试共44项通过，页面仅完成脚本语法和接口检查，未做浏览器视觉验收。
+复测命令：
+
+```powershell
+.venv\Scripts\python.exe -m unittest discover -s kag/examples/drilling/tests
+node kag/examples/drilling/tests/workbench_extraction_test.cjs
+.venv\Scripts\python.exe kag/examples/drilling/evaluate_diagnosis.py
+.venv\Scripts\python.exe kag/examples/drilling/evaluate_extraction.py
+```
+
+2026-10-21：55项测试通过；真实HTTP链路的12道人工逻辑题通过；真实模型的8条人工提取描述首轮通过，覆盖否定、不确定、时段变化、数值不推断和夹带指令。报告分别保存于`results/diagnosis/latest.json`、`results/extraction/latest.json`。这些不是新增真实案例或根因准确率测试，也不保证后续模型输出稳定。页面完成脚本与交互逻辑检查，未做浏览器视觉验收。
