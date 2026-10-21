@@ -132,6 +132,7 @@
     </section>
     <section id="sources" class="tab" hidden>
       <div class="eyebrow">SOURCE LIBRARY</div><h1>从来源开始理解知识。</h1><p class="muted">区分工程案例、历史手册、中文知识条目和标准目录信息。</p>
+      <div class="panel" id="knowledge-overview" hidden></div>
       <div class="stats" id="source-stats"></div>
       <div class="panel"><label for="source-query">查找资料</label><input id="source-query" type="search" placeholder="搜索名称、型号或正文关键词"><div class="meta" id="source-count"></div><div id="source-list"></div><button class="chip" id="more-sources" hidden>显示更多</button></div>
     </section>
@@ -396,6 +397,21 @@
         renderMaterials();
       } catch (error) { $('source-count').textContent = error.message; }
     }
+    async function loadKnowledge() {
+      try {
+        const report = await api('/api/knowledge');
+        if (report.status !== 'written') return;
+        const target = $('knowledge-overview'); target.hidden = false;
+        target.append(node('h2', '本地公开数据知识库'), node('p', report.scope, 'muted'),
+          node('p', `${report.nodes.KnowledgeDataset} 个数据来源 · ${report.nodes.DrillingRecord} 条日报/作业记录 · ${report.nodes.Chunk} 个检索片段`, 'meta'));
+        for (const dataset of report.datasets) {
+          const detail = node('details'); detail.append(node('summary', dataset.name),
+            node('p', dataset.task), node('p', dataset.attribution, 'source-text'),
+            node('p', dataset.license, 'source-text'), node('p', dataset.limitations, 'source-text'), sourceLink(dataset.source_url));
+          target.append(detail);
+        }
+      } catch (error) { $('source-count').textContent = error.message; }
+    }
     async function loadReport() {
       try {
         const report = await api('/api/report'); $('report').replaceChildren();
@@ -410,7 +426,7 @@
       } catch (error) { $('report').replaceChildren(node('div', error.message, 'empty')); }
     }
     api('/health').then(() => $('status').textContent = '● 工作台已启动').catch(() => $('status').textContent = '工作台未连接');
-    loadCatalog(); loadReport();
+    loadCatalog(); loadKnowledge(); loadReport();
   </script>
 </body>
 </html>

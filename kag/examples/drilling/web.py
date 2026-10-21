@@ -214,6 +214,14 @@ def diagnosis_schema():
     return {"observations": KNOWLEDGE["observations"], "scope": KNOWLEDGE["scope"], "cases": cases["cases"]}
 
 
+@app.get("/api/knowledge")
+def knowledge_status():
+    path = ROOT / "data/knowledge/status.json"
+    if not path.exists():
+        return {"status": "not_imported"}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 @app.post("/api/diagnose")
 async def diagnostic_analysis(body: DiagnosisCase):
     future = await submit(body)

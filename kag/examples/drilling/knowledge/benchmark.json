@@ -1,0 +1,23 @@
+[
+  {
+    "id": "azadegan-source-labels",
+    "kind": "公开数据统计",
+    "question": "Azadegan 钻井漏失数据有多少条记录？请列出原始严重度标签。",
+    "facts": [["65,376", "65376"], ["No-Loss", "无漏失", "不漏失"], ["Seepage", "渗漏"], ["Partial", "部分漏失"], ["Severe", "严重漏失"], ["Complete", "完全漏失"]],
+    "source_any": ["Azadegan 井漏严重度数据"]
+  },
+  {
+    "id": "marun-original-target",
+    "kind": "公开数据统计",
+    "question": "Marun 钻井漏失率数据有多少条记录，原始目标的单位是什么？",
+    "facts": [["2,820", "2820"], ["bbl/hr", "桶/小时", "桶每小时"]],
+    "source_any": ["Marun 漏失率数据"]
+  },
+  {
+    "id": "volve-depth-evidence",
+    "kind": "井号深度图谱查证",
+    "question": "F-11 T2 钻井记录中，3058 m 附近的 overpull 是什么情况？",
+    "facts": [["20 MT", "20MT", "20 吨", "20吨"], ["受阻", "遇阻", "限制", "无法上提"]],
+    "source_any": ["15_9_F_11_T2_2013_05_06:activity[4]"]
+  }
+]
