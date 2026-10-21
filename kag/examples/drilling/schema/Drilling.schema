@@ -122,6 +122,45 @@ DiagnosticSource(诊断来源): EntityType
         desc(内容摘要): Text
         verified(核验日期): Text
 
+Chunk(文本块): IndexType
+    properties:
+        content(内容): Text
+            index: TextAndVector
+
+KnowledgeDataset(公开数据来源): EntityType
+    properties:
+        sourceUrl(来源地址): Text
+        fileHash(文件指纹): Text
+        attribution(来源署名): Text
+        license(源许可): Text
+        profile(实测数据统计): Text
+        scope(使用范围): Text
+        source(原文索引): Chunk
+            constraint: MultiValue
+
+Wellbore(井筒): EntityType
+    properties:
+        usage(数据用途): Text
+
+DrillingRecord(钻井原始记录): EntityType
+    properties:
+        kind(记录类型): Text
+        anchor(原文定位): Text
+        startTime(发生开始时刻): Text
+        endTime(发生结束时刻): Text
+        reportStart(报告开始时刻): Text
+        reportEnd(报告结束时刻): Text
+        text(原文): Text
+        state(原始状态): Text
+        stateDetail(原始状态细项): Text
+        categories(候选筛查类别): Text
+        reviewStatus(证据状态): Text
+        fromDataset(来自数据集): KnowledgeDataset
+        inWell(所属井筒): Wellbore
+        inReport(所属日报): DrillingRecord
+        source(原文索引): Chunk
+            constraint: MultiValue
+
 Others(其他): EntityType
     properties:
         desc(描述): Text

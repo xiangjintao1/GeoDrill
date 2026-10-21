@@ -23,7 +23,7 @@ jobs:
       - name: Install application and test dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -c deploy/local/constraints.txt -e . -r deploy/local/requirements-chatgpt.txt -r deploy/local/requirements-embedding.txt
+          python -m pip install -c deploy/local/constraints.txt -e . -r deploy/local/requirements-chatgpt.txt -r deploy/local/requirements-embedding.txt -r deploy/local/requirements-knowledge.txt
       - name: Check Python syntax
         run: python -m compileall -q kag/examples/drilling deploy/local
       - name: Test configuration, authentication protocol and workbench

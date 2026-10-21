@@ -1,0 +1,41 @@
+{
+  "development_well": "NO 15/9-F-11 T2",
+  "split_manifest": "06_replay_benchmark/four_well_v1_0_rc1/split_manifest.csv",
+  "datasets": [
+    {
+      "id": "volve-ddr",
+      "name": "Volve 钻井日报：F-11 T2 开发井",
+      "path": "00_raw/volve/other_reports/ddr_derived_mirror/volve_daily_drilling_report_all.parquet",
+      "sha256": "e4aec121079ad17cd2d3913646dd7d240e3a75d189458ce66ab3bf2af6ed2f56",
+      "source_url": "https://huggingface.co/datasets/bengsoon/volve_daily_drilling_report",
+      "attribution": "Equinor Volve；bengsoon 提供的第三方 DDR 转换镜像",
+      "license": "镜像声明 CC BY 4.0；原始 Volve 条款保留在源目录",
+      "task": "回溯式钻井日报、作业经过与证据查询",
+      "limitations": "候选筛查类别不是确认异常或根因标签；报告日期和作业发生时刻分别保存；不用于提前预警评测。"
+    },
+    {
+      "id": "azadegan-loss",
+      "name": "Azadegan 井漏严重度数据",
+      "path": "00_raw/public_labeled_20261015/azadegan_2021/42452_2021_4769_MOESM1_ESM.xlsx",
+      "sha256": "b58731ca908a37bc9c6688e50b98e0a3afc20cef48fbd6a17e1aecd03270dd48",
+      "source_url": "https://link.springer.com/article/10.1007/s42452-021-04769-0",
+      "attribution": "Sajjad Mardanirad, David A. Wood, Hassan Zakeri (2021), DOI 10.1007/s42452-021-04769-0，官方补充工作簿",
+      "license": "CC BY 4.0，见论文及补充材料许可说明",
+      "task": "原始五分类井漏严重度识别",
+      "target": "LossesSeverity",
+      "limitations": "按深度的记录，不是独立事故数；没有明确井号和绝对时间，不能据此做跨井或提前预警评测。FlowOut 为百分比，不能直接与 gpm 的 FlowIn 相减；单位依据原论文表2。"
+    },
+    {
+      "id": "marun-loss",
+      "name": "Marun 漏失率数据",
+      "path": "00_raw/public_labeled_20261015/marun_2020/Supplementary_Excel_file_data.xlsx",
+      "sha256": "be25ac29bcc5e52437b6516e918567e0825f8a1c7b7bfc046138e856980edce4",
+      "source_url": "https://data.mendeley.com/datasets/hr7hbxdryp/1",
+      "attribution": "Mohammad Sabah (2020), Mendeley Data v1, DOI 10.17632/hr7hbxdryp.1",
+      "license": "CC BY-NC 3.0；本地学习研究使用，公开或商业再利用需遵循源许可",
+      "task": "原始连续漏失率回归",
+      "target": "Mud loss (bbl/hr)",
+      "limitations": "目标为连续值，未转换成严重度分类；缺测原样保留；没有明确井号和绝对时间，不推定坐标组为井号。"
+    }
+  ]
+}
